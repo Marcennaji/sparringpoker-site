@@ -37,12 +37,23 @@
 
   <h2 data-lang="en" class="active">Contact</h2>
   <h2 data-lang="fr">Contact</h2>
-  <p data-lang="en" class="active">For any questions: <a href="mailto:contact@sparringpoker.com">contact@sparringpoker.com</a></p>
-  <p data-lang="fr">Pour toute question : <a href="mailto:contact@sparringpoker.com">contact@sparringpoker.com</a></p>
+  <p data-lang="en" class="active">For any questions: <a href="#" data-user="m87-dev" data-domain="pm.me"></a></p>
+  <p data-lang="fr">Pour toute question : <a href="#" data-user="m87-dev" data-domain="pm.me"></a></p>
 
   <p><a href="/" data-lang="en" class="active">← Back</a><a href="/" data-lang="fr">← Retour</a></p>
 
   <script>
+    // Decode and set email links
+    function setEmailLinks() {
+      document.querySelectorAll('[data-user][data-domain]').forEach(link => {
+        const user = link.getAttribute('data-user');
+        const domain = link.getAttribute('data-domain');
+        const email = user + '@' + domain;
+        link.href = 'mailto:' + email;
+        link.textContent = email;
+      });
+    }
+    
     function setLang(lang) {
       localStorage.setItem('lang', lang);
       document.documentElement.lang = lang;
@@ -57,6 +68,9 @@
         }
       });
     }
+    
+    // Initialize email links
+    setEmailLinks();
     
     const savedLang = localStorage.getItem('lang') || 'en';
     document.querySelectorAll('.lang-btn').forEach(btn => {
