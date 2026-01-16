@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SparringPoker — Offline Poker Training</title>
+  <meta name="description" content="SparringPoker is an offline poker training tool with AI opponents. Stats, hand replay, hand export." />
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.5}
+    header{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:10px 14px;border:1px solid #111;border-radius:10px;text-decoration:none;color:#111}
+    .btn:hover{background:#f5f5f5}
+    .muted{color:#555}
+    .box{border:1px solid #ddd;border-radius:14px;padding:16px;margin:18px 0}
+    ul{margin:8px 0 0 18px}
+    li{margin:6px 0}
+    .lang-switch{display:flex;gap:8px;margin-bottom:20px;justify-content:flex-end}
+    .lang-btn{padding:6px 12px;border:1px solid #ddd;border-radius:6px;background:white;cursor:pointer;font-size:14px}
+    .lang-btn.active{background:#111;color:white;border-color:#111}
+    .premium{color:#d97706;font-weight:600}
+    [data-lang]{display:none}
+    [data-lang].active{display:block}
+    li[data-lang].active{display:list-item}
+  </style>
+</head>
+<body>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('en')">English</button>
+    <button class="lang-btn" onclick="setLang('fr')">Français</button>
+  </div>
+
+  <header>
+    <div>
+      <h1 style="margin:0">SparringPoker</h1>
+      <div class="muted" data-lang="en" class="active">Offline poker training tool (Texas Hold'em) — Desktop & Android</div>
+      <div class="muted" data-lang="fr">Outil d'entraînement au poker hors-ligne (Texas Hold'em) — Desktop & Android</div>
+    </div>
+    <div>
+      <a class="btn" href="#" aria-label="Google Play link" data-lang="en" class="active">View on Google Play</a>
+      <a class="btn" href="#" aria-label="Lien Google Play" data-lang="fr">Voir sur Google Play</a>
+    </div>
+  </header>
+
+  <div class="box">
+    <h2 style="margin-top:0" data-lang="en" class="active">What is SparringPoker?</h2>
+    <h2 style="margin-top:0" data-lang="fr">Qu'est-ce que SparringPoker ?</h2>
+    <p data-lang="en" class="active">SparringPoker is an <strong>offline poker training tool</strong> with fine-tuned AI opponents featuring distinct playing styles (Tight Aggressive, Loose Aggressive, Maniac, Ultra-Tight). Available on desktop and Android.</p>
+    <p data-lang="fr">SparringPoker est un <strong>outil d'entraînement au poker hors-ligne</strong> avec des adversaires IA finement ajustés présentant des styles de jeu distincts (Tight Aggressive, Loose Aggressive, Maniac, Ultra-Tight). Disponible sur desktop et Android.</p>
+  </div>
+
+  <div class="box">
+    <h2 style="margin-top:0" data-lang="en" class="active">Free Features</h2>
+    <h2 style="margin-top:0" data-lang="fr">Fonctionnalités Gratuites</h2>
+    <ul>
+      <li data-lang="en" class="active"><strong>Unlimited play</strong> - No hand count limits, play as much as you want</li>
+      <li data-lang="fr"><strong>Jeu illimité</strong> - Aucune limite de nombre de mains, jouez autant que vous le souhaitez</li>
+      
+      <li data-lang="en" class="active"><strong>Full game simulation</strong> - Complete Texas Hold'em with realistic dealing, betting, and AI decisions</li>
+      <li data-lang="fr"><strong>Simulation de jeu complète</strong> - Texas Hold'em complet avec distribution, mises et décisions IA réalistes</li>
+      
+      <li data-lang="en" class="active"><strong>Tight Aggressive opponents</strong> - Play against Tight Aggressive bots powered by carefully tuned statistics from 10,000+ real hands</li>
+      <li data-lang="fr"><strong>Adversaires Tight Aggressive</strong> - Jouez contre des bots Tight Aggressive alimentés par des statistiques soigneusement ajustées issues de plus de 10 000 mains réelles</li>
+      
+      <li data-lang="en" class="active"><strong>6-player tables</strong> - Standard table size with 5 AI opponents</li>
+      <li data-lang="fr"><strong>Tables à 6 joueurs</strong> - Taille de table standard avec 5 adversaires IA</li>
+      
+      <li data-lang="en" class="active"><strong>Offline play</strong> - No internet required, play anywhere anytime</li>
+      <li data-lang="fr"><strong>Jeu hors-ligne</strong> - Pas besoin d'internet, jouez n'importe où, n'importe quand</li>
+      
+      <li data-lang="en" class="active"><strong>Multi-language</strong> - English, French, Spanish</li>
+      <li data-lang="fr"><strong>Multi-langues</strong> - Anglais, Français, Espagnol</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2 style="margin-top:0"><span class="premium" data-lang="en" class="active">Premium Features ���</span><span class="premium" data-lang="fr">Fonctionnalités Premium ���</span></h2>
+    <p data-lang="en" class="active">Upgrade to unlock:</p>
+    <p data-lang="fr">Passez en Premium pour débloquer :</p>
+    <ul>
+      <li data-lang="en" class="active"><strong>Customizable table size</strong> - Play with 2-9 players (heads-up to full table)</li>
+      <li data-lang="fr"><strong>Taille de table personnalisable</strong> - Jouez avec 2 à 9 joueurs (heads-up à table complète)</li>
+      
+      <li data-lang="en" class="active"><strong>Custom blind progression</strong> - Set your own blind increase schedule</li>
+      <li data-lang="fr"><strong>Progression des blinds personnalisée</strong> - Définissez votre propre calendrier d'augmentation des blinds</li>
+      
+      <li data-lang="en" class="active"><strong>Full bot roster</strong> - Access all 4 AI personalities (Tight Aggressive, Loose Aggressive, Maniac, Ultra-Tight) and create custom opponent mixes</li>
+      <li data-lang="fr"><strong>Tous les types de bots</strong> - Accédez aux 4 personnalités IA (Tight Aggressive, Loose Aggressive, Maniac, Ultra-Tight) et créez des combinaisons d'adversaires personnalisées</li>
+      
+      <li data-lang="en" class="active"><strong>Hand Replay</strong> - Review and analyze every completed hand with timeline scrubbing</li>
+      <li data-lang="fr"><strong>Replay des mains</strong> - Revoyez et analysez chaque main terminée avec navigation temporelle</li>
+      
+      <li data-lang="en" class="active"><strong>Statistics & Analytics</strong> - Browse bot statistics (10,000+ hands per personality) and track your own gameplay metrics: VPIP, PFR, aggression by street (preflop/flop/turn/river), continuation bets, 3-bet/4-bet frequencies, showdown win rates, and more</li>
+      <li data-lang="fr"><strong>Statistiques & Analyses</strong> - Consultez les statistiques des bots (plus de 10 000 mains par personnalité) et suivez vos propres métriques de jeu : VPIP, PFR, agressivité par street (preflop/flop/turn/river), continuation bets, fréquences de 3-bet/4-bet, taux de victoire au showdown, et plus encore</li>
+      
+      <li data-lang="en" class="active"><strong>Statistics Management</strong> - Reset your personal statistics to start fresh at any time</li>
+      <li data-lang="fr"><strong>Gestion des statistiques</strong> - Réinitialisez vos statistiques personnelles pour repartir à zéro à tout moment</li>
+      
+      <li data-lang="en" class="active"><strong>Hand Export</strong> - Copy hands to clipboard for analysis with ChatGPT, Claude, or other poker tools</li>
+      <li data-lang="fr"><strong>Export des mains</strong> - Copiez les mains dans le presse-papiers pour les analyser avec ChatGPT, Claude ou d'autres outils poker</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2 style="margin-top:0" data-lang="en" class="active">Links</h2>
+    <h2 style="margin-top:0" data-lang="fr">Liens</h2>
+    <ul>
+      <li><a href="/privacy.html" data-lang="en" class="active">Privacy Policy</a><a href="/privacy.html" data-lang="fr">Politique de confidentialité</a></li>
+      <li><a href="/support.html" data-lang="en" class="active">Support / Contact</a><a href="/support.html" data-lang="fr">Support / Contact</a></li>
+    </ul>
+  </div>
+
+  <footer class="muted" style="margin-top:28px">
+    © <span id="y"></span> M87 DEV
+  </footer>
+  
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+      
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Show/hide content
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('data-lang') === lang) {
+          el.classList.add('active');
+        }
+      });
+    }
+    
+    // Initialize language on page load
+    const savedLang = localStorage.getItem('lang') || 'en';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      if (btn.textContent.toLowerCase().includes(savedLang)) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      if (el.getAttribute('data-lang') === savedLang) {
+        el.classList.add('active');
+      }
+    });
+    document.documentElement.lang = savedLang;
+  </script>
+</body>
+</html>

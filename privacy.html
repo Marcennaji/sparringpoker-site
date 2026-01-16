@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — SparringPoker</title>
+  <style>
+    body{font-family:system-ui;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.5}
+    .lang-switch{display:flex;gap:8px;margin-bottom:20px;justify-content:flex-end}
+    .lang-btn{padding:6px 12px;border:1px solid #ddd;border-radius:6px;background:white;cursor:pointer;font-size:14px}
+    .lang-btn.active{background:#111;color:white;border-color:#111}
+    [data-lang]{display:none}
+    [data-lang].active{display:block}
+  </style>
+</head>
+<body>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('en')">English</button>
+    <button class="lang-btn" onclick="setLang('fr')">Français</button>
+  </div>
+
+  <h1 data-lang="en" class="active">Privacy Policy</h1>
+  <h1 data-lang="fr">Politique de confidentialité</h1>
+
+  <p data-lang="en" class="active"><strong>SparringPoker</strong> is an offline application. It does not collect personal data for advertising purposes.</p>
+  <p data-lang="fr"><strong>SparringPoker</strong> est une application hors-ligne. Elle ne collecte pas de données personnelles à des fins publicitaires.</p>
+
+  <h2 data-lang="en" class="active">Data Processed</h2>
+  <h2 data-lang="fr">Données traitées</h2>
+  <ul>
+    <li data-lang="en" class="active">Game data and statistics: stored locally on the device.</li>
+    <li data-lang="fr">Données de jeu et statistiques : stockées localement sur l'appareil.</li>
+    
+    <li data-lang="en" class="active">No data selling.</li>
+    <li data-lang="fr">Aucune vente de données.</li>
+  </ul>
+
+  <h2 data-lang="en" class="active">Contact</h2>
+  <h2 data-lang="fr">Contact</h2>
+  <p data-lang="en" class="active">For any questions: <a href="mailto:contact@sparringpoker.com">contact@sparringpoker.com</a></p>
+  <p data-lang="fr">Pour toute question : <a href="mailto:contact@sparringpoker.com">contact@sparringpoker.com</a></p>
+
+  <p><a href="/" data-lang="en" class="active">← Back</a><a href="/" data-lang="fr">← Retour</a></p>
+
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('data-lang') === lang) {
+          el.classList.add('active');
+        }
+      });
+    }
+    
+    const savedLang = localStorage.getItem('lang') || 'en';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      if (btn.textContent.toLowerCase().includes(savedLang)) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      if (el.getAttribute('data-lang') === savedLang) {
+        el.classList.add('active');
+      }
+    });
+    document.documentElement.lang = savedLang;
+  </script>
+</body>
+</html>
