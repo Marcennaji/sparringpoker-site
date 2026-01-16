@@ -73,7 +73,20 @@
     // Initialize email links
     setEmailLinks();
     
+    // Initialize language
     const savedLang = localStorage.getItem('lang') || 'en';
+    
+    // First, remove all active classes from elements with data-lang
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.remove('active');
+    });
+    
+    // Then add active class only to elements matching the saved language
+    document.querySelectorAll('[data-lang="' + savedLang + '"]').forEach(el => {
+      el.classList.add('active');
+    });
+    
+    // Update button states
     document.querySelectorAll('.lang-btn').forEach(btn => {
       if (btn.textContent.toLowerCase().includes(savedLang)) {
         btn.classList.add('active');
@@ -81,11 +94,7 @@
         btn.classList.remove('active');
       }
     });
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      if (el.getAttribute('data-lang') === savedLang) {
-        el.classList.add('active');
-      }
-    });
+    
     document.documentElement.lang = savedLang;
   </script>
 </body>
