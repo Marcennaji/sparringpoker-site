@@ -9,9 +9,9 @@
     body{
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       max-width:900px;
-      margin:40px auto;
+      margin:20px auto;
       padding:0 16px;
-      line-height:1.6;
+      line-height:1.4;
       background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
       color:#f5f5f5;
       min-height:100vh;
@@ -32,16 +32,16 @@
     .muted{color:#b0b0b0}
     .box{
       border:1px solid rgba(255,255,255,0.15);
-      border-radius:14px;
-      padding:20px;
-      margin:18px 0;
+      border-radius:10px;
+      padding:12px 16px;
+      margin:10px 0;
       background:rgba(255,255,255,0.05);
       backdrop-filter:blur(10px);
       box-shadow:0 4px 6px rgba(0,0,0,0.2);
     }
-    ul{margin:8px 0 0 18px}
-    li{margin:8px 0}
-    .lang-switch{display:flex;gap:8px;margin-bottom:20px;justify-content:flex-end}
+    ul{margin:6px 0 0 18px}
+    li{margin:4px 0;font-size:14px}
+    .lang-switch{display:flex;gap:8px;margin-bottom:12px;justify-content:flex-end}
     .lang-btn{
       padding:6px 12px;
       border:1px solid rgba(255,255,255,0.3);
@@ -53,14 +53,14 @@
       transition:all 0.3s ease;
     }
     .lang-btn:hover{background:rgba(255,255,255,0.15)}
-    .lang-btn.active{background:#d32f2f;color:white;border-color:#d32f2f}
+    .lang-btn.active{background:#d3c2c2;color:white;border-color:#d32f2f}
     .premium{color:#ffa726;font-weight:600}
     .coming-soon{
       background:linear-gradient(135deg, #1e3a5f 0%, #2d5273 100%);
       border:2px solid rgba(129,212,250,0.3);
-      border-radius:14px;
-      padding:20px;
-      margin:20px 0;
+      border-radius:10px;
+      padding:14px;
+      margin:12px 0;
       text-align:center;
       box-shadow:0 6px 12px rgba(30,58,95,0.5);
       animation:pulse 2s ease-in-out infinite;
@@ -69,8 +69,8 @@
       0%,100%{transform:scale(1);box-shadow:0 6px 12px rgba(30,58,95,0.5)}
       50%{transform:scale(1.02);box-shadow:0 8px 16px rgba(30,58,95,0.7)}
     }
-    .coming-soon h2{margin:0 0 10px 0;font-size:28px;color:#fff}
-    .coming-soon p{margin:5px 0;font-size:18px;color:#e1f5fe}
+    .coming-soon h2{margin:0 0 6px 0;font-size:22px;color:#fff}
+    .coming-soon p{margin:3px 0;font-size:15px;color:#e1f5fe}
     .card-symbol{
       display:inline-block;
       font-size:1.2em;
@@ -81,7 +81,7 @@
       color:#fff;
       text-shadow:2px 2px 4px rgba(0,0,0,0.3);
     }
-    h2{color:#fff}
+    h2{color:#fff;font-size:18px;margin:0 0 8px 0}
     a{color:#81d4fa;text-decoration:none}
     a:hover{color:#4fc3f7;text-decoration:underline}
     [data-lang]{display:none}
@@ -108,8 +108,8 @@
   </header>
 
   <div class="coming-soon">
-    <h2 data-lang="en" class="active">🚀 Coming Soon</h2>
-    <h2 data-lang="fr">🚀 Bientôt disponible</h2>
+    <h2 data-lang="en" class="active">Coming Soon</h2>
+    <h2 data-lang="fr">Bientôt disponible</h2>
     <p data-lang="en" class="active"><strong>Available for download in April 2026</strong></p>
     <p data-lang="fr"><strong>Disponible en téléchargement en avril 2026</strong></p>
     <p data-lang="en" class="active" style="font-size:16px;margin-top:12px">The app is currently in active development</p>
@@ -186,7 +186,7 @@
     </ul>
   </div>
 
-  <footer class="muted" style="margin-top:28px">
+  <footer class="muted" style="margin-top:12px;font-size:14px">
     © <span id="y"></span> M87 DEV
   </footer>
   
