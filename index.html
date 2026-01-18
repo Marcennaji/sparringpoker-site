@@ -6,18 +6,84 @@
   <title>SparringPoker — Offline Poker Training</title>
   <meta name="description" content="SparringPoker is an offline poker training tool with AI opponents. Stats, hand replay, hand export." />
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.5}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      max-width:900px;
+      margin:40px auto;
+      padding:0 16px;
+      line-height:1.6;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      color:#f5f5f5;
+      min-height:100vh;
+    }
     header{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:10px 14px;border:1px solid #111;border-radius:10px;text-decoration:none;color:#111}
-    .btn:hover{background:#f5f5f5}
-    .muted{color:#555}
-    .box{border:1px solid #ddd;border-radius:14px;padding:16px;margin:18px 0}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border:1px solid #f5f5f5;
+      border-radius:10px;
+      text-decoration:none;
+      color:#f5f5f5;
+      background:rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+      transition:all 0.3s ease;
+    }
+    .btn:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px)}
+    .muted{color:#b0b0b0}
+    .box{
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:14px;
+      padding:20px;
+      margin:18px 0;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 6px rgba(0,0,0,0.2);
+    }
     ul{margin:8px 0 0 18px}
-    li{margin:6px 0}
+    li{margin:8px 0}
     .lang-switch{display:flex;gap:8px;margin-bottom:20px;justify-content:flex-end}
-    .lang-btn{padding:6px 12px;border:1px solid #ddd;border-radius:6px;background:white;cursor:pointer;font-size:14px}
-    .lang-btn.active{background:#111;color:white;border-color:#111}
-    .premium{color:#d97706;font-weight:600}
+    .lang-btn{
+      padding:6px 12px;
+      border:1px solid rgba(255,255,255,0.3);
+      border-radius:6px;
+      background:rgba(255,255,255,0.1);
+      color:#f5f5f5;
+      cursor:pointer;
+      font-size:14px;
+      transition:all 0.3s ease;
+    }
+    .lang-btn:hover{background:rgba(255,255,255,0.15)}
+    .lang-btn.active{background:#d32f2f;color:white;border-color:#d32f2f}
+    .premium{color:#ffa726;font-weight:600}
+    .coming-soon{
+      background:linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
+      border:2px solid #ef5350;
+      border-radius:14px;
+      padding:20px;
+      margin:20px 0;
+      text-align:center;
+      box-shadow:0 6px 12px rgba(211,47,47,0.4);
+      animation:pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1);box-shadow:0 6px 12px rgba(211,47,47,0.4)}
+      50%{transform:scale(1.02);box-shadow:0 8px 16px rgba(211,47,47,0.6)}
+    }
+    .coming-soon h2{margin:0 0 10px 0;font-size:28px;color:#fff}
+    .coming-soon p{margin:5px 0;font-size:18px;color:#ffebee}
+    .card-symbol{
+      display:inline-block;
+      font-size:1.2em;
+      margin:0 4px;
+      opacity:0.3;
+    }
+    h1{
+      color:#fff;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+    }
+    h2{color:#fff}
+    a{color:#81d4fa;text-decoration:none}
+    a:hover{color:#4fc3f7;text-decoration:underline}
     [data-lang]{display:none}
     [data-lang].active{display:block}
     li[data-lang].active{display:list-item}
@@ -31,15 +97,24 @@
 
   <header>
     <div>
-      <h1 style="margin:0">SparringPoker</h1>
+      <h1 style="margin:0">
+        <span class="card-symbol">♠</span>
+        SparringPoker
+        <span class="card-symbol">♥</span>
+      </h1>
       <div class="muted active" data-lang="en">Offline poker training tool (Texas Hold'em) — Desktop & Android</div>
       <div class="muted" data-lang="fr">Outil d'entraînement au poker hors-ligne (Texas Hold'em) — Desktop & Android</div>
     </div>
-    <div>
-      <a class="btn active" href="#" aria-label="Google Play link" data-lang="en">View on Google Play</a>
-      <a class="btn" href="#" aria-label="Lien Google Play" data-lang="fr">Voir sur Google Play</a>
-    </div>
   </header>
+
+  <div class="coming-soon">
+    <h2 data-lang="en" class="active">🚀 Coming Soon</h2>
+    <h2 data-lang="fr">🚀 Bientôt disponible</h2>
+    <p data-lang="en" class="active"><strong>Available for download in April 2026</strong></p>
+    <p data-lang="fr"><strong>Disponible en téléchargement en avril 2026</strong></p>
+    <p data-lang="en" class="active" style="font-size:16px;margin-top:12px">The app is currently in active development</p>
+    <p data-lang="fr" style="font-size:16px;margin-top:12px">L'application est actuellement en cours de développement</p>
+  </div>
 
   <div class="box">
     <h2 style="margin-top:0" data-lang="en" class="active">What is SparringPoker?</h2>
