@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How the AI Bots Work — SparringPoker</title>
+  <meta name="description" content="SparringPoker AI opponents are built from 48,000+ simulated hands and validated against professional poker metrics. Learn how they were designed." />
+  <style>
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      max-width:900px;
+      margin:20px auto;
+      padding:0 16px;
+      line-height:1.5;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      color:#f5f5f5;
+      min-height:100vh;
+    }
+    h1{color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,0.3);margin-bottom:4px}
+    h2{color:#81d4fa;font-size:20px;margin:20px 0 8px}
+    h3{color:#e0e0e0;font-size:16px;margin:14px 0 6px}
+    p{margin:6px 0}
+    .muted{color:#b0b0b0}
+    .box{
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:10px;
+      padding:14px 18px;
+      margin:12px 0;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 6px rgba(0,0,0,0.2);
+    }
+    .btn{
+      display:inline-block;
+      padding:8px 14px;
+      border:1px solid #81d4fa;
+      border-radius:8px;
+      text-decoration:none;
+      color:#81d4fa;
+      background:rgba(129,212,250,0.08);
+      transition:all 0.3s ease;
+      font-size:14px;
+    }
+    .btn:hover{background:rgba(129,212,250,0.18);transform:translateY(-1px)}
+    a{color:#81d4fa;text-decoration:none}
+    a:hover{color:#4fc3f7;text-decoration:underline}
+    table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
+    th{background:rgba(129,212,250,0.15);color:#81d4fa;padding:7px 10px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.15)}
+    td{padding:6px 10px;border-bottom:1px solid rgba(255,255,255,0.07)}
+    tr:hover td{background:rgba(255,255,255,0.04)}
+    .ok{color:#66bb6a}
+    .stat-pill{
+      display:inline-block;
+      background:rgba(129,212,250,0.12);
+      border:1px solid rgba(129,212,250,0.25);
+      border-radius:6px;
+      padding:2px 8px;
+      font-size:12px;
+      margin:2px 3px;
+      color:#b3e5fc;
+    }
+    ul{margin:6px 0 0 18px}
+    li{margin:4px 0;font-size:14px}
+    .card-symbol{display:inline-block;font-size:1.1em;margin:0 2px;opacity:0.4}
+    .lang-switch{display:flex;gap:12px;margin-bottom:12px;justify-content:flex-end;align-items:center}
+    .lang-flag{
+      width:32px;height:32px;cursor:pointer;border-radius:4px;
+      transition:all 0.3s ease;opacity:0.6;border:2px solid transparent;
+    }
+    .lang-flag:hover{opacity:0.9;transform:scale(1.1)}
+    .lang-flag.active{opacity:1;border-color:rgba(129,212,250,0.6);box-shadow:0 0 8px rgba(129,212,250,0.4)}
+    [data-lang]{display:none}
+    [data-lang].active{display:block}
+    li[data-lang].active{display:list-item}
+    td[data-lang].active{display:table-cell}
+  </style>
+</head>
+<body>
+
+  <div class="lang-switch">
+    <img src="flag_en.png" alt="English" class="lang-flag active" onclick="setLang('en')" data-lang-flag="en">
+    <img src="flag_fr.png" alt="Français" class="lang-flag" onclick="setLang('fr')" data-lang-flag="fr">
+  </div>
+
+  <header>
+    <p><a href="/">&larr; <span data-lang="en" class="active">Back to SparringPoker</span><span data-lang="fr">Retour à SparringPoker</span></a></p>
+    <h1>
+      <span class="card-symbol">♠</span>
+      <span data-lang="en" class="active">How the AI Bots Work</span>
+      <span data-lang="fr">Comment fonctionnent les bots IA</span>
+      <span class="card-symbol">♥</span>
+    </h1>
+    <p class="muted">
+      <span data-lang="en" class="active">The methodology behind SparringPoker's AI opponents</span>
+      <span data-lang="fr">La méthodologie derrière les adversaires IA de SparringPoker</span>
+    </p>
+  </header>
+
+  <!-- 1. Overview -->
+  <div class="box">
+    <h2 data-lang="en" class="active">Not a poker solver. A training sparring partner.</h2>
+    <h2 data-lang="fr">Pas un solver poker. Un partenaire d'entraînement.</h2>
+    <p data-lang="en" class="active">Most poker AI tools wrap around a GTO solver and play unexploitably. That's great for game theory research, but it makes for a frustrating training experience — you can't identify weaknesses or practice exploitative adjustments.</p>
+    <p data-lang="fr">La plupart des outils d'IA poker s'appuient sur un solver GTO et jouent de façon inexploitable. C'est parfait pour la recherche en théorie des jeux, mais cela rend l'entraînement frustrant — vous ne pouvez pas identifier les faiblesses ni pratiquer les ajustements exploitatifs.</p>
+    <p data-lang="en" class="active" style="margin-top:10px">SparringPoker's bots are built differently: each personality has <strong>statistically validated, distinct tendencies</strong> — like real players at your local casino. They're challenging but exploitable. That gap is where you grow.</p>
+    <p data-lang="fr" style="margin-top:10px">Les bots de SparringPoker sont construits différemment : chaque personnalité a des <strong>tendances distinctes statistiquement validées</strong> — comme de vrais joueurs dans votre casino local. Ils sont exigeants mais exploitables. C'est dans cet écart que vous progressez.</p>
+  </div>
+
+  <!-- 2. Personalities -->
+  <div class="box">
+    <h2 data-lang="en" class="active">The 4 personalities</h2>
+    <h2 data-lang="fr">Les 4 personnalités</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th data-lang="en" class="active">Personality</th>
+          <th data-lang="fr">Personnalité</th>
+          <th data-lang="en" class="active">Style</th>
+          <th data-lang="fr">Style</th>
+          <th>VPIP (6-max)</th>
+          <th>PFR (6-max)</th>
+          <th data-lang="en" class="active">Best used to practice</th>
+          <th data-lang="fr">Idéal pour pratiquer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-lang="en" class="active"><strong>Ultra-Tight</strong></td>
+          <td data-lang="fr"><strong>Ultra-Tight</strong></td>
+          <td data-lang="en" class="active">Selective, ultra-aggressive when in</td>
+          <td data-lang="fr">Sélectif, ultra-agressif quand il joue</td>
+          <td>18%</td><td>18%</td>
+          <td data-lang="en" class="active">Patience, hand reading vs NAITs</td>
+          <td data-lang="fr">Patience, lecture des mains face aux NAIT</td>
+        </tr>
+        <tr>
+          <td data-lang="en" class="active"><strong>Tight</strong> <span class="ok">✓ Free</span></td>
+          <td data-lang="fr"><strong>Tight</strong> <span class="ok">✓ Gratuit</span></td>
+          <td data-lang="en" class="active">TAG — modern standard baseline</td>
+          <td data-lang="fr">TAG — base standard moderne</td>
+          <td>21%</td><td>18%</td>
+          <td data-lang="en" class="active">Fundamentals, positional play</td>
+          <td data-lang="fr">Fondamentaux, jeu positionnel</td>
+        </tr>
+        <tr>
+          <td data-lang="en" class="active"><strong>Loose</strong></td>
+          <td data-lang="fr"><strong>Loose</strong></td>
+          <td data-lang="en" class="active">LAG — wide range, aggressive</td>
+          <td data-lang="fr">LAG — large range, agressif</td>
+          <td>25%</td><td>21%</td>
+          <td data-lang="en" class="active">Defending vs aggression, bluff-catching</td>
+          <td data-lang="fr">Défense contre l'agressivité, attraper les bluffs</td>
+        </tr>
+        <tr>
+          <td data-lang="en" class="active"><strong>Maniac</strong></td>
+          <td data-lang="fr"><strong>Maniac</strong></td>
+          <td data-lang="en" class="active">Hyper-aggressive, very wide range</td>
+          <td data-lang="fr">Hyper-agressif, range très large</td>
+          <td>34%</td><td>30%</td>
+          <td data-lang="en" class="active">Tilt control, exploiting over-aggression</td>
+          <td data-lang="fr">Contrôle du tilt, exploiter la sur-aggressivité</td>
+        </tr>
+      </tbody>
+    </table>
+    <p data-lang="en" class="active" style="margin-top:8px;font-size:13px" class="muted">VPIP/PFR values shown for 6-player (Short Handed) tables. All 4 personalities are available in Premium; Tight comes with the free tier.</p>
+    <p data-lang="fr" style="margin-top:8px;font-size:13px" class="muted">Valeurs VPIP/PFR pour tables à 6 joueurs (Short Handed). Les 4 personnalités sont disponibles en Premium ; Tight est inclus dans la version gratuite.</p>
+  </div>
+
+  <!-- 3. How stats were built -->
+  <div class="box">
+    <h2 data-lang="en" class="active">How the statistics were built</h2>
+    <h2 data-lang="fr">Comment les statistiques ont été construites</h2>
+
+    <h3 data-lang="en" class="active">Step 1 — Mass simulation</h3>
+    <h3 data-lang="fr">Étape 1 — Simulation en masse</h3>
+    <p data-lang="en" class="active">Each bot personality was run through <strong>48,000+ hands</strong> of self-play across three table formats (Full Ring 9p, Short Handed 6p, Heads-Up 2p) using 32 parallel workers. This took ~6 hours on a multi-core CPU.</p>
+    <p data-lang="fr">Chaque personnalité de bot a été soumise à <strong>plus de 48 000 mains</strong> de jeu autonome sur trois formats de table (Full Ring 9j, Short Handed 6j, Heads-Up 2j) avec 32 workers en parallèle. Cela a pris ~6 heures sur un CPU multi-cœur.</p>
+
+    <h3 data-lang="en" class="active">Step 2 — Metric extraction</h3>
+    <h3 data-lang="fr">Étape 2 — Extraction des métriques</h3>
+    <p data-lang="en" class="active">After each simulation run, the following professional metrics were extracted and stored per strategy × table format combination:</p>
+    <p data-lang="fr">Après chaque simulation, les métriques professionnelles suivantes ont été extraites et stockées par combinaison stratégie × format de table :</p>
+    <p style="margin-top:8px">
+      <span class="stat-pill">VPIP</span>
+      <span class="stat-pill">PFR</span>
+      <span class="stat-pill">VPIP–PFR gap</span>
+      <span class="stat-pill">3-Bet %</span>
+      <span class="stat-pill">Fold to 3-Bet %</span>
+      <span class="stat-pill">Aggression Factor (AF)</span>
+      <span class="stat-pill">C-Bet %</span>
+      <span class="stat-pill">WTSD %</span>
+      <span class="stat-pill">W$SD %</span>
+    </p>
+
+    <h3 data-lang="en" class="active">Step 3 — Validation against industry targets</h3>
+    <h3 data-lang="fr">Étape 3 — Validation par rapport aux cibles de l'industrie</h3>
+    <p data-lang="en" class="active">Modern TAG theory targets a <strong>VPIP–PFR gap of 1–4%</strong> (raise-or-fold discipline). Results after tuning:</p>
+    <p data-lang="fr">La théorie TAG moderne cible un <strong>écart VPIP–PFR de 1 à 4 %</strong> (discipline raise-or-fold). Résultats après ajustement :</p>
+
+    <table style="margin-top:10px">
+      <thead>
+        <tr>
+          <th data-lang="en" class="active">Format</th><th data-lang="fr">Format</th>
+          <th data-lang="en" class="active">Strategy</th><th data-lang="fr">Stratégie</th>
+          <th>VPIP</th><th>PFR</th>
+          <th data-lang="en" class="active">Gap</th><th data-lang="fr">Écart</th>
+          <th data-lang="en" class="active">Status</th><th data-lang="fr">Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-lang="en" class="active">Full Ring</td><td data-lang="fr">Full Ring</td>
+          <td data-lang="en" class="active">Ultra-Tight</td><td data-lang="fr">Ultra-Tight</td>
+          <td>10.9%</td><td>10.0%</td>
+          <td>0.9%</td>
+          <td data-lang="en" class="active"><span class="ok">✓ Optimal</span></td><td data-lang="fr"><span class="ok">✓ Optimal</span></td>
+        </tr>
+        <tr>
+          <td data-lang="en" class="active">Full Ring</td><td data-lang="fr">Full Ring</td>
+          <td data-lang="en" class="active">Tight</td><td data-lang="fr">Tight</td>
+          <td>13.7%</td><td>10.4%</td>
+          <td>3.3%</td>
+          <td data-lang="en" class="active"><span class="ok">✓ Excellent</span></td><td data-lang="fr"><span class="ok">✓ Excellent</span></td>
+        </tr>
+        <tr>
+          <td data-lang="en" class="active">Full Ring</td><td data-lang="fr">Full Ring</td>
+          <td data-lang="en" class="active">Loose</td><td data-lang="fr">Loose</td>
+          <td>19.4%</td><td>17.4%</td>
+          <td>2.0%</td>
+          <td data-lang="en" class="active"><span class="ok">✓ Excellent</span></td><td data-lang="fr"><span class="ok">✓ Excellent</span></td>
+        </tr>
+        <tr>
+          <td data-lang="en" class="active">Full Ring</td><td data-lang="fr">Full Ring</td>
+          <td data-lang="en" class="active">Maniac</td><td data-lang="fr">Maniac</td>
+          <td>31.0%</td><td>26.8%</td>
+          <td>4.2%</td>
+          <td data-lang="en" class="active"><span class="ok">✓ Excellent</span></td><td data-lang="fr"><span class="ok">✓ Excellent</span></td>
+        </tr>
+        <tr>
+          <td data-lang="en" class="active">Heads-Up</td><td data-lang="fr">Heads-Up</td>
+          <td data-lang="en" class="active">All strategies</td><td data-lang="fr">Toutes stratégies</td>
+          <td>35–68%</td><td>35–68%</td>
+          <td>0.0–0.4%</td>
+          <td data-lang="en" class="active"><span class="ok">✓ Optimal (HU raise-or-fold)</span></td><td data-lang="fr"><span class="ok">✓ Optimal (HU raise-or-fold)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. What the stats reveal -->
+  <div class="box">
+    <h2 data-lang="en" class="active">What the statistics reveal — and don't reveal</h2>
+    <h2 data-lang="fr">Ce que révèlent les statistiques — et ce qu'elles ne révèlent pas</h2>
+
+    <h3 data-lang="en" class="active">What they reveal</h3>
+    <h3 data-lang="fr">Ce qu'elles révèlent</h3>
+    <ul>
+      <li data-lang="en" class="active"><strong>Clear personality separation:</strong> VPIP climbs monotonically — Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac — across all table formats. You can immediately tell who you're up against.</li>
+      <li data-lang="fr"><strong>Séparation claire des personnalités :</strong> Le VPIP monte de façon monotone — Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac — sur tous les formats de table. Vous savez immédiatement à qui vous faites face.</li>
+
+      <li data-lang="en" class="active"><strong>Correct aggression hierarchy:</strong> Tighter bots have higher 3-bet rates (polarized ranges: premiums + bluffs). Looser bots call more with speculative hands. This matches the "gap concept" in poker theory — not an inconsistency.</li>
+      <li data-lang="fr"><strong>Hiérarchie d'agression correcte :</strong> Les bots plus tight ont des taux de 3-bet plus élevés (ranges polarisées : mains premium + bluffs). Les bots plus loose appellent davantage avec des mains spéculatives. Cela correspond au "gap concept" en théorie poker.</li>
+
+      <li data-lang="en" class="active"><strong>Proper showdown distribution:</strong> Tighter bots reach showdown less often (0.9–1.9% WTSD) but win more when they do (60–67% W$SD). Maniac reaches showdown most (3%) with weaker equity (39–45%). The inverse correlation is a strong quality signal.</li>
+      <li data-lang="fr"><strong>Distribution correcte au showdown :</strong> Les bots tight vont moins souvent au showdown (0,9–1,9% WTSD) mais gagnent plus quand ils y vont (60–67% W$SD). Le Maniac va le plus souvent au showdown (3%) avec une equity plus faible (39–45%).</li>
+
+      <li data-lang="en" class="active"><strong>Table-size adaptation:</strong> All bots correctly loosen up as the table shrinks (Full Ring → Short Handed → Heads-Up), mirroring what real players do.</li>
+      <li data-lang="fr"><strong>Adaptation à la taille de la table :</strong> Tous les bots s'élargissent correctement au fur et à mesure que la table se rétrécit (Full Ring → Short Handed → Heads-Up), comme le font les vrais joueurs.</li>
+    </ul>
+
+    <h3 data-lang="en" class="active" style="margin-top:14px">What they don't reveal (intentional design choices)</h3>
+    <h3 data-lang="fr" style="margin-top:14px">Ce qu'elles ne révèlent pas (choix de conception intentionnels)</h3>
+    <ul>
+      <li data-lang="en" class="active">The bots do not adapt to <em>you</em> during a session — they are consistent personalities, not live reads.</li>
+      <li data-lang="fr">Les bots ne s'adaptent pas à <em>vous</em> pendant une session — ce sont des personnalités cohérentes, pas des lecteurs de jeu en temps réel.</li>
+
+      <li data-lang="en" class="active">They are not GTO-optimal. They are exploitable by design — that's the point of a training tool.</li>
+      <li data-lang="fr">Ils ne sont pas GTO-optimaux. Ils sont exploitables par conception — c'est l'objectif d'un outil d'entraînement.</li>
+
+      <li data-lang="en" class="active">The statistics reflect aggregate tendencies, not a precise probability matrix on each hand. The engine uses position-aware pre-flop ranges and post-flop heuristics.</li>
+      <li data-lang="fr">Les statistiques reflètent des tendances agrégées, pas une matrice de probabilité précise à chaque main. Le moteur utilise des ranges pré-flop adaptées à la position et des heuristiques post-flop.</li>
+    </ul>
+  </div>
+
+  <!-- 5. Balance validation -->
+  <div class="box">
+    <h2 data-lang="en" class="active">Balance validation</h2>
+    <h2 data-lang="fr">Validation de l'équilibre</h2>
+    <p data-lang="en" class="active">In addition to metric validation, each strategy was tested for win-rate balance across long simulation runs. A perfectly balanced strategy cluster would show ~0% edge for each personality. Results:</p>
+    <p data-lang="fr">En plus de la validation des métriques, chaque stratégie a été testée sur l'équilibre du taux de victoire sur de longues simulations. Un cluster parfaitement équilibré montrerait ~0% d'avantage pour chaque personnalité. Résultats :</p>
+    <ul>
+      <li data-lang="en" class="active"><strong>Full Ring:</strong> All within ±1.2% — Tight +0.7%, Ultra-Tight +0.2%, Loose −0.1%, Maniac −1.1%</li>
+      <li data-lang="fr"><strong>Full Ring :</strong> Tous dans ±1,2% — Tight +0,7%, Ultra-Tight +0,2%, Loose −0,1%, Maniac −1,1%</li>
+      <li data-lang="en" class="active"><strong>Short Handed:</strong> All within ±1.3%</li>
+      <li data-lang="fr"><strong>Short Handed :</strong> Tous dans ±1,3%</li>
+      <li data-lang="en" class="active"><strong>Heads-Up:</strong> All within ±4% after the MDF defense fix (February 2026)</li>
+      <li data-lang="fr"><strong>Heads-Up :</strong> Tous dans ±4% après le correctif MDF defense (février 2026)</li>
+    </ul>
+    <p data-lang="en" class="active" style="margin-top:8px">No personality has a dominant edge — meaning the game outcome is driven by <em>your</em> decisions, not by the bot favored by the seedings.</p>
+    <p data-lang="fr" style="margin-top:8px">Aucune personnalité n'a un avantage dominant — ce qui signifie que le résultat est déterminé par <em>vos</em> décisions, pas par le bot favorisé par les données.</p>
+  </div>
+
+  <!-- 6. CTA -->
+  <div class="box" style="text-align:center;padding:20px">
+    <p data-lang="en" class="active" style="font-size:16px;margin-bottom:14px">Try the bots yourself — free for 300 hands, no account needed.</p>
+    <p data-lang="fr" style="font-size:16px;margin-bottom:14px">Essayez les bots vous-même — gratuit pendant 300 mains, aucun compte requis.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.m87dev.sparringpoker" class="btn">
+      <span data-lang="en" class="active">Download on Google Play</span>
+      <span data-lang="fr">Télécharger sur Google Play</span>
+    </a>
+    &nbsp;
+    <a href="/" class="btn">
+      <span data-lang="en" class="active">← Back to home</span>
+      <span data-lang="fr">← Retour à l'accueil</span>
+    </a>
+  </div>
+
+  <footer class="muted" style="margin-top:12px;font-size:13px;text-align:center">
+    © <span id="y"></span> M87 DEV &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/support.html">Support</a>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('data-lang') === lang) el.classList.add('active');
+      });
+    }
+
+    const savedLang = localStorage.getItem('lang') || 'en';
+    document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('[data-lang="' + savedLang + '"]').forEach(el => el.classList.add('active'));
+    document.querySelectorAll('.lang-flag').forEach(f => {
+      f.classList.toggle('active', f.getAttribute('data-lang-flag') === savedLang);
+    });
+    document.documentElement.lang = savedLang;
+  </script>
+</body>
+</html>
