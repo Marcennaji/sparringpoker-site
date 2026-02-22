@@ -45,9 +45,14 @@
     a{color:#81d4fa;text-decoration:none}
     a:hover{color:#4fc3f7;text-decoration:underline}
     table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
-    th{background:rgba(129,212,250,0.15);color:#81d4fa;padding:7px 10px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.15)}
-    td{padding:6px 10px;border-bottom:1px solid rgba(255,255,255,0.07)}
+    th{background:rgba(129,212,250,0.15);color:#81d4fa;padding:9px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.15);font-weight:600;font-size:13px}
+    td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.07);line-height:1.5}
     tr:hover td{background:rgba(255,255,255,0.04)}
+    tbody tr:first-child td{padding-top:10px}
+    @media (max-width:600px){
+      table{font-size:12px}
+      th,td{padding:7px 8px}
+    }
     .ok{color:#66bb6a}
     .stat-pill{
       display:inline-block;
@@ -98,18 +103,24 @@
 
   <!-- 1. Overview -->
   <div class="box">
-    <h2 data-lang="en" class="active">Not a poker solver. A training sparring partner.</h2>
-    <h2 data-lang="fr">Pas un solver poker. Un partenaire d'entraînement.</h2>
-    <p data-lang="en" class="active">Most poker AI tools wrap around a GTO solver and play unexploitably. That's great for game theory research, but it makes for a frustrating training experience — you can't identify weaknesses or practice exploitative adjustments.</p>
-    <p data-lang="fr">La plupart des outils d'IA poker s'appuient sur un solver GTO et jouent de façon inexploitable. C'est parfait pour la recherche en théorie des jeux, mais cela rend l'entraînement frustrant — vous ne pouvez pas identifier les faiblesses ni pratiquer les ajustements exploitatifs.</p>
-    <p data-lang="en" class="active" style="margin-top:10px">SparringPoker's bots are built differently: each personality has <strong>statistically validated, distinct tendencies</strong> — like real players at your local casino. They're challenging but exploitable. That gap is where you grow.</p>
-    <p data-lang="fr" style="margin-top:10px">Les bots de SparringPoker sont construits différemment : chaque personnalité a des <strong>tendances distinctes statistiquement validées</strong> — comme de vrais joueurs dans votre casino local. Ils sont exigeants mais exploitables. C'est dans cet écart que vous progressez.</p>
+    <p class="muted" style="margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:0.5px">
+      <span data-lang="en" class="active">Design Philosophy</span>
+      <span data-lang="fr">Positionnement</span>
+    </p>
+    <h2 data-lang="en" class="active" style="font-size:20px;margin-bottom:10px">Not a poker solver. A training sparring partner.</h2>
+    <h2 data-lang="fr" style="font-size:20px;margin-bottom:10px">Pas un solver poker. Un partenaire d'entraînement.</h2>
+    <p data-lang="en" class="active">Most poker AI tools rely on GTO solvers and play unexploitably. While valuable for theory study, this prevents you from identifying weaknesses or practicing exploitative adjustments — skills you need at real tables.</p>
+    <p data-lang="fr">La plupart des outils d'IA poker reposent sur des solvers GTO et jouent de façon inexploitable. Bien qu'utile pour l'étude théorique, cela vous empêche d'identifier les faiblesses ou de pratiquer les ajustements exploitatifs — des compétences essentielles aux tables réelles.</p>
+    <p data-lang="en" class="active" style="margin-top:10px">SparringPoker's bots are built differently: each personality has <strong>statistically validated, distinct tendencies</strong> — like real opponents you'll face. They're challenging but exploitable. Finding and capitalizing on those tendencies is how you improve.</p>
+    <p data-lang="fr" style="margin-top:10px">Les bots de SparringPoker sont construits différemment : chaque personnalité a des <strong>tendances distinctes statistiquement validées</strong> — comme les vrais adversaires que vous affronterez. Ils sont exigeants mais exploitables. Trouver et exploiter ces tendances, c'est ainsi que vous progressez.</p>
   </div>
 
   <!-- 2. Personalities -->
   <div class="box">
     <h2 data-lang="en" class="active">The 4 personalities</h2>
     <h2 data-lang="fr">Les 4 personnalités</h2>
+    <p data-lang="en" class="active" style="margin:6px 0 14px;font-size:14px">Each profile has been calibrated over 48,000+ simulated hands and validated against professional poker metrics.</p>
+    <p data-lang="fr" style="margin:6px 0 14px;font-size:14px">Chaque profil a été calibré sur plus de 48 000 mains simulées et validé selon des métriques poker professionnelles.</p>
 
     <table>
       <thead>
@@ -297,6 +308,16 @@
     </ul>
     <p data-lang="en" class="active" style="margin-top:8px">No personality has a dominant edge — meaning the game outcome is driven by <em>your</em> decisions, not by the bot favored by the seedings.</p>
     <p data-lang="fr" style="margin-top:8px">Aucune personnalité n'a un avantage dominant — ce qui signifie que le résultat est déterminé par <em>vos</em> décisions, pas par le bot favorisé par les données.</p>
+  </div>
+
+  <!-- 5.5. FAQ Clarification -->
+  <div class="box">
+    <h2 data-lang="en" class="active">Why only 4 personalities?</h2>
+    <h2 data-lang="fr">Pourquoi seulement 4 personnalités ?</h2>
+    <p data-lang="en" class="active">These four archetypes cover the primary strategic profiles you'll encounter in cash games: ultra-selective aggression (NAIT), solid fundamentals (TAG), wide aggressive ranges (LAG), and hyper-aggressive chaos (Maniac). Adding more personalities would dilute calibration quality without meaningful strategic variety.</p>
+    <p data-lang="fr">Ces quatre archétypes couvrent les profils stratégiques principaux que vous rencontrerez en cash game : agressivité ultra-sélective (NAIT), fondamentaux solides (TAG), ranges larges agressives (LAG), et chaos hyper-agressif (Maniac). Ajouter d'autres personnalités diluerait la qualité de calibration sans apporter de variété stratégique significative.</p>
+    <p data-lang="en" class="active" style="margin-top:10px">Each personality required 48,000+ hands of simulation and extensive statistical validation. The focus is deliberate calibration over quantity — you're training against validated tendencies, not random variations.</p>
+    <p data-lang="fr" style="margin-top:10px">Chaque personnalité a nécessité plus de 48 000 mains de simulation et une validation statistique approfondie. L'accent est mis sur la calibration délibérée plutôt que sur la quantité — vous vous entraînez contre des tendances validées, pas des variations aléatoires.</p>
   </div>
 
   <!-- 6. CTA -->
