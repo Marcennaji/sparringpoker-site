@@ -109,18 +109,14 @@
     </p>
     <h2 data-lang="en" class="active" style="font-size:20px;margin-bottom:10px">A serious training tool. Built differently.</h2>
     <h2 data-lang="fr" style="font-size:20px;margin-bottom:10px">Un outil d'entraînement sérieux. Conçu différemment.</h2>
-    <p data-lang="en" class="active">SparringPoker's bots are the result of extensive development and testing. Each personality has been <strong>calibrated over 48,000+ hands and validated against professional poker metrics</strong> to create distinct, realistic playing styles — like the opponents you'll face at real tables.</p>
-    <p data-lang="fr">Les bots de SparringPoker sont le résultat d'un développement et de tests approfondis. Chaque personnalité a été <strong>calibrée sur plus de 48 000 mains et validée selon des métriques poker professionnelles</strong> pour créer des styles de jeu distincts et réalistes — comme les adversaires que vous affronterez aux tables réelles.</p>
-    <p data-lang="en" class="active" style="margin-top:10px">They're challenging but exploitable — because finding and capitalizing on opponent tendencies is how you improve.</p>
-    <p data-lang="fr" style="margin-top:10px">Ils sont exigeants mais exploitables — car trouver et exploiter les tendances adverses, c'est ainsi que vous progressez.</p>
+    <p data-lang="en" class="active">Each bot personality has been <strong>calibrated over 48,000+ hands and validated against professional poker metrics</strong> to create distinct, realistic playing styles. They're challenging but exploitable — because finding and exploiting opponent tendencies is how you improve.</p>
+    <p data-lang="fr">Chaque personnalité a été <strong>calibrée sur plus de 48 000 mains et validée selon des métriques poker professionnelles</strong> pour créer des styles de jeu distincts et réalistes. Ils sont exigeants mais exploitables — car trouver et exploiter les tendances adverses, c'est ainsi que vous progressez.</p>
   </div>
 
   <!-- 2. Personalities -->
   <div class="box">
     <h2 data-lang="en" class="active">The 4 personalities</h2>
     <h2 data-lang="fr">Les 4 personnalités</h2>
-    <p data-lang="en" class="active" style="margin:6px 0 14px;font-size:14px">Each profile has been calibrated over 48,000+ simulated hands and validated against professional poker metrics.</p>
-    <p data-lang="fr" style="margin:6px 0 14px;font-size:14px">Chaque profil a été calibré sur plus de 48 000 mains simulées et validé selon des métriques poker professionnelles.</p>
 
     <table>
       <thead>
@@ -182,13 +178,13 @@
 
     <h3 data-lang="en" class="active">Step 1 — Mass simulation</h3>
     <h3 data-lang="fr">Étape 1 — Simulation en masse</h3>
-    <p data-lang="en" class="active">Each bot personality was run through <strong>48,000+ hands</strong> of self-play across three table formats (Full Ring 9p, Short Handed 6p, Heads-Up 2p).</p>
-    <p data-lang="fr">Chaque personnalité de bot a été soumise à <strong>plus de 48 000 mains</strong> de jeu autonome sur trois formats de table (Full Ring 9j, Short Handed 6j, Heads-Up 2j).</p>
+    <p data-lang="en" class="active">Each personality ran through <strong>48,000+ hands</strong> across three table formats (Full Ring 9p, Short Handed 6p, Heads-Up 2p).</p>
+    <p data-lang="fr">Chaque personnalité a joué <strong>plus de 48 000 mains</strong> sur trois formats de table (Full Ring 9j, Short Handed 6j, Heads-Up 2j).</p>
 
     <h3 data-lang="en" class="active">Step 2 — Metric extraction</h3>
     <h3 data-lang="fr">Étape 2 — Extraction des métriques</h3>
-    <p data-lang="en" class="active">After each simulation run, the following professional metrics were extracted and stored per strategy × table format combination:</p>
-    <p data-lang="fr">Après chaque simulation, les métriques professionnelles suivantes ont été extraites et stockées par combinaison stratégie × format de table :</p>
+    <p data-lang="en" class="active">Professional metrics extracted per strategy × table format:</p>
+    <p data-lang="fr">Métriques professionnelles extraites par stratégie × format de table :</p>
     <p style="margin-top:8px">
       <span class="stat-pill">VPIP</span>
       <span class="stat-pill">PFR</span>
@@ -201,10 +197,10 @@
       <span class="stat-pill">W$SD %</span>
     </p>
 
-    <h3 data-lang="en" class="active">Step 3 — Validation against industry targets</h3>
-    <h3 data-lang="fr">Étape 3 — Validation par rapport aux cibles de l'industrie</h3>
-    <p data-lang="en" class="active">Modern TAG theory targets a <strong>VPIP–PFR gap of 1–4%</strong> (raise-or-fold discipline). Results after tuning:</p>
-    <p data-lang="fr">La théorie TAG moderne cible un <strong>écart VPIP–PFR de 1 à 4 %</strong> (discipline raise-or-fold). Résultats après ajustement :</p>
+    <h3 data-lang="en" class="active">Step 3 — Validation</h3>
+    <h3 data-lang="fr">Étape 3 — Validation</h3>
+    <p data-lang="en" class="active">Modern TAG theory targets a <strong>VPIP–PFR gap of 1–4%</strong> (raise-or-fold discipline):</p>
+    <p data-lang="fr">La théorie TAG moderne cible un <strong>écart VPIP–PFR de 1 à 4 %</strong> (discipline raise-or-fold) :</p>
 
     <table style="margin-top:10px">
       <thead>
@@ -265,44 +261,59 @@
     <h3 data-lang="en" class="active">What they reveal</h3>
     <h3 data-lang="fr">Ce qu'elles révèlent</h3>
     <ul>
-      <li data-lang="en" class="active"><strong>Clear personality separation:</strong> VPIP climbs monotonically — Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac — across all table formats. You can immediately tell who you're up against.</li>
-      <li data-lang="fr"><strong>Séparation claire des personnalités :</strong> Le VPIP monte de façon monotone — Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac — sur tous les formats de table. Vous savez immédiatement à qui vous faites face.</li>
+      <li data-lang="en" class="active"><strong>Clear separation:</strong> VPIP climbs monotonically (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) across all formats.</li>
+      <li data-lang="fr"><strong>Séparation claire :</strong> Le VPIP monte de façon monotone (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) sur tous les formats.</li>
 
-      <li data-lang="en" class="active"><strong>Correct aggression hierarchy:</strong> Tighter bots have higher 3-bet rates (polarized ranges: premiums + bluffs). Looser bots call more with speculative hands. This matches the "gap concept" in poker theory — not an inconsistency.</li>
-      <li data-lang="fr"><strong>Hiérarchie d'agression correcte :</strong> Les bots plus tight ont des taux de 3-bet plus élevés (ranges polarisées : mains premium + bluffs). Les bots plus loose appellent davantage avec des mains spéculatives. Cela correspond au "gap concept" en théorie poker.</li>
+      <li data-lang="en" class="active"><strong>Correct aggression:</strong> Tighter bots show higher 3-bet rates (polarized ranges). Looser bots call more (gap concept).</li>
+      <li data-lang="fr"><strong>Agression correcte :</strong> Les bots tight ont des taux de 3-bet plus élevés (ranges polarisées). Les bots loose appellent plus (gap concept).</li>
 
-      <li data-lang="en" class="active"><strong>Proper showdown distribution:</strong> Tighter bots reach showdown less often (0.9–1.9% WTSD) but win more when they do (60–67% W$SD). Maniac reaches showdown most (3%) with weaker equity (39–45%). The inverse correlation is a strong quality signal.</li>
-      <li data-lang="fr"><strong>Distribution correcte au showdown :</strong> Les bots tight vont moins souvent au showdown (0,9–1,9% WTSD) mais gagnent plus quand ils y vont (60–67% W$SD). Le Maniac va le plus souvent au showdown (3%) avec une equity plus faible (39–45%).</li>
+      <li data-lang="en" class="active"><strong>Showdown patterns:</strong> Tight bots reach showdown less (0.9–1.9% WTSD) but win more (60–67% W$SD). Maniac reaches showdown most (3%) with weaker equity (39–45%).</li>
+      <li data-lang="fr"><strong>Patterns au showdown :</strong> Les bots tight vont moins au showdown (0,9–1,9% WTSD) mais gagnent plus (60–67% W$SD). Le Maniac va plus souvent au showdown (3%) avec une equity plus faible (39–45%).</li>
 
-      <li data-lang="en" class="active"><strong>Table-size adaptation:</strong> All bots correctly loosen up as the table shrinks (Full Ring → Short Handed → Heads-Up), mirroring what real players do.</li>
-      <li data-lang="fr"><strong>Adaptation à la taille de la table :</strong> Tous les bots s'élargissent correctement au fur et à mesure que la table se rétrécit (Full Ring → Short Handed → Heads-Up), comme le font les vrais joueurs.</li>
+      <li data-lang="en" class="active"><strong>Table-size adaptation:</strong> All bots loosen up as tables shrink (Full Ring → Short Handed → Heads-Up).</li>
+      <li data-lang="fr"><strong>Adaptation aux formats :</strong> Tous les bots s'élargissent quand la table rétrécit (Full Ring → Short Handed → Heads-Up).</li>
     </ul>
 
-    <h3 data-lang="en" class="active" style="margin-top:14px">What they don't reveal (intentional design choices)</h3>
-    <h3 data-lang="fr" style="margin-top:14px">Ce qu'elles ne révèlent pas (choix de conception intentionnels)</h3>
+    <h3 data-lang="en" class="active" style="margin-top:14px">What they don't reveal</h3>
+    <h3 data-lang="fr" style="margin-top:14px">Ce qu'elles ne révèlent pas</h3>
     <ul>
-      <li data-lang="en" class="active">The bots adapt to their opponents (both other bots and you) based on historical statistics per table type and recent actions in the current session. However, they maintain consistent core personalities rather than completely reshaping their strategy.</li>
-      <li data-lang="fr">Les bots s'adaptent à leurs adversaires (autres bots et vous) en fonction des statistiques historiques par type de table et des actions récentes de la session en cours. Cependant, ils maintiennent des personnalités de base cohérentes plutôt que de remodeler complètement leur stratégie.</li>
+      <li data-lang="en" class="active">Bots adapt to opponents based on historical stats (per table format) and recent session actions, while maintaining consistent core personalities.</li>
+      <li data-lang="fr">Les bots s'adaptent aux adversaires selon les stats historiques (par format de table) et les actions récentes, tout en maintenant des personnalités cohérentes.</li>
+
+      <li data-lang="en" class="active">They are exploitable by design — that's the point of a training tool.</li>
+      <li data-lang="fr">Ils sont exploitables par conception — c'est l'objectif d'un outil d'entraînement.</li>
+
+      <li data-lang="en" class="active">Stats reflect aggregate tendencies. The engine uses position-aware ranges and post-flop heuristics, not precise probability matrices.</li>
+      <li data-lang="fr">Les stats reflètent des tendances agrégées. Le moteur utilise des ranges adaptées à la position et des heuristiques post-flop.</li>
     </ul>
 
-    <p data-lang="en" class="active" style="margin:10px 0;padding-left:20px;font-size:14px;line-height:1.6"><strong>What data is stored to enable adaptation:</strong> For each player (including you), SparringPoker maintains a local database tracking action frequencies across all four streets — preflop (hands played, raises, 3-bets, 4-bets, calls, folds, limps), flop (checks, bets, calls, raises, folds, continuation bets), turn and river (checks, bets, calls, raises, folds). It also tracks showdown behavior (went to showdown, won at showdown, won without showdown), steal defense tendencies from both blinds (fold/call/3-bet vs steal attempts), and average bet sizing. All metrics are stored per table format (Heads-Up, Short Handed, Full Ring) to provide context-aware opponent modeling. This data allows bots to adjust their ranges — for example, widening blind defense against aggressive stealers or tightening 3-bet ranges against calling stations.</p>
-    <p data-lang="fr" style="margin:10px 0;padding-left:20px;font-size:14px;line-height:1.6"><strong>Quelles données sont stockées pour permettre l'adaptation :</strong> Pour chaque joueur (vous inclus), SparringPoker maintient une base de données locale qui suit les fréquences d'action sur les quatre streets — preflop (mains jouées, relances, 3-bets, 4-bets, calls, folds, limps), flop (checks, mises, calls, relances, folds, continuation bets), turn et river (checks, mises, calls, relances, folds). Il suit également le comportement au showdown (allé au showdown, gagné au showdown, gagné sans showdown), les tendances de défense contre les vols depuis les deux blindes (fold/call/3-bet face aux tentatives de vol), et la taille moyenne des mises. Toutes les métriques sont stockées par format de table (Heads-Up, Short Handed, Full Ring) pour fournir une modélisation contextuelle des adversaires. Ces données permettent aux bots d'ajuster leurs ranges — par exemple, élargir la défense des blindes contre les voleurs agressifs ou resserrer les ranges de 3-bet contre les calling stations.</p>
-
+    <h3 data-lang="en" class="active" style="margin-top:14px">What data is stored to enable adaptation</h3>
+    <h3 data-lang="fr" style="margin-top:14px">Quelles données sont stockées pour permettre l'adaptation</h3>
+    <p data-lang="en" class="active">For each player (including you), SparringPoker maintains a local database tracking:</p>
+    <p data-lang="fr">Pour chaque joueur (vous inclus), SparringPoker maintient une base de données locale qui suit :</p>
     <ul>
-      <li data-lang="en" class="active">They are not GTO-optimal. They are exploitable by design — that's the point of a training tool.</li>
-      <li data-lang="fr">Ils ne sont pas GTO-optimaux. Ils sont exploitables par conception — c'est l'objectif d'un outil d'entraînement.</li>
+      <li data-lang="en" class="active"><strong>Action frequencies</strong> across all streets — preflop (raises, 3-bets, 4-bets, calls, folds, limps), flop (checks, bets, calls, raises, folds, c-bets), turn and river (checks, bets, calls, raises, folds)</li>
+      <li data-lang="fr"><strong>Fréquences d'action</strong> sur toutes les streets — preflop (relances, 3-bets, 4-bets, calls, folds, limps), flop (checks, mises, calls, relances, folds, c-bets), turn et river (checks, mises, calls, relances, folds)</li>
 
-      <li data-lang="en" class="active">The statistics reflect aggregate tendencies, not a precise probability matrix on each hand. The engine uses position-aware pre-flop ranges and post-flop heuristics.</li>
-      <li data-lang="fr">Les statistiques reflètent des tendances agrégées, pas une matrice de probabilité précise à chaque main. Le moteur utilise des ranges pré-flop adaptées à la position et des heuristiques post-flop.</li>
+      <li data-lang="en" class="active"><strong>Showdown behavior</strong> — went to showdown, won at/without showdown</li>
+      <li data-lang="fr"><strong>Comportement au showdown</strong> — allé au showdown, gagné avec/sans showdown</li>
+
+      <li data-lang="en" class="active"><strong>Blind defense</strong> — fold/call/3-bet vs steal attempts from both blinds</li>
+      <li data-lang="fr"><strong>Défense des blindes</strong> — fold/call/3-bet face aux tentatives de vol depuis les deux blindes</li>
+
+      <li data-lang="en" class="active"><strong>Bet sizing</strong> — average bet size ratios</li>
+      <li data-lang="fr"><strong>Taille des mises</strong> — ratios moyens de mise</li>
     </ul>
+    <p data-lang="en" class="active" style="margin-top:8px">All metrics stored per table format (Heads-Up, Short Handed, Full Ring) for context-aware modeling. Bots use this to adjust ranges — widening blind defense vs aggressive stealers, tightening 3-bet ranges vs calling stations, etc.</p>
+    <p data-lang="fr" style="margin-top:8px">Toutes les métriques sont stockées par format de table (Heads-Up, Short Handed, Full Ring) pour une modélisation contextuelle. Les bots utilisent ces données pour ajuster leurs ranges — élargir la défense des blindes face aux voleurs agressifs, resserrer les ranges de 3-bet face aux calling stations, etc.</p>
   </div>
 
   <!-- 5. Balance validation -->
   <div class="box">
     <h2 data-lang="en" class="active">Balance validation</h2>
     <h2 data-lang="fr">Validation de l'équilibre</h2>
-    <p data-lang="en" class="active">In addition to metric validation, each strategy was tested for win-rate balance across long simulation runs. A perfectly balanced strategy cluster would show ~0% edge for each personality. Results:</p>
-    <p data-lang="fr">En plus de la validation des métriques, chaque stratégie a été testée sur l'équilibre du taux de victoire sur de longues simulations. Un cluster parfaitement équilibré montrerait ~0% d'avantage pour chaque personnalité. Résultats :</p>
+    <p data-lang="en" class="active">Each strategy was tested for win-rate balance over long runs:</p>
+    <p data-lang="fr">Chaque stratégie a été testée sur l'équilibre du taux de victoire :</p>
     <ul>
       <li data-lang="en" class="active"><strong>Full Ring:</strong> All within ±1.2% — Tight +0.7%, Ultra-Tight +0.2%, Loose −0.1%, Maniac −1.1%</li>
       <li data-lang="fr"><strong>Full Ring :</strong> Tous dans ±1,2% — Tight +0,7%, Ultra-Tight +0,2%, Loose −0,1%, Maniac −1,1%</li>
@@ -311,18 +322,18 @@
       <li data-lang="en" class="active"><strong>Heads-Up:</strong> All within ±4% after the MDF defense fix (February 2026)</li>
       <li data-lang="fr"><strong>Heads-Up :</strong> Tous dans ±4% après le correctif MDF defense (février 2026)</li>
     </ul>
-    <p data-lang="en" class="active" style="margin-top:8px">No personality has a dominant edge — meaning the game outcome is driven by <em>your</em> decisions, not by the bot favored by the seedings.</p>
-    <p data-lang="fr" style="margin-top:8px">Aucune personnalité n'a un avantage dominant — ce qui signifie que le résultat est déterminé par <em>vos</em> décisions, pas par le bot favorisé par les données.</p>
+    <p data-lang="en" class="active" style="margin-top:8px">No personality has a dominant edge — outcomes depend on <em>your</em> decisions.</p>
+    <p data-lang="fr" style="margin-top:8px">Aucune personnalité n'a un avantage dominant — le résultat dépend de <em>vos</em> décisions.</p>
   </div>
 
   <!-- 5.5. FAQ Clarification -->
   <div class="box">
     <h2 data-lang="en" class="active">Why only 4 personalities?</h2>
     <h2 data-lang="fr">Pourquoi seulement 4 personnalités ?</h2>
-    <p data-lang="en" class="active">These four archetypes cover the primary strategic profiles you'll encounter in cash games: ultra-selective aggression (NAIT), solid fundamentals (TAG), wide aggressive ranges (LAG), and hyper-aggressive chaos (Maniac). Adding more personalities would dilute calibration quality without meaningful strategic variety.</p>
-    <p data-lang="fr">Ces quatre archétypes couvrent les profils stratégiques principaux que vous rencontrerez en cash game : agressivité ultra-sélective (NAIT), fondamentaux solides (TAG), ranges larges agressives (LAG), et chaos hyper-agressif (Maniac). Ajouter d'autres personnalités diluerait la qualité de calibration sans apporter de variété stratégique significative.</p>
-    <p data-lang="en" class="active" style="margin-top:10px">Each personality required 48,000+ hands of simulation and extensive statistical validation. The focus is deliberate calibration over quantity — you're training against validated tendencies, not random variations.</p>
-    <p data-lang="fr" style="margin-top:10px">Chaque personnalité a nécessité plus de 48 000 mains de simulation et une validation statistique approfondie. L'accent est mis sur la calibration délibérée plutôt que sur la quantité — vous vous entraînez contre des tendances validées, pas des variations aléatoires.</p>
+    <p data-lang="en" class="active">These four archetypes cover the primary strategic profiles in cash games: ultra-selective aggression (NAIT), solid fundamentals (TAG), wide aggressive ranges (LAG), and hyper-aggressive chaos (Maniac).</p>
+    <p data-lang="fr">Ces quatre archétypes couvrent les profils stratégiques principaux en cash game : agressivité ultra-sélective (NAIT), fondamentaux solides (TAG), ranges larges agressives (LAG), et chaos hyper-agressif (Maniac).</p>
+    <p data-lang="en" class="active" style="margin-top:10px">Focus is on calibration quality over quantity — you're training against validated tendencies, not random variations.</p>
+    <p data-lang="fr" style="margin-top:10px">L'accent est mis sur la qualité de calibration plutôt que sur la quantité — vous vous entraînez contre des tendances validées, pas des variations aléatoires.</p>
   </div>
 
   <!-- 6. CTA -->
