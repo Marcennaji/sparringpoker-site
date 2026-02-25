@@ -86,6 +86,62 @@
     [data-lang]{display:none}
     [data-lang].active{display:block}
     li[data-lang].active{display:list-item}
+    .screenshot-section{margin:20px 0}
+    .screenshot-hero{margin-bottom:16px}
+    .screenshot-card{
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:10px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 6px rgba(0,0,0,0.2);
+      transition:transform 0.3s ease,box-shadow 0.3s ease;
+    }
+    .screenshot-card:hover{transform:translateY(-4px);box-shadow:0 8px 12px rgba(0,0,0,0.3)}
+    .screenshot-card img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    .screenshot-caption{
+      padding:12px 14px;
+      font-size:14px;
+      color:#e1f5fe;
+      text-align:center;
+      line-height:1.4;
+    }
+    .screenshot-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    @media (min-width:600px){
+      .screenshot-grid{grid-template-columns:1fr 1fr}
+    }
+    .cta-button{
+      display:inline-block;
+      padding:14px 28px;
+      margin:20px auto;
+      border:2px solid #81d4fa;
+      border-radius:10px;
+      background:linear-gradient(135deg,#1e88e5 0%,#1565c0 100%);
+      color:#fff;
+      font-size:16px;
+      font-weight:600;
+      text-decoration:none;
+      box-shadow:0 4px 12px rgba(30,136,229,0.4);
+      transition:all 0.3s ease;
+      text-align:center;
+    }
+    .cta-button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 16px rgba(30,136,229,0.6);
+      background:linear-gradient(135deg,#2196f3 0%,#1976d2 100%);
+      color:#fff;
+      text-decoration:none;
+    }
+    .section-title{font-size:24px;color:#fff;margin:20px 0 16px;text-align:center}
   </style>
 </head>
 <body>
@@ -124,6 +180,64 @@
     <p data-lang="fr" style="margin-top:10px">Les adversaires IA sont construits sur <strong>plus de 48 000 mains simulées</strong> par stratégie, validées selon des métriques poker professionnelles (VPIP, PFR, taux de 3-bet, facteur d'agression). <a href="/bots.html">Comment fonctionnent les bots ? →</a></p>
     <p data-lang="en" class="active" style="margin-top:10px"><strong>No ads. No tracking. No account creation needed. No internet required. No casino affiliation.</strong></p>
     <p data-lang="fr" style="margin-top:10px"><strong>Aucune publicité. Aucun tracking. Aucune création de compte. Aucun internet requis. Aucune affiliation casino.</strong></p>
+  </div>
+
+  <!-- Screenshots Section -->
+  <div class="screenshot-section">
+    <h2 class="section-title" data-lang="en" class="active">See it in action</h2>
+    <h2 class="section-title" data-lang="fr">Voyez-le en action</h2>
+    
+    <!-- Hero Screenshot: Poker Table -->
+    <div class="screenshot-hero">
+      <div class="screenshot-card">
+        <img src="assets/images/poker table.jpg" 
+             alt="SparringPoker table interface" 
+             width="900" 
+             height="600"
+             loading="lazy">
+        <div class="screenshot-caption">
+          <span data-lang="en" class="active"><strong>Play full 6-max Hold'em against calibrated AI — offline.</strong></span>
+          <span data-lang="fr"><strong>Jouez en 6-max Hold'em complet contre une IA calibrée — hors ligne.</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid: Bot Stats & Hand Replay -->
+    <div class="screenshot-grid">
+      <div class="screenshot-card">
+        <img src="assets/images/bot overlay.jpg" 
+             alt="Bot statistics overlay" 
+             width="450" 
+             height="300"
+             loading="lazy">
+        <div class="screenshot-caption">
+          <span data-lang="en" class="active"><strong>Understand each bot style with clean, readable stats.</strong></span>
+          <span data-lang="fr"><strong>Comprenez chaque style de bot avec des stats claires et lisibles.</strong></span>
+        </div>
+      </div>
+
+      <div class="screenshot-card">
+        <img src="assets/images/replay table.jpg" 
+             alt="Hand replay feature" 
+             width="450" 
+             height="300"
+             loading="lazy">
+        <div class="screenshot-caption">
+          <span data-lang="en" class="active"><strong>Review every hand street-by-street to improve faster.</strong></span>
+          <span data-lang="fr"><strong>Révisez chaque main street par street pour progresser plus vite.</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-top:24px">
+      <a href="/support.html" class="cta-button" data-lang="en" class="active">Get notified when it launches</a>
+      <a href="/support.html" class="cta-button" data-lang="fr">Soyez notifié lors du lancement</a>
+      <p style="font-size:13px;color:#b0b0b0;margin-top:12px">
+        <span data-lang="en" class="active">Launching March 15, 2026 on Google Play</span>
+        <span data-lang="fr">Lancement le 15 mars 2026 sur Google Play</span>
+      </p>
+    </div>
   </div>
 
   <div class="box">
