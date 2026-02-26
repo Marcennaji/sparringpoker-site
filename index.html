@@ -142,6 +142,76 @@
       text-decoration:none;
     }
     .section-title{font-size:24px;color:#fff;margin:20px 0 16px;text-align:center}
+    .beta-box{
+      background:linear-gradient(135deg, #5f3a1e 0%, #734e2d 100%);
+      border:2px solid rgba(255,167,38,0.4);
+      border-radius:10px;
+      padding:16px;
+      margin:20px 0;
+      box-shadow:0 6px 12px rgba(95,58,30,0.5);
+    }
+    .beta-box h2{color:#ffb74d;margin:0 0 8px 0;font-size:20px}
+    .beta-box .warning{
+      background:rgba(255,152,0,0.15);
+      border-left:4px solid #ff9800;
+      padding:10px 12px;
+      margin:10px 0;
+      font-size:13px;
+      line-height:1.5;
+    }
+    .download-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (min-width:600px){
+      .download-grid{grid-template-columns:1fr 1fr}
+    }
+    .download-btn{
+      display:block;
+      padding:14px 20px;
+      border:2px solid rgba(255,167,38,0.5);
+      border-radius:8px;
+      background:rgba(255,167,38,0.1);
+      color:#ffb74d;
+      text-decoration:none;
+      text-align:center;
+      font-weight:600;
+      transition:all 0.3s ease;
+    }
+    .download-btn:hover{
+      background:rgba(255,167,38,0.2);
+      border-color:#ffb74d;
+      transform:translateY(-2px);
+      box-shadow:0 4px 8px rgba(255,152,0,0.3);
+      color:#ffc107;
+    }
+    .download-btn .platform{font-size:18px;display:block;margin-bottom:4px}
+    .download-btn .version{font-size:12px;opacity:0.8;font-weight:normal}
+    
+    /* Beta Feedback Section */
+    .feedback-box{
+      background:linear-gradient(135deg, #1e3a5f 0%, #2d4e73 100%);
+      border:2px solid rgba(100,181,246,0.3);
+      border-radius:10px;
+      padding:20px;
+      margin:20px 0;
+      text-align:center;
+      box-shadow:0 4px 8px rgba(30,58,95,0.4);
+    }
+    .feedback-box h3{
+      color:#64b5f6;
+      margin:0 0 12px 0;
+      font-size:18px;
+      font-weight:600;
+    }
+    .feedback-box iframe{
+      border:none;
+      border-radius:8px;
+      background:#fff;
+      max-width:100%;
+    }
   </style>
 </head>
 <body>
@@ -228,6 +298,41 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Beta Download Section -->
+  <div class="beta-box">
+    <h2 data-lang="en" class="active">🧪 Windows Beta — Release Candidate 2</h2>
+    <h2 data-lang="fr">🧪 Windows Beta — Release Candidate 2</h2>
+    
+    <div class="warning">
+      <p data-lang="en" class="active" style="margin:0"><strong>Free unlimited unlocked features during beta phase.</strong> Licensing system will be introduced with the official release.</p>
+      <p data-lang="fr" style="margin:0"><strong>Toutes les fonctionnalités débloquées gratuitement pendant la phase beta.</strong> Le système de licence sera introduit avec la version officielle.</p>
+    </div>
+
+    <div style="max-width:400px;margin:12px auto">
+      <a href="assets/installers/SparringPoker-1.0.0-rc2-windows-installer.exe" class="download-btn" download>
+        <span class="platform" data-lang="en" class="active">💻 Windows Desktop</span>
+        <span class="platform" data-lang="fr">💻 Windows Bureau</span>
+        <span class="version">v1.0.0-rc2</span>
+      </a>
+    </div>
+
+    <p data-lang="en" class="active" style="font-size:13px;color:#b0b0b0;margin-top:12px;text-align:center">Android version: Official Google Play release on March 15, 2026</p>
+    <p data-lang="fr" style="font-size:13px;color:#b0b0b0;margin-top:12px;text-align:center">Version Android : Sortie officielle Google Play le 15 mars 2026</p>
+  </div>
+
+  <!-- Beta Feedback Section -->
+  <div class="feedback-box">
+    <h3 data-lang="en" class="active">📨 Join the Beta Feedback List</h3>
+    <h3 data-lang="fr">📨 Rejoignez la liste de feedback beta</h3>
+    
+    <p data-lang="en" class="active" style="color:#b3d9ff;font-size:14px;margin:0 0 16px">Help shape SparringPoker! Share your experience and get early updates.</p>
+    <p data-lang="fr" style="color:#b3d9ff;font-size:14px;margin:0 0 16px">Aidez à façonner SparringPoker ! Partagez votre expérience et recevez les mises à jour en avant-première.</p>
+    
+    <!-- Replace the src URL with your actual Google Form embed URL -->
+    <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="640" height="400" frameborder="0" marginheight="0" marginwidth="0" data-lang="en" class="active">Loading…</iframe>
+    <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="640" height="400" frameborder="0" marginheight="0" marginwidth="0" data-lang="fr">Chargement…</iframe>
   </div>
 
   <div class="box">
