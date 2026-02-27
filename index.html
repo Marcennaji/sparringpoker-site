@@ -85,6 +85,7 @@
     a:hover{color:#4fc3f7;text-decoration:underline}
     [data-lang]{display:none}
     [data-lang].active{display:block}
+    span[data-lang].active{display:inline}
     li[data-lang].active{display:list-item}
     .screenshot-section{margin:20px 0}
     .screenshot-hero{margin-bottom:16px}
@@ -143,21 +144,23 @@
     }
     .section-title{font-size:24px;color:#fff;margin:20px 0 16px;text-align:center}
     .beta-box{
-      background:linear-gradient(135deg, #5f3a1e 0%, #734e2d 100%);
-      border:2px solid rgba(255,167,38,0.4);
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.15);
       border-radius:10px;
       padding:16px;
       margin:20px 0;
-      box-shadow:0 6px 12px rgba(95,58,30,0.5);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 6px rgba(0,0,0,0.2);
     }
-    .beta-box h2{color:#ffb74d;margin:0 0 8px 0;font-size:20px}
+    .beta-box h2{color:#81d4fa;margin:0 0 8px 0;font-size:18px}
     .beta-box .warning{
-      background:rgba(255,152,0,0.15);
-      border-left:4px solid #ff9800;
+      background:rgba(129,212,250,0.1);
+      border-left:3px solid #81d4fa;
       padding:10px 12px;
       margin:10px 0;
       font-size:13px;
       line-height:1.5;
+      color:#e1f5fe;
     }
     .download-grid{
       display:grid;
@@ -171,21 +174,22 @@
     .download-btn{
       display:block;
       padding:14px 20px;
-      border:2px solid rgba(255,167,38,0.5);
+      border:1px solid rgba(129,212,250,0.3);
       border-radius:8px;
-      background:rgba(255,167,38,0.1);
-      color:#ffb74d;
+      background:rgba(129,212,250,0.05);
+      color:#81d4fa;
       text-decoration:none;
       text-align:center;
       font-weight:600;
       transition:all 0.3s ease;
     }
     .download-btn:hover{
-      background:rgba(255,167,38,0.2);
-      border-color:#ffb74d;
+      background:rgba(129,212,250,0.1);
+      border-color:#81d4fa;
       transform:translateY(-2px);
-      box-shadow:0 4px 8px rgba(255,152,0,0.3);
-      color:#ffc107;
+      box-shadow:0 4px 8px rgba(129,212,250,0.2);
+      color:#4fc3f7;
+      text-decoration:none;
     }
     .download-btn .platform{font-size:18px;display:block;margin-bottom:4px}
     .download-btn .version{font-size:12px;opacity:0.8;font-weight:normal}
@@ -279,8 +283,8 @@
 
   <!-- Beta Download Section -->
   <div class="beta-box">
-    <h2 data-lang="en" class="active">🧪 Windows Beta — Release Candidate 3</h2>
-    <h2 data-lang="fr">🧪 Windows Beta — Release Candidate 3</h2>
+    <h2 data-lang="en" class="active">Windows Beta — Release Candidate 3</h2>
+    <h2 data-lang="fr">Windows Beta — Release Candidate 3</h2>
     
     <div class="warning">
       <p data-lang="en" class="active" style="margin:0"><strong>Free unlimited unlocked features during beta phase.</strong> Licensing system will be introduced with the official release.</p>
