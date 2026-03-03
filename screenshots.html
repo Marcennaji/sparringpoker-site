@@ -58,6 +58,8 @@
     [data-lang]{display:none}
     [data-lang].active{display:block}
     span[data-lang].active{display:inline}
+    a[data-lang].active{display:inline-block}
+    strong[data-lang].active{display:block}
     .page-title{
       font-size:32px;
       color:#fff;
@@ -146,15 +148,15 @@
       </h1>
     </div>
     <div>
-      <a href="index.html" class="btn" data-lang="en" style="display:inline-block">← Back to Home</a>
-      <a href="index.html" class="btn" data-lang="fr" style="display:none">← Retour à l'accueil</a>
+      <a href="index.html" class="btn active" data-lang="en">← Back to Home</a>
+      <a href="index.html" class="btn" data-lang="fr">← Retour à l'accueil</a>
     </div>
   </header>
 
-  <h1 class="page-title" data-lang="en" class="active">Screenshots</h1>
+  <h1 class="page-title active" data-lang="en">Screenshots</h1>
   <h1 class="page-title" data-lang="fr">Captures d'écran</h1>
   
-  <p class="page-subtitle" data-lang="en" class="active">Explore SparringPoker's interface and features</p>
+  <p class="page-subtitle active" data-lang="en">Explore SparringPoker's interface and features</p>
   <p class="page-subtitle" data-lang="fr">Explorez l'interface et les fonctionnalités de SparringPoker</p>
 
   <div class="screenshot-grid">
@@ -164,9 +166,9 @@
            alt="Poker table showdown" 
            loading="lazy">
       <div class="screenshot-caption">
-        <strong data-lang="en" class="active">Showdown Moment</strong>
+        <strong data-lang="en">Showdown Moment</strong>
         <strong data-lang="fr">Moment du Showdown</strong>
-        <span data-lang="en" class="active">See all cards revealed and determine the winner. Clear pot calculation and hand rankings displayed.</span>
+        <span data-lang="en">See all cards revealed and determine the winner. Clear pot calculation and hand rankings displayed.</span>
         <span data-lang="fr">Voyez toutes les cartes révélées et déterminez le gagnant. Calcul du pot et classement des mains affichés clairement.</span>
       </div>
     </div>
@@ -177,9 +179,9 @@
            alt="Game setup screen" 
            loading="lazy">
       <div class="screenshot-caption">
-        <strong data-lang="en" class="active">Game Configuration</strong>
+        <strong data-lang="en">Game Configuration</strong>
         <strong data-lang="fr">Configuration du Jeu</strong>
-        <span data-lang="en" class="active">Choose number of players, AI personalities, blind structure, and starting stacks before you begin.</span>
+        <span data-lang="en">Choose number of players, AI personalities, blind structure, and starting stacks before you begin.</span>
         <span data-lang="fr">Choisissez le nombre de joueurs, les personnalités IA, la structure des blinds et les stacks de départ avant de commencer.</span>
       </div>
     </div>
@@ -190,9 +192,9 @@
            alt="Hand replay interface" 
            loading="lazy">
       <div class="screenshot-caption">
-        <strong data-lang="en" class="active">Hand Replay</strong>
+        <strong data-lang="en">Hand Replay</strong>
         <strong data-lang="fr">Replay des Mains</strong>
-        <span data-lang="en" class="active">Review every completed hand street by street. Navigate through preflop, flop, turn, and river to analyze your decisions.</span>
+        <span data-lang="en">Review every completed hand street by street. Navigate through preflop, flop, turn, and river to analyze your decisions.</span>
         <span data-lang="fr">Révisez chaque main terminée street par street. Naviguez à travers le preflop, flop, turn et river pour analyser vos décisions.</span>
       </div>
     </div>
@@ -203,9 +205,9 @@
            alt="Bot statistics overlay" 
            loading="lazy">
       <div class="screenshot-caption">
-        <strong data-lang="en" class="active">Bot Statistics Dashboard</strong>
+        <strong data-lang="en">Bot Statistics Dashboard</strong>
         <strong data-lang="fr">Tableau de Bord des Stats des Bots</strong>
-        <span data-lang="en" class="active">Detailed metrics for each AI opponent: VPIP, PFR, aggression factor, 3-bet frequency, and more. Understand their playing style.</span>
+        <span data-lang="en">Detailed metrics for each AI opponent: VPIP, PFR, aggression factor, 3-bet frequency, and more. Understand their playing style.</span>
         <span data-lang="fr">Métriques détaillées pour chaque adversaire IA : VPIP, PFR, facteur d'agression, fréquence de 3-bet, et plus. Comprenez leur style de jeu.</span>
       </div>
     </div>
@@ -216,17 +218,17 @@
            alt="Player statistics overlay" 
            loading="lazy">
       <div class="screenshot-caption">
-        <strong data-lang="en" class="active">Your Statistics Dashboard</strong>
+        <strong data-lang="en">Your Statistics Dashboard</strong>
         <strong data-lang="fr">Votre Tableau de Bord Personnel</strong>
-        <span data-lang="en" class="active">Track your own performance with comprehensive stats: win rate, VPIP, PFR, aggression by street, showdown stats, and more.</span>
+        <span data-lang="en">Track your own performance with comprehensive stats: win rate, VPIP, PFR, aggression by street, showdown stats, and more.</span>
         <span data-lang="fr">Suivez vos propres performances avec des stats complètes : taux de victoire, VPIP, PFR, agression par street, stats au showdown, et plus.</span>
       </div>
     </div>
   </div>
 
   <div style="text-align:center">
-    <a href="index.html" class="back-link" data-lang="en" style="display:inline-block">← Back to Home</a>
-    <a href="index.html" class="back-link" data-lang="fr" style="display:none">← Retour à l'accueil</a>
+    <a href="index.html" class="back-link active" data-lang="en">← Back to Home</a>
+    <a href="index.html" class="back-link" data-lang="fr">← Retour à l'accueil</a>
   </div>
 
   <footer class="muted" style="margin-top:12px;font-size:14px">
