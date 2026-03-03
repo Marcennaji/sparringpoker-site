@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Screenshots — SparringPoker</title>
+  <meta name="description" content="See SparringPoker in action — poker table, bot statistics, hand replay, setup options and more." />
+  <style>
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      max-width:1200px;
+      margin:20px auto;
+      padding:0 16px;
+      line-height:1.4;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      color:#f5f5f5;
+      min-height:100vh;
+    }
+    header{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border:1px solid #f5f5f5;
+      border-radius:10px;
+      text-decoration:none;
+      color:#f5f5f5;
+      background:rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+      transition:all 0.3s ease;
+    }
+    .btn:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px)}
+    .muted{color:#b0b0b0}
+    .lang-switch{display:flex;gap:12px;margin-bottom:12px;justify-content:flex-end;align-items:center}
+    .lang-flag{
+      width:32px;
+      height:32px;
+      cursor:pointer;
+      border-radius:4px;
+      transition:all 0.3s ease;
+      opacity:0.6;
+      border:2px solid transparent;
+    }
+    .lang-flag:hover{opacity:0.9;transform:scale(1.1)}
+    .lang-flag.active{opacity:1;border-color:rgba(129,212,250,0.6);box-shadow:0 0 8px rgba(129,212,250,0.4)}
+    .card-symbol{
+      display:inline-block;
+      font-size:1.2em;
+      margin:0 4px;
+      opacity:0.3;
+    }
+    h1{
+      color:#fff;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+    }
+    h2{color:#fff;font-size:18px;margin:0 0 8px 0}
+    a{color:#81d4fa;text-decoration:none}
+    a:hover{color:#4fc3f7;text-decoration:underline}
+    [data-lang]{display:none}
+    [data-lang].active{display:block}
+    span[data-lang].active{display:inline}
+    .page-title{
+      font-size:32px;
+      color:#fff;
+      margin:20px 0 12px;
+      text-align:center;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .page-subtitle{
+      text-align:center;
+      color:#b0b0b0;
+      margin-bottom:30px;
+      font-size:16px;
+    }
+    .screenshot-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin:30px 0;
+    }
+    @media (min-width:700px){
+      .screenshot-grid{grid-template-columns:1fr 1fr}
+    }
+    .screenshot-card{
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:10px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 6px rgba(0,0,0,0.2);
+      transition:transform 0.3s ease,box-shadow 0.3s ease;
+    }
+    .screenshot-card:hover{transform:translateY(-4px);box-shadow:0 8px 12px rgba(0,0,0,0.3)}
+    .screenshot-card img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    .screenshot-caption{
+      padding:14px 16px;
+      font-size:15px;
+      color:#e1f5fe;
+      line-height:1.5;
+    }
+    .screenshot-caption strong{
+      display:block;
+      margin-bottom:4px;
+      color:#fff;
+      font-size:16px;
+    }
+    .back-link{
+      display:inline-block;
+      margin:30px 0 20px;
+      padding:12px 24px;
+      border:1px solid rgba(129,212,250,0.3);
+      border-radius:8px;
+      background:rgba(129,212,250,0.05);
+      color:#81d4fa;
+      text-decoration:none;
+      font-weight:600;
+      transition:all 0.3s ease;
+    }
+    .back-link:hover{
+      background:rgba(129,212,250,0.1);
+      border-color:#81d4fa;
+      transform:translateY(-2px);
+      box-shadow:0 4px 8px rgba(129,212,250,0.2);
+      color:#4fc3f7;
+      text-decoration:none;
+    }
+    footer{margin-top:40px;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="lang-switch">
+    <img src="flag_en.png" alt="English" class="lang-flag active" onclick="setLang('en')" data-lang-flag="en">
+    <img src="flag_fr.png" alt="Français" class="lang-flag" onclick="setLang('fr')" data-lang-flag="fr">
+  </div>
+
+  <header>
+    <div>
+      <h1 style="margin:0">
+        <span class="card-symbol">♠</span>
+        SparringPoker
+        <span class="card-symbol">♥</span>
+      </h1>
+    </div>
+    <div>
+      <a href="index.html" class="btn" data-lang="en" style="display:inline-block">← Back to Home</a>
+      <a href="index.html" class="btn" data-lang="fr" style="display:none">← Retour à l'accueil</a>
+    </div>
+  </header>
+
+  <h1 class="page-title" data-lang="en" class="active">Screenshots</h1>
+  <h1 class="page-title" data-lang="fr">Captures d'écran</h1>
+  
+  <p class="page-subtitle" data-lang="en" class="active">Explore SparringPoker's interface and features</p>
+  <p class="page-subtitle" data-lang="fr">Explorez l'interface et les fonctionnalités de SparringPoker</p>
+
+  <div class="screenshot-grid">
+    <!-- Poker Table Showdown -->
+    <div class="screenshot-card">
+      <img src="assets/images/poker table showdown.png" 
+           alt="Poker table showdown" 
+           loading="lazy">
+      <div class="screenshot-caption">
+        <strong data-lang="en" class="active">Showdown Moment</strong>
+        <strong data-lang="fr">Moment du Showdown</strong>
+        <span data-lang="en" class="active">See all cards revealed and determine the winner. Clear pot calculation and hand rankings displayed.</span>
+        <span data-lang="fr">Voyez toutes les cartes révélées et déterminez le gagnant. Calcul du pot et classement des mains affichés clairement.</span>
+      </div>
+    </div>
+
+    <!-- Setup Screen -->
+    <div class="screenshot-card">
+      <img src="assets/images/setup screen.png" 
+           alt="Game setup screen" 
+           loading="lazy">
+      <div class="screenshot-caption">
+        <strong data-lang="en" class="active">Game Configuration</strong>
+        <strong data-lang="fr">Configuration du Jeu</strong>
+        <span data-lang="en" class="active">Choose number of players, AI personalities, blind structure, and starting stacks before you begin.</span>
+        <span data-lang="fr">Choisissez le nombre de joueurs, les personnalités IA, la structure des blinds et les stacks de départ avant de commencer.</span>
+      </div>
+    </div>
+
+    <!-- Replay Screen -->
+    <div class="screenshot-card">
+      <img src="assets/images/replay screen.png" 
+           alt="Hand replay interface" 
+           loading="lazy">
+      <div class="screenshot-caption">
+        <strong data-lang="en" class="active">Hand Replay</strong>
+        <strong data-lang="fr">Replay des Mains</strong>
+        <span data-lang="en" class="active">Review every completed hand street by street. Navigate through preflop, flop, turn, and river to analyze your decisions.</span>
+        <span data-lang="fr">Révisez chaque main terminée street par street. Naviguez à travers le preflop, flop, turn et river pour analyser vos décisions.</span>
+      </div>
+    </div>
+
+    <!-- Bot Stats Overlay -->
+    <div class="screenshot-card">
+      <img src="assets/images/bot stats overlay.jpg" 
+           alt="Bot statistics overlay" 
+           loading="lazy">
+      <div class="screenshot-caption">
+        <strong data-lang="en" class="active">Bot Statistics Dashboard</strong>
+        <strong data-lang="fr">Tableau de Bord des Stats des Bots</strong>
+        <span data-lang="en" class="active">Detailed metrics for each AI opponent: VPIP, PFR, aggression factor, 3-bet frequency, and more. Understand their playing style.</span>
+        <span data-lang="fr">Métriques détaillées pour chaque adversaire IA : VPIP, PFR, facteur d'agression, fréquence de 3-bet, et plus. Comprenez leur style de jeu.</span>
+      </div>
+    </div>
+
+    <!-- Human Stats Overlay -->
+    <div class="screenshot-card">
+      <img src="assets/images/human stats overlay.png" 
+           alt="Player statistics overlay" 
+           loading="lazy">
+      <div class="screenshot-caption">
+        <strong data-lang="en" class="active">Your Statistics Dashboard</strong>
+        <strong data-lang="fr">Votre Tableau de Bord Personnel</strong>
+        <span data-lang="en" class="active">Track your own performance with comprehensive stats: win rate, VPIP, PFR, aggression by street, showdown stats, and more.</span>
+        <span data-lang="fr">Suivez vos propres performances avec des stats complètes : taux de victoire, VPIP, PFR, agression par street, stats au showdown, et plus.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center">
+    <a href="index.html" class="back-link" data-lang="en" style="display:inline-block">← Back to Home</a>
+    <a href="index.html" class="back-link" data-lang="fr" style="display:none">← Retour à l'accueil</a>
+  </div>
+
+  <footer class="muted" style="margin-top:12px;font-size:14px">
+    © <span id="y"></span> M87 DEV
+  </footer>
+  
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+      
+      // Update flag states
+      document.querySelectorAll('.lang-flag').forEach(flag => flag.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Show/hide content
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('data-lang') === lang) {
+          el.classList.add('active');
+        }
+      });
+    }
+    
+    // Initialize language on page load
+    const savedLang = localStorage.getItem('lang') || 'en';
+    
+    // First, remove all active classes from elements with data-lang
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.remove('active');
+    });
+    
+    // Then add active class only to elements matching the saved language
+    document.querySelectorAll('[data-lang="' + savedLang + '"]').forEach(el => {
+      el.classList.add('active');
+    });
+    
+    // Update flag states
+    document.querySelectorAll('.lang-flag').forEach(flag => {
+      if (flag.getAttribute('data-lang-flag') === savedLang) {
+        flag.classList.add('active');
+      } else {
+        flag.classList.remove('active');
+      }
+    });
+    
+    document.documentElement.lang = savedLang;
+  </script>
+</body>
+</html>
