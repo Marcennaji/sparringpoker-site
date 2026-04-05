@@ -321,17 +321,24 @@
     <p data-lang="en"><strong>🖥️ Windows</strong> — Download the installer below. The licence is purchased directly inside the app — no website account needed.</p>
     <p data-lang="fr"><strong>🖥️ Ordinateur (Windows)</strong> — Téléchargez l'installateur ci-dessous. La licence s'achète directement dans l'application — aucun compte sur le site requis.</p>
 
-    <div class="download-grid" style="margin:10px 0 14px">
-      <a href="https://github.com/Marcennaji/SparringPoker-downloads/releases/download/1.1.0/SparringPoker-1.1.0-windows-installer.exe" class="download-btn" data-lang="en">
-        <span class="platform">🖥️</span>
-        Download for Windows
-        <span class="version">(.exe installer)</span>
-      </a>
-      <a href="https://github.com/Marcennaji/SparringPoker-downloads/releases/download/1.1.0/SparringPoker-1.1.0-windows-installer.exe" class="download-btn" data-lang="fr">
-        <span class="platform">🖥️</span>
-        Télécharger pour Windows
-        <span class="version">(installateur .exe)</span>
-      </a>
+    <div id="windows-download-section">
+      <div class="download-grid" style="margin:10px 0 14px">
+        <a href="https://github.com/Marcennaji/SparringPoker-downloads/releases/download/1.1.0/SparringPoker-1.1.0-windows-installer.exe" class="download-btn" data-lang="en">
+          <span class="platform">🖥️</span>
+          Download for Windows
+          <span class="version">(.exe installer)</span>
+        </a>
+        <a href="https://github.com/Marcennaji/SparringPoker-downloads/releases/download/1.1.0/SparringPoker-1.1.0-windows-installer.exe" class="download-btn" data-lang="fr">
+          <span class="platform">🖥️</span>
+          Télécharger pour Windows
+          <span class="version">(installateur .exe)</span>
+        </a>
+      </div>
+    </div>
+
+    <div id="mobile-windows-notice" style="display:none;margin:10px 0 14px;padding:12px 14px;border:1px solid rgba(255,160,0,0.4);border-radius:8px;background:rgba(255,160,0,0.08);font-size:13px;color:#ffe0a0">
+      <span data-lang="en">🖥️ The Windows version is not available on Android. To play on Android, search for <strong>SparringPoker</strong> on the Google Play Store.</span>
+      <span data-lang="fr">🖥️ La version Windows n'est pas disponible sur Android. Pour jouer sur Android, recherchez <strong>SparringPoker</strong> sur le Google Play Store.</span>
     </div>
 
     <p data-lang="en" style="margin-top:10px"><strong>🤖 Android</strong> — Purchase directly in the app via the Google Play Store.</p>
@@ -418,6 +425,15 @@
     });
     
     document.documentElement.lang = savedLang;
+
+    // Platform detection: hide Windows installer on mobile, show notice instead
+    const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
+    if (isMobile) {
+      var winSection = document.getElementById('windows-download-section');
+      var mobileNotice = document.getElementById('mobile-windows-notice');
+      if (winSection) winSection.style.display = 'none';
+      if (mobileNotice) mobileNotice.style.display = 'block';
+    }
   </script>
 </body>
 </html>
