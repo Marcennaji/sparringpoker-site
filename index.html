@@ -331,6 +331,7 @@
           <span class="version">(installateur .exe)</span>
         </a>
       </div>
+      <p id="dl-count-display" style="display:none;margin:4px 0 0;font-size:12px;color:#808080;text-align:center"></p>
     </div>
 
     <div id="mobile-windows-notice" style="display:none;margin:10px 0 14px;padding:12px 14px;border:1px solid rgba(255,160,0,0.4);border-radius:8px;background:rgba(255,160,0,0.08);font-size:13px;color:#ffe0a0">
@@ -422,6 +423,21 @@
     });
     
     document.documentElement.lang = savedLang;
+
+    // Download counter (shown only above threshold)
+    fetch('https://api.github.com/repos/Marcennaji/SparringPoker-downloads/releases/latest')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        var asset = (data.assets || []).find(function(a){ return a.name && a.name.endsWith('.exe'); });
+        if (asset && asset.download_count >= 1) {
+          var el = document.getElementById('dl-count-display');
+          if (el) {
+            el.textContent = asset.download_count + ' downloads';
+            el.style.display = 'block';
+          }
+        }
+      })
+      .catch(function(){});
 
     // Platform detection: hide Windows installer on mobile, show notice instead
     const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
