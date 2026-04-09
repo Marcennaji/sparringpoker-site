@@ -429,7 +429,7 @@
       .then(function(r){ return r.json(); })
       .then(function(data){
         var asset = (data.assets || []).find(function(a){ return a.name && a.name.endsWith('.exe'); });
-        if (asset && asset.download_count >= 1) {
+        if (asset && asset.download_count >= 100) {
           var el = document.getElementById('dl-count-display');
           if (el) {
             el.textContent = asset.download_count + ' downloads';
