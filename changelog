@@ -1,3 +1,7 @@
+[1.2.6] - 2026-04-29
+- added automatic update checker for the Windows version
+- bug fix on bet amount
+
 [1.2.5] - 2026-04-27
 - Smarter bot decisions when stacks get short (going allin if the raise amount would pot-commit the player). 
 - Imprioved defense ranges versus oversized opening raises.
