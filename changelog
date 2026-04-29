@@ -1,0 +1,10 @@
+[1.2.5] - 2026-04-27
+- Smarter bot decisions when stacks get short (going allin if the raise amount would pot-commit the player). 
+- Imprioved defense ranges versus oversized opening raises.
+
+[1.2.4] - 2026-04-25
+- added rolling window (25 hands) for replay
+- gameplay fixes
+
+[1.2.3] - 2026-04-10
+First published Release

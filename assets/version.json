@@ -1,0 +1,7 @@
+{
+      "latest_version": "1.2.5",
+       "windows": {
+         "url": "https://github.com/Marcennaji/SparringPoker-downloads/releases/download/v1.2.5/SparringPoker-1.2.5-windows-installer.exe",
+         "release_notes_url": "https://sparringpoker.com/changelog"
+       }
+     }
