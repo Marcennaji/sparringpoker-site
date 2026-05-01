@@ -1,6 +1,7 @@
 [1.2.6] - 2026-04-29
-- added automatic update checker for the Windows version
-- bug fix on bet amount
+- Major bot rebalancing across all table formats. Bot vs bot statistics regenerated from millions of simulated hands.
+- Fixed two long-standing exploitable leaks: the Loose bot was bleeding chips on Short Handed tables, and the Maniac bot was bleeding on both Full Ring and Short Handed.
+- All four gamestyles now play their archetype competitively without a structural exploit on any table format.
 
 [1.2.5] - 2026-04-27
 - Smarter bot decisions when stacks get short (going allin if the raise amount would pot-commit the player). 
