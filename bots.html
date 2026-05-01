@@ -1,85 +1,207 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How the Bots Work — SparringPoker</title>
-  <meta name="description" content="SparringPoker bot opponents are built from 70,000+ simulated hands and validated against standard poker metrics. Learn how they were designed." />
+  <meta name="description"
+    content="SparringPoker bot opponents are built from millions of simulated hands and validated against standard poker metrics. Learn how they were designed." />
   <style>
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      max-width:900px;
-      margin:20px auto;
-      padding:0 16px;
-      line-height:1.5;
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 16px;
+      line-height: 1.5;
       background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      color:#f5f5f5;
-      min-height:100vh;
+      color: #f5f5f5;
+      min-height: 100vh;
     }
-    h1{color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,0.3);margin-bottom:4px}
-    h2{color:#81d4fa;font-size:20px;margin:20px 0 8px}
-    h3{color:#e0e0e0;font-size:16px;margin:14px 0 6px}
-    p{margin:6px 0}
-    .muted{color:#b0b0b0}
-    .box{
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:10px;
-      padding:14px 18px;
-      margin:12px 0;
-      background:rgba(255,255,255,0.05);
-      backdrop-filter:blur(10px);
-      box-shadow:0 4px 6px rgba(0,0,0,0.2);
+
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 4px
     }
-    .btn{
-      display:inline-block;
-      padding:8px 14px;
-      border:1px solid #81d4fa;
-      border-radius:8px;
-      text-decoration:none;
-      color:#81d4fa;
-      background:rgba(129,212,250,0.08);
-      transition:all 0.3s ease;
-      font-size:14px;
+
+    h2 {
+      color: #81d4fa;
+      font-size: 20px;
+      margin: 20px 0 8px
     }
-    .btn:hover{background:rgba(129,212,250,0.18);transform:translateY(-1px)}
-    a{color:#81d4fa;text-decoration:none}
-    a:hover{color:#4fc3f7;text-decoration:underline}
-    table{border-collapse:collapse;width:100%;font-size:13px;margin:10px 0}
-    th{background:rgba(129,212,250,0.15);color:#81d4fa;padding:9px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.15);font-weight:600;font-size:13px}
-    td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.07);line-height:1.5}
-    tr:hover td{background:rgba(255,255,255,0.04)}
-    tbody tr:first-child td{padding-top:10px}
-    @media (max-width:600px){
-      table{font-size:12px}
-      th,td{padding:7px 8px}
+
+    h3 {
+      color: #e0e0e0;
+      font-size: 16px;
+      margin: 14px 0 6px
     }
-    .ok{color:#66bb6a}
-    .stat-pill{
-      display:inline-block;
-      background:rgba(129,212,250,0.12);
-      border:1px solid rgba(129,212,250,0.25);
-      border-radius:6px;
-      padding:2px 8px;
-      font-size:12px;
-      margin:2px 3px;
-      color:#b3e5fc;
+
+    p {
+      margin: 6px 0
     }
-    ul{margin:6px 0 0 18px}
-    li{margin:4px 0;font-size:14px}
-    .card-symbol{display:inline-block;font-size:1.1em;margin:0 2px;opacity:0.4}
-    .lang-switch{display:flex;gap:12px;margin-bottom:12px;justify-content:flex-end;align-items:center}
-    .lang-flag{
-      width:32px;height:32px;cursor:pointer;border-radius:4px;
-      transition:all 0.3s ease;opacity:0.6;border:2px solid transparent;
+
+    .muted {
+      color: #b0b0b0
     }
-    .lang-flag:hover{opacity:0.9;transform:scale(1.1)}
-    .lang-flag.active{opacity:1;border-color:rgba(129,212,250,0.6);box-shadow:0 0 8px rgba(129,212,250,0.4)}
-    [data-lang]{display:none}
-    [data-lang].active{display:block}
-    li[data-lang].active{display:list-item}
-    td[data-lang].active{display:table-cell}
+
+    .box {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid #81d4fa;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #81d4fa;
+      background: rgba(129, 212, 250, 0.08);
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: rgba(129, 212, 250, 0.18);
+      transform: translateY(-1px)
+    }
+
+    a {
+      color: #81d4fa;
+      text-decoration: none
+    }
+
+    a:hover {
+      color: #4fc3f7;
+      text-decoration: underline
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+      margin: 10px 0
+    }
+
+    th {
+      background: rgba(129, 212, 250, 0.15);
+      color: #81d4fa;
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      font-weight: 600;
+      font-size: 13px
+    }
+
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      line-height: 1.5
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.04)
+    }
+
+    tbody tr:first-child td {
+      padding-top: 10px
+    }
+
+    @media (max-width:600px) {
+      table {
+        font-size: 12px
+      }
+
+      th,
+      td {
+        padding: 7px 8px
+      }
+    }
+
+    .ok {
+      color: #66bb6a
+    }
+
+    .stat-pill {
+      display: inline-block;
+      background: rgba(129, 212, 250, 0.12);
+      border: 1px solid rgba(129, 212, 250, 0.25);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 12px;
+      margin: 2px 3px;
+      color: #b3e5fc;
+    }
+
+    ul {
+      margin: 6px 0 0 18px
+    }
+
+    li {
+      margin: 4px 0;
+      font-size: 14px
+    }
+
+    .card-symbol {
+      display: inline-block;
+      font-size: 1.1em;
+      margin: 0 2px;
+      opacity: 0.4
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      justify-content: flex-end;
+      align-items: center
+    }
+
+    .lang-flag {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      opacity: 0.6;
+      border: 2px solid transparent;
+    }
+
+    .lang-flag:hover {
+      opacity: 0.9;
+      transform: scale(1.1)
+    }
+
+    .lang-flag.active {
+      opacity: 1;
+      border-color: rgba(129, 212, 250, 0.6);
+      box-shadow: 0 0 8px rgba(129, 212, 250, 0.4)
+    }
+
+    [data-lang] {
+      display: none
+    }
+
+    [data-lang].active {
+      display: block
+    }
+
+    li[data-lang].active {
+      display: list-item
+    }
+
+    td[data-lang].active {
+      display: table-cell
+    }
   </style>
 </head>
+
 <body>
 
   <div class="lang-switch">
@@ -88,7 +210,8 @@
   </div>
 
   <header>
-    <p><a href="/">&larr; <span data-lang="en" class="active">Back to SparringPoker</span><span data-lang="fr">Retour à SparringPoker</span></a></p>
+    <p><a href="/">&larr; <span data-lang="en" class="active">Back to SparringPoker</span><span data-lang="fr">Retour à
+          SparringPoker</span></a></p>
     <h1>
       <span class="card-symbol">♠</span>
       <span data-lang="en" class="active">How the Bots Work</span>
@@ -107,15 +230,32 @@
       <span data-lang="en" class="active">Design Philosophy</span>
       <span data-lang="fr">Positionnement</span>
     </p>
-    <h2 data-lang="en" class="active" style="font-size:20px;margin-bottom:10px">Practice against opponents who actually play poker.</h2>
-    <h2 data-lang="fr" style="font-size:20px;margin-bottom:10px">Entraînez-vous contre des adversaires qui jouent vraiment au poker.</h2>
-    <p data-lang="en" class="active">Each bot gamestyle has been <strong>calibrated over 70,000+ hands and validated against standard poker metrics</strong> to play competently within its strategic archetype. They make decisions like real players — not random moves like you'd face in play-money games or ultra-low stakes.</p>
-    <p data-lang="fr">Chaque style de jeu a été <strong>calibré sur plus de 70 000 mains et validé selon des métriques poker standard</strong> pour jouer de manière compétente dans son archétype stratégique. Ils prennent des décisions comme de vrais joueurs — pas des actions aléatoires comme dans les jeux gratuits ou les micro-limites.</p>
-    <p data-lang="en" class="active" style="margin-top:10px"><strong>Why this matters:</strong> You can't improve by playing against opponents who don't care about losing. SparringPoker bots play to win — so every hand you play is meaningful practice.</p>
-    <p data-lang="fr" style="margin-top:10px"><strong>Pourquoi c'est important :</strong> Vous ne pouvez pas progresser en jouant contre des adversaires qui ne se soucient pas de perdre. Les bots SparringPoker jouent pour gagner — chaque main est donc une pratique significative.</p>
-    
-    <p data-lang="en" class="active" style="margin-top:10px"><strong>Complete time flexibility:</strong> Play at your own pace with zero time pressure. Pause and resume sessions instantly. Review any hand using the replay feature, analyze it thoroughly, then continue playing. No waiting for opponents, no wasted time — you'll play far more hands per hour than in any live game.</p>
-    <p data-lang="fr" style="margin-top:10px"><strong>Flexibilité totale :</strong> Jouez à votre rythme sans pression temporelle. Mettez en pause et reprenez les sessions instantanément. Révisez n'importe quelle main avec la fonction replay, analysez-la en détail, puis continuez à jouer. Pas d'attente d'adversaires, pas de temps perdu — vous jouerez bien plus de mains par heure que dans n'importe quelle partie en direct.</p>
+    <h2 data-lang="en" class="active" style="font-size:20px;margin-bottom:10px">Practice against opponents who actually
+      play poker.</h2>
+    <h2 data-lang="fr" style="font-size:20px;margin-bottom:10px">Entraînez-vous contre des adversaires qui jouent
+      vraiment au poker.</h2>
+    <p data-lang="en" class="active">Each bot gamestyle has been <strong>calibrated over millions of simulated hands and
+        validated against standard poker metrics</strong> to play competently within its strategic archetype. They make
+      decisions like real players — not random moves like you'd face in play-money games or ultra-low stakes.</p>
+    <p data-lang="fr">Chaque style de jeu a été <strong>calibré sur des millions de mains simulées et validé selon des
+        métriques poker standard</strong> pour jouer de manière compétente dans son archétype stratégique. Ils prennent
+      des décisions comme de vrais joueurs — pas des actions aléatoires comme dans les jeux gratuits ou les
+      micro-limites.</p>
+    <p data-lang="en" class="active" style="margin-top:10px"><strong>Why this matters:</strong> You can't improve by
+      playing against opponents who don't care about losing. SparringPoker bots play to win — so every hand you play is
+      meaningful practice.</p>
+    <p data-lang="fr" style="margin-top:10px"><strong>Pourquoi c'est important :</strong> Vous ne pouvez pas progresser
+      en jouant contre des adversaires qui ne se soucient pas de perdre. Les bots SparringPoker jouent pour gagner —
+      chaque main est donc une pratique significative.</p>
+
+    <p data-lang="en" class="active" style="margin-top:10px"><strong>Complete time flexibility:</strong> Play at your
+      own pace with zero time pressure. Pause and resume sessions instantly. Review any hand using the replay feature,
+      analyze it thoroughly, then continue playing. No waiting for opponents, no wasted time — you'll play far more
+      hands per hour than in any live game.</p>
+    <p data-lang="fr" style="margin-top:10px"><strong>Flexibilité totale :</strong> Jouez à votre rythme sans pression
+      temporelle. Mettez en pause et reprenez les sessions instantanément. Révisez n'importe quelle main avec la
+      fonction replay, analysez-la en détail, puis continuez à jouer. Pas d'attente d'adversaires, pas de temps perdu —
+      vous jouerez bien plus de mains par heure que dans n'importe quelle partie en direct.</p>
   </div>
 
   <!-- 2. Gamestyles -->
@@ -128,9 +268,10 @@
         <tr>
           <th><span data-lang="en" class="active">Gamestyle</span><span data-lang="fr">Style de jeu</span></th>
           <th><span data-lang="en" class="active">Style</span><span data-lang="fr">Style</span></th>
-          <th>VPIP (6-max)</th>
-          <th>PFR (6-max)</th>
-          <th><span data-lang="en" class="active">Best used to practice</span><span data-lang="fr">Idéal pour pratiquer</span></th>
+          <th><span data-lang="en" class="active">Tightness (6-max)</span><span data-lang="fr">Sélectivité
+              (6-max)</span></th>
+          <th><span data-lang="en" class="active">Best used to practice</span><span data-lang="fr">Idéal pour
+              pratiquer</span></th>
         </tr>
       </thead>
       <tbody>
@@ -139,7 +280,8 @@
           <td data-lang="fr"><strong>Ultra-Tight</strong></td>
           <td data-lang="en" class="active">Selective, ultra-aggressive when in</td>
           <td data-lang="fr">Sélectif, ultra-agressif quand il joue</td>
-          <td>15%</td><td>13%</td>
+          <td data-lang="en" class="active">Very tight</td>
+          <td data-lang="fr">Très serré</td>
           <td data-lang="en" class="active">Patience, hand reading vs NAITs</td>
           <td data-lang="fr">Patience, lecture des mains face aux NAIT</td>
         </tr>
@@ -148,7 +290,8 @@
           <td data-lang="fr"><strong>Tight</strong> <span class="ok">✓ Gratuit</span></td>
           <td data-lang="en" class="active">TAG — modern standard baseline</td>
           <td data-lang="fr">TAG — base standard moderne</td>
-          <td>24%</td><td>18%</td>
+          <td data-lang="en" class="active">Tight-aggressive</td>
+          <td data-lang="fr">Tight-aggressive</td>
           <td data-lang="en" class="active">Fundamentals, positional play</td>
           <td data-lang="fr">Fondamentaux, jeu positionnel</td>
         </tr>
@@ -157,7 +300,8 @@
           <td data-lang="fr"><strong>Loose</strong></td>
           <td data-lang="en" class="active">LAG — wide range, aggressive</td>
           <td data-lang="fr">LAG — large range, agressif</td>
-          <td>28%</td><td>23%</td>
+          <td data-lang="en" class="active">Loose-aggressive</td>
+          <td data-lang="fr">Loose-aggressive</td>
           <td data-lang="en" class="active">Defending vs aggression, bluff-catching</td>
           <td data-lang="fr">Défense contre l'agressivité, attraper les bluffs</td>
         </tr>
@@ -166,14 +310,19 @@
           <td data-lang="fr"><strong>Maniac</strong></td>
           <td data-lang="en" class="active">Hyper-aggressive, very wide range</td>
           <td data-lang="fr">Hyper-agressif, range très large</td>
-          <td>38%</td><td>27%</td>
+          <td data-lang="en" class="active">Very loose</td>
+          <td data-lang="fr">Très large</td>
           <td data-lang="en" class="active">Tilt control, exploiting over-aggression</td>
           <td data-lang="fr">Contrôle du tilt, exploiter la sur-aggressivité</td>
         </tr>
       </tbody>
     </table>
-    <p data-lang="en" class="active" style="margin-top:8px;font-size:13px" class="muted">VPIP/PFR values shown for 6-player (Short Handed) tables. All 4 gamestyles are available in Premium; Tight comes with the free tier.</p>
-    <p data-lang="fr" style="margin-top:8px;font-size:13px" class="muted">Valeurs VPIP/PFR pour tables à 6 joueurs (Short Handed). Les 4 styles de jeu sont disponibles en Premium ; Tight est inclus dans la version gratuite.</p>
+    <p data-lang="en" class="active" style="margin-top:8px;font-size:13px" class="muted">Each gamestyle has a distinct,
+      validated tightness profile across all three table formats (Full Ring, Short Handed, Heads-Up). All 4 gamestyles
+      are available in Premium; Tight comes with the free tier.</p>
+    <p data-lang="fr" style="margin-top:8px;font-size:13px" class="muted">Chaque style de jeu a un profil de sélectivité
+      distinct et validé sur les trois formats de table (Full Ring, Short Handed, Heads-Up). Les 4 styles sont
+      disponibles en Premium ; Tight est inclus dans la version gratuite.</p>
   </div>
 
   <!-- 3. How stats were built -->
@@ -183,8 +332,10 @@
 
     <h3 data-lang="en" class="active">Step 1 — Mass simulation</h3>
     <h3 data-lang="fr">Étape 1 — Simulation en masse</h3>
-    <p data-lang="en" class="active">Each gamestyle ran through <strong>70,000+ hands</strong> across three table formats (Full Ring 9p, Short Handed 6p, Heads-Up 2p).</p>
-    <p data-lang="fr">Chaque style de jeu a joué <strong>plus de 70 000 mains</strong> sur trois formats de table (Full Ring 9j, Short Handed 6j, Heads-Up 2j).</p>
+    <p data-lang="en" class="active">Each gamestyle ran through <strong>millions of hands</strong> across three table
+      formats (Full Ring 9p, Short Handed 6p, Heads-Up 2p).</p>
+    <p data-lang="fr">Chaque style de jeu a joué <strong>des millions de mains</strong> sur trois formats de table (Full
+      Ring 9j, Short Handed 6j, Heads-Up 2j).</p>
 
     <h3 data-lang="en" class="active">Step 2 — Metric extraction</h3>
     <h3 data-lang="fr">Étape 2 — Extraction des métriques</h3>
@@ -204,58 +355,59 @@
 
     <h3 data-lang="en" class="active">Step 3 — Validation</h3>
     <h3 data-lang="fr">Étape 3 — Validation</h3>
-    <p data-lang="en" class="active">Modern TAG theory targets a <strong>VPIP–PFR gap of 1–4%</strong> (raise-or-fold discipline):</p>
-    <p data-lang="fr">La théorie TAG moderne cible un <strong>écart VPIP–PFR de 1 à 4 %</strong> (discipline raise-or-fold) :</p>
+    <p data-lang="en" class="active">Modern poker theory targets a <strong>VPIP–PFR gap of 1–6 %</strong> (raise-or-fold
+      discipline). Each gamestyle is validated against this and against monotonic tightness ordering across all three
+      formats:</p>
+    <p data-lang="fr">La théorie poker moderne cible un <strong>écart VPIP–PFR de 1 à 6 %</strong> (discipline
+      raise-or-fold). Chaque style est validé selon ce critère et selon un ordre de sélectivité monotone sur les trois
+      formats :</p>
 
     <table style="margin-top:10px">
       <thead>
         <tr>
-          <th><span data-lang="en" class="active">Format</span><span data-lang="fr">Format</span></th>
-          <th><span data-lang="en" class="active">Strategy</span><span data-lang="fr">Stratégie</span></th>
-          <th>VPIP</th>
-          <th>PFR</th>
-          <th><span data-lang="en" class="active">Gap</span><span data-lang="fr">Écart</span></th>
-          <th><span data-lang="en" class="active">Status</span><span data-lang="fr">Statut</span></th>
+          <th><span data-lang="en" class="active">Gamestyle</span><span data-lang="fr">Style de jeu</span></th>
+          <th><span data-lang="en" class="active">Full Ring</span><span data-lang="fr">Full Ring</span></th>
+          <th><span data-lang="en" class="active">Short Handed</span><span data-lang="fr">Short Handed</span></th>
+          <th><span data-lang="en" class="active">Heads-Up</span><span data-lang="fr">Heads-Up</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-lang="en" class="active">Full Ring</td><td data-lang="fr">Full Ring</td>
-          <td data-lang="en" class="active">Ultra-Tight</td><td data-lang="fr">Ultra-Tight</td>
-          <td>8.7%</td><td>7.5%</td>
-          <td>1.2%</td>
-          <td data-lang="en" class="active"><span class="ok">✓ Optimal</span></td><td data-lang="fr"><span class="ok">✓ Optimal</span></td>
+          <td data-lang="en" class="active">Ultra-Tight</td>
+          <td data-lang="fr">Ultra-Tight</td>
+          <td><span class="ok">✓</span></td>
+          <td><span class="ok">✓</span></td>
+          <td><span class="ok">✓</span></td>
         </tr>
         <tr>
-          <td data-lang="en" class="active">Full Ring</td><td data-lang="fr">Full Ring</td>
-          <td data-lang="en" class="active">Tight</td><td data-lang="fr">Tight</td>
-          <td>15.8%</td><td>12.2%</td>
-          <td>3.6%</td>
-          <td data-lang="en" class="active"><span class="ok">✓ Excellent</span></td><td data-lang="fr"><span class="ok">✓ Excellent</span></td>
+          <td data-lang="en" class="active">Tight</td>
+          <td data-lang="fr">Tight</td>
+          <td><span class="ok">✓</span></td>
+          <td><span class="ok">✓</span></td>
+          <td><span class="ok">✓</span></td>
         </tr>
         <tr>
-          <td data-lang="en" class="active">Full Ring</td><td data-lang="fr">Full Ring</td>
-          <td data-lang="en" class="active">Loose</td><td data-lang="fr">Loose</td>
-          <td>24.0%</td><td>20.7%</td>
-          <td>3.3%</td>
-          <td data-lang="en" class="active"><span class="ok">✓ Excellent</span></td><td data-lang="fr"><span class="ok">✓ Excellent</span></td>
+          <td data-lang="en" class="active">Loose</td>
+          <td data-lang="fr">Loose</td>
+          <td><span class="ok">✓</span></td>
+          <td><span class="ok">✓</span></td>
+          <td><span class="ok">✓</span></td>
         </tr>
         <tr>
-          <td data-lang="en" class="active">Full Ring</td><td data-lang="fr">Full Ring</td>
-          <td data-lang="en" class="active">Maniac</td><td data-lang="fr">Maniac</td>
-          <td>29.1%</td><td>23.1%</td>
-          <td>6.0%</td>
-          <td data-lang="en" class="active"><span class="ok">✓ Good</span></td><td data-lang="fr"><span class="ok">✓ Bon</span></td>
-        </tr>
-        <tr>
-          <td data-lang="en" class="active">Heads-Up</td><td data-lang="fr">Heads-Up</td>
-          <td data-lang="en" class="active">All strategies</td><td data-lang="fr">Toutes stratégies</td>
-          <td>46–72%</td><td>38–65%</td>
-          <td>7–9%</td>
-          <td data-lang="en" class="active"><span class="ok">✓ Normal (HU call ranges expected)</span></td><td data-lang="fr"><span class="ok">✓ Normal (calls attendus en HU)</span></td>
+          <td data-lang="en" class="active">Maniac</td>
+          <td data-lang="fr">Maniac</td>
+          <td><span class="ok">✓</span></td>
+          <td><span class="ok">✓</span></td>
+          <td><span class="ok">✓</span></td>
         </tr>
       </tbody>
     </table>
+    <p data-lang="en" class="active" style="margin-top:8px;font-size:13px" class="muted">All gamestyles meet the gap
+      criterion and form a strict tightness ordering (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) in every format.
+      Heads-Up call ranges naturally widen the gap, but the relative ordering is preserved.</p>
+    <p data-lang="fr" style="margin-top:8px;font-size:13px" class="muted">Tous les styles respectent le critère d'écart
+      et forment un ordre de sélectivité strict (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) sur chaque format. Les
+      ranges de call en Heads-Up élargissent naturellement l'écart, mais l'ordre relatif est préservé.</p>
   </div>
 
   <!-- 4. What the stats reveal -->
@@ -266,92 +418,152 @@
     <h3 data-lang="en" class="active">What they reveal</h3>
     <h3 data-lang="fr">Ce qu'elles révèlent</h3>
     <ul>
-      <li data-lang="en" class="active"><strong>Clear separation:</strong> VPIP climbs monotonically (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) across all formats.</li>
-      <li data-lang="fr"><strong>Séparation claire :</strong> Le VPIP monte de façon monotone (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) sur tous les formats.</li>
+      <li data-lang="en" class="active"><strong>Clear separation:</strong> VPIP climbs monotonically (Ultra-Tight &lt;
+        Tight &lt; Loose &lt; Maniac) across all formats.</li>
+      <li data-lang="fr"><strong>Séparation claire :</strong> Le VPIP monte de façon monotone (Ultra-Tight &lt; Tight
+        &lt; Loose &lt; Maniac) sur tous les formats.</li>
 
-      <li data-lang="en" class="active"><strong>Correct aggression:</strong> Tighter bots show higher 3-bet rates (polarized ranges). Looser bots call more (gap concept).</li>
-      <li data-lang="fr"><strong>Agression correcte :</strong> Les bots tight ont des taux de 3-bet plus élevés (ranges polarisées). Les bots loose appellent plus (gap concept).</li>
+      <li data-lang="en" class="active"><strong>Correct aggression:</strong> Tighter bots show higher 3-bet rates
+        (polarized ranges). Looser bots call more (gap concept).</li>
+      <li data-lang="fr"><strong>Agression correcte :</strong> Les bots tight ont des taux de 3-bet plus élevés (ranges
+        polarisées). Les bots loose appellent plus (gap concept).</li>
 
-      <li data-lang="en" class="active"><strong>Showdown patterns:</strong> Tight bots reach showdown less (0.9–1.9% WTSD) but win more (60–67% W$SD). Maniac reaches showdown most (3%) with weaker equity (39–45%).</li>
-      <li data-lang="fr"><strong>Patterns au showdown :</strong> Les bots tight vont moins au showdown (0,9–1,9% WTSD) mais gagnent plus (60–67% W$SD). Le Maniac va plus souvent au showdown (3%) avec une equity plus faible (39–45%).</li>
+      <li data-lang="en" class="active"><strong>Showdown patterns:</strong> Tight bots reach showdown less often but win
+        more when they do. Maniac reaches showdown most often with weaker average equity.</li>
+      <li data-lang="fr"><strong>Patterns au showdown :</strong> Les bots tight vont moins souvent au showdown mais
+        gagnent davantage quand ils y vont. Le Maniac y va plus souvent avec une equity moyenne plus faible.</li>
 
-      <li data-lang="en" class="active"><strong>Table-size adaptation:</strong> All bots loosen up as tables shrink (Full Ring → Short Handed → Heads-Up).</li>
-      <li data-lang="fr"><strong>Adaptation aux formats :</strong> Tous les bots s'élargissent quand la table rétrécit (Full Ring → Short Handed → Heads-Up).</li>
+      <li data-lang="en" class="active"><strong>Table-size adaptation:</strong> All bots loosen up as tables shrink
+        (Full Ring → Short Handed → Heads-Up).</li>
+      <li data-lang="fr"><strong>Adaptation aux formats :</strong> Tous les bots s'élargissent quand la table rétrécit
+        (Full Ring → Short Handed → Heads-Up).</li>
     </ul>
 
     <h3 data-lang="en" class="active" style="margin-top:14px">How bots adapt to your playing style</h3>
     <h3 data-lang="fr" style="margin-top:14px">Comment les bots s'adaptent à votre style</h3>
     <ul>
-      <li data-lang="en" class="active"><strong>Bots read your tendencies:</strong> As you accumulate hands, bots track your action frequencies (VPIP, aggression, fold-to-3-bet, overbet tendency, etc.) and feed those directly into their decision thresholds. The more hands you play, the more accurately those thresholds reflect your actual patterns.</li>
-      <li data-lang="fr"><strong>Les bots lisent vos tendances :</strong> Au fil des mains, les bots suivent vos fréquences d'action (VPIP, agressivité, fold-to-3-bet, tendance aux overbets, etc.) et les intègrent directement dans leurs seuils de décision. Plus vous jouez, plus ces seuils reflètent fidèlement vos patterns réels.</li>
+      <li data-lang="en" class="active"><strong>Bots read your tendencies:</strong> As you accumulate hands, bots track
+        your action frequencies (VPIP, aggression, fold-to-3-bet, overbet tendency, etc.) and feed those directly into
+        their decision thresholds. The more hands you play, the more accurately those thresholds reflect your actual
+        patterns.</li>
+      <li data-lang="fr"><strong>Les bots lisent vos tendances :</strong> Au fil des mains, les bots suivent vos
+        fréquences d'action (VPIP, agressivité, fold-to-3-bet, tendance aux overbets, etc.) et les intègrent directement
+        dans leurs seuils de décision. Plus vous jouez, plus ces seuils reflètent fidèlement vos patterns réels.</li>
 
-      <li data-lang="en" class="active"><strong>Your stats persist locally:</strong> All data is stored on your device. Reinstalling the app will reset your statistical history.</li>
-      <li data-lang="fr"><strong>Vos stats persistent localement :</strong> Toutes les données sont stockées sur votre appareil. Réinstaller l'app réinitialisera votre historique statistique.</li>
+      <li data-lang="en" class="active"><strong>Your stats persist locally:</strong> All data is stored on your device.
+        Reinstalling the app will reset your statistical history.</li>
+      <li data-lang="fr"><strong>Vos stats persistent localement :</strong> Toutes les données sont stockées sur votre
+        appareil. Réinstaller l'app réinitialisera votre historique statistique.</li>
 
-      <li data-lang="en" class="active"><strong>Precomputed bot profiles:</strong> Bot vs bot statistics come from tens of thousands of simulated hands, so they already know how to play against each other from the start.</li>
-      <li data-lang="fr"><strong>Profils de bots précalculés :</strong> Les statistiques bot vs bot proviennent de dizaines de milliers de mains simulées, ils savent donc déjà jouer les uns contre les autres dès le départ.</li>
+      <li data-lang="en" class="active"><strong>Precomputed bot profiles:</strong> Bot vs bot statistics come from tens
+        of thousands of simulated hands, so they already know how to play against each other from the start.</li>
+      <li data-lang="fr"><strong>Profils de bots précalculés :</strong> Les statistiques bot vs bot proviennent de
+        dizaines de milliers de mains simulées, ils savent donc déjà jouer les uns contre les autres dès le départ.</li>
     </ul>
 
     <h3 data-lang="en" class="active" style="margin-top:14px">What data is stored to enable adaptation</h3>
     <h3 data-lang="fr" style="margin-top:14px">Quelles données sont stockées pour permettre l'adaptation</h3>
-    <p data-lang="en" class="active">For each player (including you), SparringPoker maintains a local database tracking:</p>
-    <p data-lang="fr">Pour chaque joueur (vous inclus), SparringPoker maintient une base de données locale qui suit :</p>
+    <p data-lang="en" class="active">For each player (including you), SparringPoker maintains a local database tracking:
+    </p>
+    <p data-lang="fr">Pour chaque joueur (vous inclus), SparringPoker maintient une base de données locale qui suit :
+    </p>
     <ul>
-      <li data-lang="en" class="active"><strong>Action frequencies</strong> across all streets — preflop (raises, 3-bets, 4-bets, calls, folds, limps), flop (checks, bets, calls, raises, folds, c-bets), turn and river (checks, bets, calls, raises, folds)</li>
-      <li data-lang="fr"><strong>Fréquences d'action</strong> sur toutes les streets — preflop (relances, 3-bets, 4-bets, calls, folds, limps), flop (checks, mises, calls, relances, folds, c-bets), turn et river (checks, mises, calls, relances, folds)</li>
+      <li data-lang="en" class="active"><strong>Action frequencies</strong> across all streets — preflop (raises,
+        3-bets, 4-bets, calls, folds, limps), flop (checks, bets, calls, raises, folds, c-bets), turn and river (checks,
+        bets, calls, raises, folds)</li>
+      <li data-lang="fr"><strong>Fréquences d'action</strong> sur toutes les streets — preflop (relances, 3-bets,
+        4-bets, calls, folds, limps), flop (checks, mises, calls, relances, folds, c-bets), turn et river (checks,
+        mises, calls, relances, folds)</li>
 
-      <li data-lang="en" class="active"><strong>Showdown behavior</strong> — went to showdown, won at/without showdown</li>
+      <li data-lang="en" class="active"><strong>Showdown behavior</strong> — went to showdown, won at/without showdown
+      </li>
       <li data-lang="fr"><strong>Comportement au showdown</strong> — allé au showdown, gagné avec/sans showdown</li>
 
-      <li data-lang="en" class="active"><strong>Blind defense</strong> — fold/call/3-bet vs steal attempts from both blinds</li>
-      <li data-lang="fr"><strong>Défense des blindes</strong> — fold/call/3-bet face aux tentatives de vol depuis les deux blindes</li>
+      <li data-lang="en" class="active"><strong>Blind defense</strong> — fold/call/3-bet vs steal attempts from both
+        blinds</li>
+      <li data-lang="fr"><strong>Défense des blindes</strong> — fold/call/3-bet face aux tentatives de vol depuis les
+        deux blindes</li>
 
       <li data-lang="en" class="active"><strong>Bet sizing</strong> — average bet size ratios</li>
       <li data-lang="fr"><strong>Taille des mises</strong> — ratios moyens de mise</li>
     </ul>
-    <p data-lang="en" class="active" style="margin-top:8px">All metrics stored per table format (Heads-Up, Short Handed, Full Ring) for context-aware modeling. Bots use this to adjust ranges — widening blind defense vs aggressive stealers, tightening 3-bet ranges vs calling stations, etc.</p>
-    <p data-lang="fr" style="margin-top:8px">Toutes les métriques sont stockées par format de table (Heads-Up, Short Handed, Full Ring) pour une modélisation contextuelle. Les bots utilisent ces données pour ajuster leurs ranges — élargir la défense des blindes face aux voleurs agressifs, resserrer les ranges de 3-bet face aux calling stations, etc.</p>
+    <p data-lang="en" class="active" style="margin-top:8px">All metrics stored per table format (Heads-Up, Short Handed,
+      Full Ring) for context-aware modeling. Bots use this to adjust ranges — widening blind defense vs aggressive
+      stealers, tightening 3-bet ranges vs calling stations, etc.</p>
+    <p data-lang="fr" style="margin-top:8px">Toutes les métriques sont stockées par format de table (Heads-Up, Short
+      Handed, Full Ring) pour une modélisation contextuelle. Les bots utilisent ces données pour ajuster leurs ranges —
+      élargir la défense des blindes face aux voleurs agressifs, resserrer les ranges de 3-bet face aux calling
+      stations, etc.</p>
   </div>
 
   <!-- 5. Balance validation -->
   <div class="box">
     <h2 data-lang="en" class="active">Balance validation (bot vs bot)</h2>
     <h2 data-lang="fr">Validation de l'équilibre (bot vs bot)</h2>
-    <p data-lang="en" class="active">To ensure no strategy dominates the others, bots were tested against each other over long simulation runs:</p>
-    <p data-lang="fr">Pour s'assurer qu'aucune stratégie ne domine les autres, les bots ont été testés les uns contre les autres sur de longues simulations :</p>
-    <ul>
-      <li data-lang="en" class="active"><strong>Full Ring:</strong> Ultra-Tight +0.7%, Maniac +0.3%, Loose −0.2%, Tight −0.8% (spread ≈ ±0.8%)</li>
-      <li data-lang="fr"><strong>Full Ring :</strong> Ultra-Tight +0,7%, Maniac +0,3%, Loose −0,2%, Tight −0,8% (écart ≈ ±0,8%)</li>
-      <li data-lang="en" class="active"><strong>Short Handed:</strong> Loose +1.7%, Ultra-Tight +0.8%, Tight −0.1%, Maniac −2.4% (spread ≈ ±2.4%)</li>
-      <li data-lang="fr"><strong>Short Handed :</strong> Loose +1,7%, Ultra-Tight +0,8%, Tight −0,1%, Maniac −2,4% (écart ≈ ±2,4%)</li>
-      <li data-lang="en" class="active"><strong>Heads-Up:</strong> Maniac +4.8%, Tight +2.1%, Loose −0.7%, Ultra-Tight −6.3% — spread ≈ ±6.3%, consistent with high HU variance. HU variance is high by nature; no directional conclusion is statistically robust at this sample size.</li>
-      <li data-lang="fr"><strong>Heads-Up :</strong> Maniac +4,8%, Tight +2,1%, Loose −0,7%, Ultra-Tight −6,3% — écart ≈ ±6,3%, cohérent avec la variance élevée en HU. La variance HU est élevée par nature ; aucune conclusion directionnelle n'est statistiquement robuste à cette taille d'échantillon.</li>
-    </ul>
-    <p data-lang="en" class="active" style="margin-top:8px">Across all formats, no gamestyle has a systematic structural advantage. Full Ring is exceptionally tight (spread ±0.8%). Short Handed is well-balanced (spread ±2.4%). Heads-Up shows wider dispersion (±6.3%), which is expected given the smaller sample size and inherently higher per-hand variance in 2-player games. All results are within the range of statistical noise for the simulation volumes used.</p>
-    <p data-lang="fr" style="margin-top:8px">Sur tous les formats, aucun style de jeu ne présente d'avantage structurel systématique. Le Full Ring est exceptionnellement équilibré (écart ±0,8%). Le Short Handed reste bien équilibré (écart ±2,4%). Le Heads-Up montre une dispersion plus large (±6,3%), ce qui est attendu compte tenu de la taille d'échantillon plus faible et de la variance par main intrinsèquement plus élevée en 2 joueurs. Tous les résultats sont dans la plage du bruit statistique pour les volumes de simulation utilisés.</p>
+    <p data-lang="en" class="active">To ensure no gamestyle dominates the others, the four bots are pitted against each
+      other across millions of simulated hands. The chip distribution at the end of each long run is checked: any
+      gamestyle that systematically bleeds chips would be exploitable by any human who notices the leak, so calibration
+      is iterated until no such leak remains.</p>
+    <p data-lang="fr">Pour s'assurer qu'aucun style ne domine les autres, les quatre bots s'affrontent sur des millions
+      de mains simulées. La distribution des jetons à la fin de chaque longue session est vérifiée : tout style qui
+      perdrait systématiquement des jetons serait exploitable par n'importe quel joueur humain qui remarquerait la
+      fuite, donc la calibration est itérée jusqu'à ce qu'aucune fuite ne subsiste.</p>
+    <p data-lang="en" class="active" style="margin-top:10px"><strong>Current state:</strong> No gamestyle has a
+      statistically significant edge over the others on Full Ring or Short Handed tables — observed differences fall
+      within the natural variance of the simulation volume used. Heads-Up shows wider per-game dispersion (every game
+      ends with one bust-out, ±100 % per game), but no consistent winner emerges across re-seeds. All four gamestyles
+      play their archetype competitively without a structural exploit.</p>
+    <p data-lang="fr" style="margin-top:10px"><strong>État actuel :</strong> Aucun style n'a d'avantage statistiquement
+      significatif sur les autres en Full Ring ou Short Handed — les différences observées sont dans la variance
+      naturelle du volume de simulation utilisé. Le Heads-Up montre une dispersion par partie plus large (chaque partie
+      se termine par une élimination, ±100 % par partie), mais aucun gagnant constant n'émerge sur les re-seeds. Les
+      quatre styles jouent leur archétype de manière compétitive, sans exploit structurel.</p>
   </div>
 
   <!-- 5.5. FAQ Clarification -->
   <div class="box">
     <h2 data-lang="en" class="active">Why only 4 gamestyles?</h2>
     <h2 data-lang="fr">Pourquoi seulement 4 styles de jeu ?</h2>
-    <p data-lang="en" class="active">These four archetypes cover the primary strategic profiles in cash games: ultra-selective aggression (NAIT), solid fundamentals (TAG), wide aggressive ranges (LAG), and hyper-aggressive chaos (Maniac).</p>
-    <p data-lang="fr">Ces quatre archétypes couvrent les profils stratégiques principaux en cash game : agressivité ultra-sélective (NAIT), fondamentaux solides (TAG), ranges larges agressives (LAG), et chaos hyper-agressif (Maniac).</p>
-    <p data-lang="en" class="active" style="margin-top:10px">Focus is on calibration quality over quantity — you're training against competent opponents with validated playing styles, not random decision-makers.</p>
-    <p data-lang="fr" style="margin-top:10px">L'accent est mis sur la qualité de calibration plutôt que sur la quantité — vous vous entraînez contre des adversaires compétents aux styles validés, pas contre des décideurs aléatoires.</p>
+    <p data-lang="en" class="active">These four archetypes cover the primary strategic profiles in cash games:
+      ultra-selective aggression (NAIT), solid fundamentals (TAG), wide aggressive ranges (LAG), and hyper-aggressive
+      chaos (Maniac).</p>
+    <p data-lang="fr">Ces quatre archétypes couvrent les profils stratégiques principaux en cash game : agressivité
+      ultra-sélective (NAIT), fondamentaux solides (TAG), ranges larges agressives (LAG), et chaos hyper-agressif
+      (Maniac).</p>
+    <p data-lang="en" class="active" style="margin-top:10px">Focus is on calibration quality over quantity — you're
+      training against competent opponents with validated playing styles, not random decision-makers.</p>
+    <p data-lang="fr" style="margin-top:10px">L'accent est mis sur la qualité de calibration plutôt que sur la quantité
+      — vous vous entraînez contre des adversaires compétents aux styles validés, pas contre des décideurs aléatoires.
+    </p>
 
-    <h3 data-lang="en" class="active" style="margin-top:18px">Why does a bot show a different label in Heads-Up than in Short Handed?</h3>
-    <h3 data-lang="fr" style="margin-top:18px">Pourquoi un bot apparaît-il avec un label différent en Heads-Up qu'en Short Handed ?</h3>
-    <p data-lang="en" class="active">The four gamestyles are fixed — that is what you select when setting up a session. The <em>label</em> displayed in the statistics overlay (e.g. "Tight", "Balanced", "Aggressive") is computed from each player's observed stats relative to standard thresholds for that table format. In Heads-Up, everyone must play wide ranges by nature, so even the tightest gamestyle will have a high absolute VPIP — which the overlay may read as "Balanced" rather than "Tight". The underlying strategy has not changed; only its relative reading within the HU context differs.</p>
-    <p data-lang="fr">Les quatre styles de jeu sont fixes — c'est ce que vous sélectionnez lors de la configuration d'une session. Le <em>label</em> affiché dans l'overlay de statistiques (ex. « Tight », « Équilibré », « Agressif ») est calculé à partir des stats observées de chaque joueur, relativement aux seuils standard pour ce format de table. En Heads-Up, tout le monde doit jouer large par nature, donc même le style le plus tight aura un VPIP absolu élevé — que l'overlay peut interpréter comme « Équilibré » plutôt que « Tight ». La stratégie sous-jacente n'a pas changé ; seule sa lecture relative dans le contexte HU diffère.</p>
-    <p data-lang="en" class="active" style="margin-top:6px">This also applies to your own label — your stats overlay reflects how your play reads in the current format, not a fixed identity.</p>
-    <p data-lang="fr" style="margin-top:6px">Cela s'applique également à votre propre label — votre overlay de stats reflète la lecture de votre jeu dans le format actuel, pas une identité fixe.</p>
+    <h3 data-lang="en" class="active" style="margin-top:18px">Why does a bot show a different label in Heads-Up than in
+      Short Handed?</h3>
+    <h3 data-lang="fr" style="margin-top:18px">Pourquoi un bot apparaît-il avec un label différent en Heads-Up qu'en
+      Short Handed ?</h3>
+    <p data-lang="en" class="active">The four gamestyles are fixed — that is what you select when setting up a session.
+      The <em>label</em> displayed in the statistics overlay (e.g. "Tight", "Balanced", "Aggressive") is computed from
+      each player's observed stats relative to standard thresholds for that table format. In Heads-Up, everyone must
+      play wide ranges by nature, so even the tightest gamestyle will have a high absolute VPIP — which the overlay may
+      read as "Balanced" rather than "Tight". The underlying strategy has not changed; only its relative reading within
+      the HU context differs.</p>
+    <p data-lang="fr">Les quatre styles de jeu sont fixes — c'est ce que vous sélectionnez lors de la configuration
+      d'une session. Le <em>label</em> affiché dans l'overlay de statistiques (ex. « Tight », « Équilibré », « Agressif
+      ») est calculé à partir des stats observées de chaque joueur, relativement aux seuils standard pour ce format de
+      table. En Heads-Up, tout le monde doit jouer large par nature, donc même le style le plus tight aura un VPIP
+      absolu élevé — que l'overlay peut interpréter comme « Équilibré » plutôt que « Tight ». La stratégie sous-jacente
+      n'a pas changé ; seule sa lecture relative dans le contexte HU diffère.</p>
+    <p data-lang="en" class="active" style="margin-top:6px">This also applies to your own label — your stats overlay
+      reflects how your play reads in the current format, not a fixed identity.</p>
+    <p data-lang="fr" style="margin-top:6px">Cela s'applique également à votre propre label — votre overlay de stats
+      reflète la lecture de votre jeu dans le format actuel, pas une identité fixe.</p>
   </div>
 
   <!-- 6. CTA -->
   <div class="box" style="text-align:center;padding:20px">
-    <p data-lang="en" class="active" style="font-size:16px;margin-bottom:14px">Full trial for 300 hands, then reduced set of functionalities.</p>
-    <p data-lang="fr" style="font-size:16px;margin-bottom:14px">Essai complet pendant 300 mains, puis fonctionnement en mode réduit.</p>
+    <p data-lang="en" class="active" style="font-size:16px;margin-bottom:14px">Full trial for 300 hands, then reduced
+      set of functionalities.</p>
+    <p data-lang="fr" style="font-size:16px;margin-bottom:14px">Essai complet pendant 300 mains, puis fonctionnement en
+      mode réduit.</p>
     <a href="/" class="btn">
       <span data-lang="en" class="active">← Back to home</span>
       <span data-lang="fr">← Retour à l'accueil</span>
@@ -359,7 +571,8 @@
   </div>
 
   <footer class="muted" style="margin-top:12px;font-size:13px;text-align:center">
-    © <span id="y"></span> M87 DEV &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/support.html">Support</a>
+    © <span id="y"></span> M87 DEV &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a
+      href="/support.html">Support</a>
   </footer>
 
   <script>
@@ -385,4 +598,5 @@
     document.documentElement.lang = savedLang;
   </script>
 </body>
+
 </html>
