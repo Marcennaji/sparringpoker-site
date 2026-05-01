@@ -452,14 +452,7 @@
     <h2 data-lang="en" class="active">What the statistics reveal</h2>
     <h2 data-lang="fr">Ce que révèlent les statistiques</h2>
 
-    <h3 data-lang="en" class="active">What they reveal</h3>
-    <h3 data-lang="fr">Ce qu'elles révèlent</h3>
     <ul>
-      <li data-lang="en" class="active"><strong>Clear separation:</strong> VPIP climbs monotonically (Ultra-Tight &lt;
-        Tight &lt; Loose &lt; Maniac) across all formats.</li>
-      <li data-lang="fr"><strong>Séparation claire :</strong> Le VPIP monte de façon monotone (Ultra-Tight &lt; Tight
-        &lt; Loose &lt; Maniac) sur tous les formats.</li>
-
       <li data-lang="en" class="active"><strong>Correct aggression:</strong> Tighter bots show higher 3-bet rates
         (polarized ranges). Looser bots call more (gap concept).</li>
       <li data-lang="fr"><strong>Agression correcte :</strong> Les bots tight ont des taux de 3-bet plus élevés (ranges
@@ -492,10 +485,12 @@
       <li data-lang="fr"><strong>Vos stats persistent localement :</strong> Toutes les données sont stockées sur votre
         appareil. Réinstaller l'app réinitialisera votre historique statistique.</li>
 
-      <li data-lang="en" class="active"><strong>Precomputed bot profiles:</strong> Bot vs bot statistics come from tens
-        of thousands of simulated hands, so they already know how to play against each other from the start.</li>
+      <li data-lang="en" class="active"><strong>Precomputed bot profiles:</strong> Bot vs bot statistics come from
+        hundreds of thousands of simulated hands, so they already know how to play against each other from the start.
+      </li>
       <li data-lang="fr"><strong>Profils de bots précalculés :</strong> Les statistiques bot vs bot proviennent de
-        dizaines de milliers de mains simulées, ils savent donc déjà jouer les uns contre les autres dès le départ.</li>
+        centaines de milliers de mains simulées, ils savent donc déjà jouer les uns contre les autres dès le départ.
+      </li>
     </ul>
 
     <h3 data-lang="en" class="active" style="margin-top:14px">What data is stored to enable adaptation</h3>
@@ -535,22 +530,14 @@
 
   <!-- 5. Balance validation -->
   <div class="box">
-    <h2 data-lang="en" class="active">Balance validation (bot vs bot)</h2>
-    <h2 data-lang="fr">Validation de l'équilibre (bot vs bot)</h2>
-    <p data-lang="en" class="active">To ensure no gamestyle dominates the others, the four bots are pitted against each
-      other across millions of simulated hands. The chip distribution at the end of each long run is checked: any
-      gamestyle that systematically bleeds chips would be exploitable by any human who notices the leak, so calibration
-      is iterated until no such leak remains.</p>
-    <p data-lang="fr">Pour s'assurer qu'aucun style ne domine les autres, les quatre bots s'affrontent sur des millions
-      de mains simulées. La distribution des jetons à la fin de chaque longue session est vérifiée : tout style qui
-      perdrait systématiquement des jetons serait exploitable par n'importe quel joueur humain qui remarquerait la
-      fuite, donc la calibration est itérée jusqu'à ce qu'aucune fuite ne subsiste.</p>
-    <p data-lang="en" class="active" style="margin-top:10px"><strong>Current state:</strong> On Full Ring and Short
+    <h2 data-lang="en" class="active">Balance validation — current state</h2>
+    <h2 data-lang="fr">Validation de l'équilibre — état actuel</h2>
+    <p data-lang="en" class="active"><strong>Current state:</strong> On Full Ring and Short
       Handed tables no gamestyle shows a statistically significant edge over the others — observed differences fall
       within the natural variance of the simulation volume used. Heads-Up results are noisier and still under active
       investigation, with no consistent winner emerging across re-seeds. Calibration of the four archetypes is
       iterative and ongoing.</p>
-    <p data-lang="fr" style="margin-top:10px"><strong>État actuel :</strong> En Full Ring et Short Handed, aucun style
+    <p data-lang="fr"><strong>État actuel :</strong> En Full Ring et Short Handed, aucun style
       n'a d'avantage statistiquement significatif sur les autres — les différences observées sont dans la variance
       naturelle du volume de simulation utilisé. Les résultats en Heads-Up sont plus bruités et encore en cours
       d'investigation, sans gagnant constant sur les re-seeds. La calibration des quatre archétypes est itérative et
