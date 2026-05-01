@@ -247,15 +247,6 @@
     <p data-lang="fr" style="margin-top:10px"><strong>Pourquoi c'est important :</strong> Vous ne pouvez pas progresser
       en jouant contre des adversaires qui ne se soucient pas de perdre. Les bots SparringPoker jouent pour gagner —
       chaque main est donc une pratique significative.</p>
-
-    <p data-lang="en" class="active" style="margin-top:10px"><strong>Complete time flexibility:</strong> Play at your
-      own pace with zero time pressure. Pause and resume sessions instantly. Review any hand using the replay feature,
-      analyze it thoroughly, then continue playing. No waiting for opponents, no wasted time — you'll play far more
-      hands per hour than in any live game.</p>
-    <p data-lang="fr" style="margin-top:10px"><strong>Flexibilité totale :</strong> Jouez à votre rythme sans pression
-      temporelle. Mettez en pause et reprenez les sessions instantanément. Révisez n'importe quelle main avec la
-      fonction replay, analysez-la en détail, puis continuez à jouer. Pas d'attente d'adversaires, pas de temps perdu —
-      vous jouerez bien plus de mains par heure que dans n'importe quelle partie en direct.</p>
   </div>
 
   <!-- 2. Gamestyles -->
@@ -325,23 +316,59 @@
       disponibles en Premium ; Tight est inclus dans la version gratuite.</p>
   </div>
 
-  <!-- 3. How stats were built -->
+  <!-- 3. How bots are tuned and validated -->
   <div class="box">
-    <h2 data-lang="en" class="active">How the statistics were built</h2>
-    <h2 data-lang="fr">Comment les statistiques ont été construites</h2>
+    <h2 data-lang="en" class="active">How the bots are tuned and validated</h2>
+    <h2 data-lang="fr">Comment les bots sont calibrés et validés</h2>
 
-    <h3 data-lang="en" class="active">Step 1 — Mass simulation</h3>
-    <h3 data-lang="fr">Étape 1 — Simulation en masse</h3>
-    <p data-lang="en" class="active">Each gamestyle ran through <strong>millions of hands</strong> across three table
-      formats (Full Ring 9p, Short Handed 6p, Heads-Up 2p).</p>
-    <p data-lang="fr">Chaque style de jeu a joué <strong>des millions de mains</strong> sur trois formats de table (Full
-      Ring 9j, Short Handed 6j, Heads-Up 2j).</p>
+    <p data-lang="en" class="active">Calibrating a poker bot is not a one-shot job — it's a continuous loop. Three
+      independent mechanisms work together to catch different kinds of mistakes: small logic bugs, broad strategic
+      drift, and tricky situational misplays. A change to any bot only ships when all three pass.</p>
+    <p data-lang="fr">Calibrer un bot de poker n'est pas un travail ponctuel — c'est une boucle continue. Trois
+      mécanismes indépendants travaillent ensemble pour détecter différents types d'erreurs : petits bugs logiques,
+      dérives stratégiques globales, et erreurs dans des situations délicates. Une modification d'un bot n'est validée
+      que lorsque les trois mécanismes passent.</p>
 
-    <h3 data-lang="en" class="active">Step 2 — Metric extraction</h3>
-    <h3 data-lang="fr">Étape 2 — Extraction des métriques</h3>
-    <p data-lang="en" class="active">Standard metrics extracted per strategy × table format:</p>
-    <p data-lang="fr">Métriques standard extraites par stratégie × format de table :</p>
-    <p style="margin-top:8px">
+    <h3 data-lang="en" class="active" style="margin-top:14px">1. Automated test suite</h3>
+    <h3 data-lang="fr" style="margin-top:14px">1. Suite de tests automatisés</h3>
+    <p data-lang="en" class="active">A library of <strong>more than 1,500 automated tests</strong> runs after every
+      change to the engine. They cover three layers:</p>
+    <p data-lang="fr">Une bibliothèque de <strong>plus de 1 500 tests automatisés</strong> s'exécute après chaque
+      modification du moteur. Elle couvre trois couches :</p>
+    <ul>
+      <li data-lang="en" class="active"><strong>Unit tests</strong> — isolated checks on individual building blocks
+        (hand evaluation, range calculations, betting math).</li>
+      <li data-lang="fr"><strong>Tests unitaires</strong> — vérifications isolées sur les briques individuelles
+        (évaluation des mains, calcul des ranges, mathématiques de mise).</li>
+      <li data-lang="en" class="active"><strong>Integration tests</strong> — verify that components work together
+        correctly (a strategy module talking to the betting engine, the database, the shuffler).</li>
+      <li data-lang="fr"><strong>Tests d'intégration</strong> — vérifient que les composants fonctionnent correctement
+        ensemble (un module de stratégie qui dialogue avec le moteur de mise, la base de données, le mélangeur).</li>
+      <li data-lang="en" class="active"><strong>End-to-end tests</strong> — simulate complete hands from deal to
+        showdown, confirming the full game flow stays correct under realistic conditions.</li>
+      <li data-lang="fr"><strong>Tests end-to-end</strong> — simulent des mains complètes du donne au showdown, en
+        confirmant que le déroulement complet du jeu reste correct dans des conditions réalistes.</li>
+    </ul>
+    <p data-lang="en" class="active" style="font-size:13px" class="muted">This layer catches logic regressions early —
+      before any bot ever plays a real hand against a user.</p>
+    <p data-lang="fr" style="font-size:13px" class="muted">Cette couche attrape les régressions logiques tôt — avant
+      qu'un bot ne joue une seule vraie main contre un utilisateur.</p>
+
+    <h3 data-lang="en" class="active" style="margin-top:14px">2. Statistics seeding (bot vs bot)</h3>
+    <h3 data-lang="fr" style="margin-top:14px">2. Seeding statistique (bot vs bot)</h3>
+    <p data-lang="en" class="active">The four gamestyles play <strong>hundreds of thousands of hands against each
+        other</strong>, across all three table formats (Full Ring, Short Handed, Heads-Up). Two things are extracted
+      from each run:</p>
+    <p data-lang="fr">Les quatre styles de jeu disputent <strong>des centaines de milliers de mains les uns contre les
+        autres</strong>, sur les trois formats (Full Ring, Short Handed, Heads-Up). Deux choses sont extraites de chaque
+      session :</p>
+    <ul>
+      <li data-lang="en" class="active"><strong>Per-strategy poker metrics</strong> — the standard indicators a
+        professional player would use to judge a style:</li>
+      <li data-lang="fr"><strong>Métriques poker par stratégie</strong> — les indicateurs standards qu'un joueur
+        professionnel utiliserait pour juger un style :</li>
+    </ul>
+    <p style="margin-top:6px">
       <span class="stat-pill">VPIP</span>
       <span class="stat-pill">PFR</span>
       <span class="stat-pill">VPIP–PFR gap</span>
@@ -352,62 +379,71 @@
       <span class="stat-pill">WTSD %</span>
       <span class="stat-pill">W$SD %</span>
     </p>
+    <p data-lang="en" class="active" style="margin-top:8px">These are checked against modern poker theory targets — for
+      example a <strong>VPIP–PFR gap of 1–6 %</strong> (raise-or-fold discipline) — and against a strict tightness
+      ordering (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) that must hold across every format.</p>
+    <p data-lang="fr" style="margin-top:8px">Elles sont confrontées aux cibles de la théorie poker moderne — par
+      exemple un <strong>écart VPIP–PFR de 1 à 6 %</strong> (discipline raise-or-fold) — et à un ordre de sélectivité
+      strict (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) qui doit être respecté sur chaque format.</p>
+    <ul>
+      <li data-lang="en" class="active"><strong>Chip flow between gamestyles</strong> — the net winnings/losses of each
+        bot are tracked street by street. Any style that systematically loses chips would be a leak that a real player
+        could exploit, so calibration is iterated until no such leak survives statistical scrutiny.</li>
+      <li data-lang="fr"><strong>Flux de jetons entre styles</strong> — les gains/pertes nets de chaque bot sont suivis
+        street par street. Tout style qui perdrait systématiquement des jetons constituerait une fuite qu'un joueur
+        réel pourrait exploiter, la calibration est donc itérée jusqu'à ce qu'aucune fuite ne survive à l'analyse
+        statistique.</li>
+    </ul>
+    <p data-lang="en" class="active" style="font-size:13px" class="muted">This layer catches strategic drift — a bot
+      that plays "almost correctly" but bleeds chips against another style would slip past the unit tests, but not past
+      this one.</p>
+    <p data-lang="fr" style="font-size:13px" class="muted">Cette couche attrape les dérives stratégiques — un bot qui
+      joue « presque correctement » mais perd des jetons contre un autre style passerait au travers des tests
+      unitaires, mais pas de celui-ci.</p>
 
-    <h3 data-lang="en" class="active">Step 3 — Validation</h3>
-    <h3 data-lang="fr">Étape 3 — Validation</h3>
-    <p data-lang="en" class="active">Modern poker theory targets a <strong>VPIP–PFR gap of 1–6 %</strong> (raise-or-fold
-      discipline). Each gamestyle is validated against this and against monotonic tightness ordering across all three
-      formats:</p>
-    <p data-lang="fr">La théorie poker moderne cible un <strong>écart VPIP–PFR de 1 à 6 %</strong> (discipline
-      raise-or-fold). Chaque style est validé selon ce critère et selon un ordre de sélectivité monotone sur les trois
-      formats :</p>
+    <h3 data-lang="en" class="active" style="margin-top:14px">3. Scenario replays (edge cases)</h3>
+    <h3 data-lang="fr" style="margin-top:14px">3. Replays de scénarios (cas particuliers)</h3>
+    <p data-lang="en" class="active">Mass simulation tells you whether bots play well <em>on average</em>. It cannot
+      tell you whether a bot will misplay a specific tricky spot — for example, a deep-stacked turn decision with a
+      strong draw against an over-aggressive opponent. For that, individual hand situations are captured as
+      <strong>scenarios</strong> — small files describing the cards, the board, the stacks, and the betting history.
+      The engine replays each scenario and the bot's decision on every street is verified to be the expected one.
+    </p>
+    <p data-lang="fr">La simulation de masse vous dit si les bots jouent bien <em>en moyenne</em>. Elle ne peut pas
+      dire si un bot va mal jouer un spot délicat précis — par exemple une décision au turn en stack profond avec un
+      tirage fort face à un adversaire sur-agressif. Pour ça, des situations individuelles sont capturées sous forme
+      de <strong>scénarios</strong> — de petits fichiers décrivant les cartes, le board, les stacks, et l'historique
+      de mise. Le moteur rejoue chaque scénario et la décision du bot à chaque street est vérifiée comme étant celle
+      attendue.</p>
+    <p data-lang="en" class="active" style="margin-top:8px">Scenarios serve two purposes:</p>
+    <p data-lang="fr" style="margin-top:8px">Les scénarios servent à deux choses :</p>
+    <ul>
+      <li data-lang="en" class="active"><strong>Reproducing edge cases</strong> spotted during play or during seeding
+        runs, so the underlying cause can be debugged and fixed at the root.</li>
+      <li data-lang="fr"><strong>Reproduire des cas particuliers</strong> repérés en jeu ou lors des seedings, pour que
+        la cause profonde puisse être déboguée et corrigée à la racine.</li>
+      <li data-lang="en" class="active"><strong>Locking the fix in place forever</strong> — once a scenario passes, it
+        joins the regression suite and any future change that re-introduces the bug is caught immediately.</li>
+      <li data-lang="fr"><strong>Verrouiller la correction de manière permanente</strong> — une fois qu'un scénario
+        passe, il rejoint la suite de régression et toute modification future qui réintroduirait le bug est détectée
+        immédiatement.</li>
+    </ul>
+    <p data-lang="en" class="active" style="font-size:13px" class="muted">This layer catches situational misplays —
+      problems that are too rare to surface in averaged statistics but matter a lot at the table.</p>
+    <p data-lang="fr" style="font-size:13px" class="muted">Cette couche attrape les erreurs situationnelles — des
+      problèmes trop rares pour ressortir dans les statistiques moyennées, mais qui comptent beaucoup à la table.</p>
 
-    <table style="margin-top:10px">
-      <thead>
-        <tr>
-          <th><span data-lang="en" class="active">Gamestyle</span><span data-lang="fr">Style de jeu</span></th>
-          <th><span data-lang="en" class="active">Full Ring</span><span data-lang="fr">Full Ring</span></th>
-          <th><span data-lang="en" class="active">Short Handed</span><span data-lang="fr">Short Handed</span></th>
-          <th><span data-lang="en" class="active">Heads-Up</span><span data-lang="fr">Heads-Up</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-lang="en" class="active">Ultra-Tight</td>
-          <td data-lang="fr">Ultra-Tight</td>
-          <td><span class="ok">✓</span></td>
-          <td><span class="ok">✓</span></td>
-          <td><span class="ok">✓</span></td>
-        </tr>
-        <tr>
-          <td data-lang="en" class="active">Tight</td>
-          <td data-lang="fr">Tight</td>
-          <td><span class="ok">✓</span></td>
-          <td><span class="ok">✓</span></td>
-          <td><span class="ok">✓</span></td>
-        </tr>
-        <tr>
-          <td data-lang="en" class="active">Loose</td>
-          <td data-lang="fr">Loose</td>
-          <td><span class="ok">✓</span></td>
-          <td><span class="ok">✓</span></td>
-          <td><span class="ok">✓</span></td>
-        </tr>
-        <tr>
-          <td data-lang="en" class="active">Maniac</td>
-          <td data-lang="fr">Maniac</td>
-          <td><span class="ok">✓</span></td>
-          <td><span class="ok">✓</span></td>
-          <td><span class="ok">✓</span></td>
-        </tr>
-      </tbody>
-    </table>
-    <p data-lang="en" class="active" style="margin-top:8px;font-size:13px" class="muted">All gamestyles meet the gap
-      criterion and form a strict tightness ordering (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) in every format.
-      Heads-Up call ranges naturally widen the gap, but the relative ordering is preserved.</p>
-    <p data-lang="fr" style="margin-top:8px;font-size:13px" class="muted">Tous les styles respectent le critère d'écart
-      et forment un ordre de sélectivité strict (Ultra-Tight &lt; Tight &lt; Loose &lt; Maniac) sur chaque format. Les
-      ranges de call en Heads-Up élargissent naturellement l'écart, mais l'ordre relatif est préservé.</p>
+    <p data-lang="en" class="active" style="margin-top:14px;font-size:13px" class="muted"><strong>Why three
+        layers?</strong>
+      Each catches what the others miss. Unit tests catch logic bugs in seconds but say nothing about strategy quality.
+      Statistics seeding measures real strategic strength but cannot pinpoint <em>why</em> a bot is losing chips.
+      Scenarios diagnose specific misplays but only cover the situations someone thought to capture. The combination
+      keeps blind spots small.</p>
+    <p data-lang="fr" style="margin-top:14px;font-size:13px" class="muted"><strong>Pourquoi trois couches ?</strong>
+      Chacune attrape ce que les autres ratent. Les tests unitaires détectent les bugs logiques en quelques secondes
+      mais ne disent rien sur la qualité stratégique. Le seeding statistique mesure la force stratégique réelle mais
+      ne peut pas pointer <em>pourquoi</em> un bot perd des jetons. Les scénarios diagnostiquent des erreurs précises
+      mais ne couvrent que les situations que quelqu'un a pensé à capturer. La combinaison réduit les angles morts.</p>
   </div>
 
   <!-- 4. What the stats reveal -->
