@@ -1,3 +1,13 @@
+[1.3.0] - 2026-05-09
+ — Bot calibration cycle complete.
+
+• All four gamestyles (Ultra-Tight, Tight, Loose, Maniac) are now clean
+  against the in-game leak detector on every table format.
+• Bots over-folding to 3-bets and Maniac over-c-betting the flop are fixed.
+• Heads-Up big-blind defence improved.
+• Validated across three full-power seedings (~500 000 hands per gamestyle).
+• Stability fix in the range estimator.
+
 [1.2.6] - 2026-04-29
 - Major bot rebalancing across all table formats. Bot vs bot statistics regenerated from millions of simulated hands.
 - Fixed two long-standing exploitable leaks: the Loose bot was bleeding chips on Short Handed tables, and the Maniac bot was bleeding on both Full Ring and Short Handed.
