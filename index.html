@@ -1,205 +1,363 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SparringPoker — Offline Poker Training</title>
-  <meta name="description" content="SparringPoker is an offline poker training tool with bot opponents. Stats, hand replay, hand export." />
+  <meta name="description"
+    content="SparringPoker is an offline poker training tool with bot opponents. Stats, hand replay, hand export." />
   <style>
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      max-width:900px;
-      margin:20px auto;
-      padding:0 16px;
-      line-height:1.4;
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 16px;
+      line-height: 1.4;
       background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      color:#f5f5f5;
-      min-height:100vh;
+      color: #f5f5f5;
+      min-height: 100vh;
     }
-    header{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-    .btn{
-      display:inline-block;
-      padding:10px 14px;
-      border:1px solid #f5f5f5;
-      border-radius:10px;
-      text-decoration:none;
-      color:#f5f5f5;
-      background:rgba(255,255,255,0.1);
-      backdrop-filter:blur(10px);
-      transition:all 0.3s ease;
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap
     }
-    .btn:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px)}
-    .muted{color:#b0b0b0}
-    .box{
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:10px;
-      padding:12px 16px;
-      margin:10px 0;
-      background:rgba(255,255,255,0.05);
-      backdrop-filter:blur(10px);
-      box-shadow:0 4px 6px rgba(0,0,0,0.2);
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid #f5f5f5;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #f5f5f5;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
     }
-    ul{margin:6px 0 0 18px}
-    li{margin:4px 0;font-size:14px}
-    .lang-switch{display:flex;gap:12px;margin-bottom:12px;justify-content:flex-end;align-items:center}
-    .lang-flag{
-      width:32px;
-      height:32px;
-      cursor:pointer;
-      border-radius:4px;
-      transition:all 0.3s ease;
-      opacity:0.6;
-      border:2px solid transparent;
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px)
     }
-    .lang-flag:hover{opacity:0.9;transform:scale(1.1)}
-    .lang-flag.active{opacity:1;border-color:rgba(129,212,250,0.6);box-shadow:0 0 8px rgba(129,212,250,0.4)}
-    .premium{color:#ffa726;font-weight:600}
-    .coming-soon{
-      background:linear-gradient(135deg, #1e3a5f 0%, #2d5273 100%);
-      border:2px solid rgba(129,212,250,0.3);
-      border-radius:10px;
-      padding:14px;
-      margin:12px 0;
-      text-align:center;
-      box-shadow:0 6px 12px rgba(30,58,95,0.5);
-      animation:pulse 2s ease-in-out infinite;
+
+    .muted {
+      color: #b0b0b0
     }
-    @keyframes pulse{
-      0%,100%{transform:scale(1);box-shadow:0 6px 12px rgba(30,58,95,0.5)}
-      50%{transform:scale(1.02);box-shadow:0 8px 16px rgba(30,58,95,0.7)}
+
+    .box {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 10px 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
-    .coming-soon h2{margin:0 0 6px 0;font-size:22px;color:#fff}
-    .coming-soon p{margin:3px 0;font-size:15px;color:#e1f5fe}
-    .card-symbol{
-      display:inline-block;
-      font-size:1.2em;
-      margin:0 4px;
-      opacity:0.3;
+
+    ul {
+      margin: 6px 0 0 18px
     }
-    h1{
-      color:#fff;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+
+    li {
+      margin: 4px 0;
+      font-size: 14px
     }
-    h2{color:#fff;font-size:18px;margin:0 0 8px 0}
-    a{color:#81d4fa;text-decoration:none}
-    a:hover{color:#4fc3f7;text-decoration:underline}
-    [data-lang]{display:none !important}
-    [data-lang].active{display:block !important}
-    span[data-lang].active{display:inline !important}
-    a[data-lang].active{display:inline-block !important}
-    li[data-lang].active{display:list-item !important}
-    div[data-lang].active{display:block !important}
-    p[data-lang].active{display:block !important}
-    h1[data-lang].active{display:block !important}
-    h2[data-lang].active{display:block !important}
-    .screenshot-section{margin:20px 0}
-    .screenshot-hero{margin-bottom:16px}
-    .screenshot-card{
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:10px;
-      overflow:hidden;
-      background:rgba(255,255,255,0.05);
-      backdrop-filter:blur(10px);
-      box-shadow:0 4px 6px rgba(0,0,0,0.2);
-      transition:transform 0.3s ease,box-shadow 0.3s ease;
+
+    .lang-switch {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      justify-content: flex-end;
+      align-items: center
     }
-    .screenshot-card:hover{transform:translateY(-4px);box-shadow:0 8px 12px rgba(0,0,0,0.3)}
-    .screenshot-card img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-bottom:1px solid rgba(255,255,255,0.1);
+
+    .lang-flag {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      opacity: 0.6;
+      border: 2px solid transparent;
     }
-    .screenshot-caption{
-      padding:12px 14px;
-      font-size:14px;
-      color:#e1f5fe;
-      text-align:center;
-      line-height:1.4;
+
+    .lang-flag:hover {
+      opacity: 0.9;
+      transform: scale(1.1)
     }
-    .screenshot-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
+
+    .lang-flag.active {
+      opacity: 1;
+      border-color: rgba(129, 212, 250, 0.6);
+      box-shadow: 0 0 8px rgba(129, 212, 250, 0.4)
     }
-    @media (min-width:600px){
-      .screenshot-grid{grid-template-columns:1fr 1fr}
+
+    .premium {
+      color: #ffa726;
+      font-weight: 600
     }
-    .cta-button{
-      display:inline-block;
-      padding:14px 28px;
-      margin:20px auto;
-      border:2px solid #81d4fa;
-      border-radius:10px;
-      background:linear-gradient(135deg,#1e88e5 0%,#1565c0 100%);
-      color:#fff;
-      font-size:16px;
-      font-weight:600;
-      text-decoration:none;
-      box-shadow:0 4px 12px rgba(30,136,229,0.4);
-      transition:all 0.3s ease;
-      text-align:center;
+
+    .coming-soon {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2d5273 100%);
+      border: 2px solid rgba(129, 212, 250, 0.3);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 12px 0;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(30, 58, 95, 0.5);
+      animation: pulse 2s ease-in-out infinite;
     }
-    .cta-button:hover{
-      transform:translateY(-2px);
-      box-shadow:0 6px 16px rgba(30,136,229,0.6);
-      background:linear-gradient(135deg,#2196f3 0%,#1976d2 100%);
-      color:#fff;
-      text-decoration:none;
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 6px 12px rgba(30, 58, 95, 0.5)
+      }
+
+      50% {
+        transform: scale(1.02);
+        box-shadow: 0 8px 16px rgba(30, 58, 95, 0.7)
+      }
     }
-    .section-title{font-size:24px;color:#fff;margin:20px 0 16px;text-align:center}
-    .beta-box{
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:10px;
-      padding:16px;
-      margin:20px 0;
-      backdrop-filter:blur(10px);
-      box-shadow:0 4px 6px rgba(0,0,0,0.2);
+
+    .coming-soon h2 {
+      margin: 0 0 6px 0;
+      font-size: 22px;
+      color: #fff
     }
-    .beta-box h2{color:#81d4fa;margin:0 0 8px 0;font-size:18px}
-    .beta-box .warning{
-      background:rgba(129,212,250,0.1);
-      border-left:3px solid #81d4fa;
-      padding:10px 12px;
-      margin:10px 0;
-      font-size:13px;
-      line-height:1.5;
-      color:#e1f5fe;
+
+    .coming-soon p {
+      margin: 3px 0;
+      font-size: 15px;
+      color: #e1f5fe
     }
-    .download-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;
-      margin-top:12px;
+
+    .card-symbol {
+      display: inline-block;
+      font-size: 1.2em;
+      margin: 0 4px;
+      opacity: 0.3;
     }
-    @media (min-width:600px){
-      .download-grid{grid-template-columns:1fr 1fr}
+
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
-    .download-btn{
-      display:block;
-      padding:14px 20px;
-      border:1px solid rgba(129,212,250,0.3);
-      border-radius:8px;
-      background:rgba(129,212,250,0.05);
-      color:#81d4fa;
-      text-decoration:none;
-      text-align:center;
-      font-weight:600;
-      transition:all 0.3s ease;
+
+    h2 {
+      color: #fff;
+      font-size: 18px;
+      margin: 0 0 8px 0
     }
-    .download-btn:hover{
-      background:rgba(129,212,250,0.1);
-      border-color:#81d4fa;
-      transform:translateY(-2px);
-      box-shadow:0 4px 8px rgba(129,212,250,0.2);
-      color:#4fc3f7;
-      text-decoration:none;
+
+    a {
+      color: #81d4fa;
+      text-decoration: none
     }
-    .download-btn .platform{font-size:18px;display:block;margin-bottom:4px}
-    .download-btn .version{font-size:12px;opacity:0.8;font-weight:normal}
+
+    a:hover {
+      color: #4fc3f7;
+      text-decoration: underline
+    }
+
+    [data-lang] {
+      display: none !important
+    }
+
+    [data-lang].active {
+      display: block !important
+    }
+
+    span[data-lang].active {
+      display: inline !important
+    }
+
+    a[data-lang].active {
+      display: inline-block !important
+    }
+
+    li[data-lang].active {
+      display: list-item !important
+    }
+
+    div[data-lang].active {
+      display: block !important
+    }
+
+    p[data-lang].active {
+      display: block !important
+    }
+
+    h1[data-lang].active {
+      display: block !important
+    }
+
+    h2[data-lang].active {
+      display: block !important
+    }
+
+    .screenshot-section {
+      margin: 20px 0
+    }
+
+    .screenshot-hero {
+      margin-bottom: 16px
+    }
+
+    .screenshot-card {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .screenshot-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3)
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .screenshot-caption {
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #e1f5fe;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width:600px) {
+      .screenshot-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 28px;
+      margin: 20px auto;
+      border: 2px solid #81d4fa;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(30, 136, 229, 0.6);
+      background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .section-title {
+      font-size: 24px;
+      color: #fff;
+      margin: 20px 0 16px;
+      text-align: center
+    }
+
+    .beta-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 20px 0;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .beta-box h2 {
+      color: #81d4fa;
+      margin: 0 0 8px 0;
+      font-size: 18px
+    }
+
+    .beta-box .warning {
+      background: rgba(129, 212, 250, 0.1);
+      border-left: 3px solid #81d4fa;
+      padding: 10px 12px;
+      margin: 10px 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #e1f5fe;
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    @media (min-width:600px) {
+      .download-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    .download-btn {
+      display: block;
+      padding: 14px 20px;
+      border: 1px solid rgba(129, 212, 250, 0.3);
+      border-radius: 8px;
+      background: rgba(129, 212, 250, 0.05);
+      color: #81d4fa;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: rgba(129, 212, 250, 0.1);
+      border-color: #81d4fa;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(129, 212, 250, 0.2);
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+
+    .download-btn .platform {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 4px
+    }
+
+    .download-btn .version {
+      font-size: 12px;
+      opacity: 0.8;
+      font-weight: normal
+    }
   </style>
 </head>
+
 <body>
   <div class="lang-switch">
     <img src="flag_en.png" alt="English" class="lang-flag active" onclick="setLang('en')" data-lang-flag="en">
@@ -214,7 +372,8 @@
         <span class="card-symbol">♥</span>
       </h1>
       <div class="muted" data-lang="en">Offline poker training tool (Texas Hold'em) — Desktop & Android</div>
-      <div class="muted" data-lang="fr">Outil d'entraînement au poker hors-ligne (Texas Hold'em) — Desktop & Android</div>
+      <div class="muted" data-lang="fr">Outil d'entraînement au poker hors-ligne (Texas Hold'em) — Desktop & Android
+      </div>
     </div>
   </header>
 
@@ -223,25 +382,32 @@
   <div class="box">
     <h2 style="margin-top:0" data-lang="en">What is SparringPoker?</h2>
     <h2 style="margin-top:0" data-lang="fr">Qu'est-ce que SparringPoker ?</h2>
-    <p data-lang="en">SparringPoker is an <strong>offline poker training tool</strong> with fine-tuned bot opponents featuring 4 distinct playing gamestyles, ranging from very tight to very loose. Available on desktop and Android.</p>
-    <p data-lang="fr">SparringPoker est un <strong>outil d'entraînement au poker hors-ligne</strong> avec des adversaires bots finement ajustés proposant 4 styles de jeu distincts, allant du très tight au très loose. Disponible sur desktop et Android.</p>
-    <p data-lang="en" style="margin-top:10px">Bot opponents are calibrated using more than 69,000 simulated hands per strategy, based on standard poker statistics (VPIP, PFR, 3-bet frequency, aggression factor, etc.). <a href="/bots.html">Learn how the bots work →</a></p>
-    <p data-lang="fr" style="margin-top:10px">Les adversaires bots sont calibrés à partir de plus de 69 000 mains simulées par stratégie, en s'appuyant sur des statistiques poker standard (VPIP, PFR, 3-bet, facteur d'agression, etc.). <a href="/bots.html">Comment fonctionnent les bots ? →</a></p>
-    <p data-lang="en" style="margin-top:10px"><strong>No ads. No tracking. No account creation needed. No internet required. No casino affiliation.</strong></p>
-    <p data-lang="fr" style="margin-top:10px"><strong>Aucune publicité. Aucun tracking. Aucune création de compte. Aucun internet requis. Aucune affiliation casino.</strong></p>
+    <p data-lang="en">SparringPoker is an <strong>offline poker training tool</strong> with fine-tuned bot opponents
+      featuring 4 distinct playing gamestyles, ranging from very tight to very loose. Available on desktop and Android.
+    </p>
+    <p data-lang="fr">SparringPoker est un <strong>outil d'entraînement au poker hors-ligne</strong> avec des
+      adversaires bots finement ajustés proposant 4 styles de jeu distincts, allant du très tight au très loose.
+      Disponible sur desktop et Android.</p>
+    <p data-lang="en" style="margin-top:10px">Bot opponents are calibrated over <strong>500,000+ simulated hands per
+        gamestyle</strong> (across Full Ring, Short Handed and Heads-Up), against standard poker metrics (VPIP, PFR,
+      3-bet frequency, aggression factor, etc.). <a href="/bots.html">Learn how the bots work →</a></p>
+    <p data-lang="fr" style="margin-top:10px">Les adversaires bots sont calibrés sur <strong>plus de 500 000 mains
+        simulées par style de jeu</strong> (Full Ring, Short Handed et Heads-Up cumulés), face à des métriques poker
+      standard (VPIP, PFR, 3-bet, facteur d'agression, etc.). <a href="/bots.html">Comment fonctionnent les bots ? →</a>
+    </p>
+    <p data-lang="en" style="margin-top:10px"><strong>No ads. No tracking. No account creation needed. No internet
+        required. No casino affiliation.</strong></p>
+    <p data-lang="fr" style="margin-top:10px"><strong>Aucune publicité. Aucun tracking. Aucune création de compte. Aucun
+        internet requis. Aucune affiliation casino.</strong></p>
   </div>
 
   <!-- Screenshots Section -->
   <div class="screenshot-section">
-    
+
     <!-- Hero Screenshot: Poker Table -->
     <div class="screenshot-hero">
       <div class="screenshot-card">
-        <img src="assets/images/main.png" 
-             alt="SparringPoker table interface" 
-             width="900" 
-             height="600"
-             loading="lazy">
+        <img src="assets/images/main.png" alt="SparringPoker table interface" width="900" height="600" loading="lazy">
         <div class="screenshot-caption">
           <span data-lang="en"><strong>Play NL Hold'em against 1 to 8 calibrated bots — offline.</strong></span>
           <span data-lang="fr"><strong>Jouez en Hold'em NL contre 1 à 8 bots calibrés — hors ligne.</strong></span>
@@ -275,44 +441,58 @@
       <li data-lang="en"><strong>Unlimited play</strong> — no hand count limits, no ads</li>
       <li data-lang="fr"><strong>Jeu illimité</strong> — aucune limite de mains, aucune publicité</li>
       <li data-lang="en"><strong>Full Texas Hold'em simulation</strong> — realistic dealing, betting, bot decisions</li>
-      <li data-lang="fr"><strong>Simulation Texas Hold'em complète</strong> — distribution, mises et décisions de bot réalistes</li>
-      <li data-lang="en"><strong>Tight Aggressive opponents</strong> — calibrated on 17,000+ hands across Full Ring & Short Handed</li>
-      <li data-lang="fr"><strong>Adversaires Tight Aggressive</strong> — calibrés sur plus de 17 000 mains en Full Ring et Short Handed</li>
-      <li data-lang="en"><strong>6-player tables</strong> — 5 bot opponents</li>      
+      <li data-lang="fr"><strong>Simulation Texas Hold'em complète</strong> — distribution, mises et décisions de bot
+        réalistes</li>
+      <li data-lang="en"><strong>Tight Aggressive opponents</strong> — the same calibrated TAG bot used in Premium</li>
+      <li data-lang="fr"><strong>Adversaires Tight Aggressive</strong> — le même bot TAG calibré que dans la version
+        Premium</li>
+      <li data-lang="en"><strong>6-player tables</strong> — 5 bot opponents</li>
       <li data-lang="fr"><strong>Tables à 6 joueurs</strong> — 5 adversaires bots</li>
       <li data-lang="en"><strong>Offline</strong> — no internet required</li>
       <li data-lang="fr"><strong>Hors-ligne</strong> — pas besoin d'internet</li>
       <li data-lang="en"><strong>3 languages</strong> — English, French, Spanish</li>
       <li data-lang="fr"><strong>3 langues</strong> — Anglais, Français, Espagnol</li>
-      <li data-lang="en"><strong>Stats export &amp; import</strong> — back up your statistics to a file and restore them at any time</li>
-      <li data-lang="fr"><strong>Export et import des statistiques</strong> — sauvegardez vos statistiques dans un fichier et restaurez-les à tout moment</li>
+      <li data-lang="en"><strong>Stats export &amp; import</strong> — back up your statistics to a file and restore them
+        at any time</li>
+      <li data-lang="fr"><strong>Export et import des statistiques</strong> — sauvegardez vos statistiques dans un
+        fichier et restaurez-les à tout moment</li>
     </ul>
   </div>
 
   <div class="box">
-    <h2 style="margin-top:0"><span class="premium" data-lang="en">Premium — One-time unlock</span><span class="premium" data-lang="fr">Premium — Achat unique</span></h2>
+    <h2 style="margin-top:0"><span class="premium" data-lang="en">Premium — One-time unlock</span><span class="premium"
+        data-lang="fr">Premium — Achat unique</span></h2>
     <p data-lang="en" style="margin-bottom:4px">Pay once, keep forever. No subscription.</p>
     <p data-lang="fr" style="margin-bottom:4px">Payez une fois, gardez pour toujours. Pas d'abonnement.</p>
-    <p data-lang="en" style="margin-bottom:8px;font-size:14px;color:#b0b0b0">Includes all future updates at no extra cost.</p>
-    <p data-lang="fr" style="margin-bottom:8px;font-size:14px;color:#b0b0b0">Inclut toutes les mises à jour futures sans frais supplémentaires.</p>
+    <p data-lang="en" style="margin-bottom:8px;font-size:14px;color:#b0b0b0">Includes all future updates at no extra
+      cost.</p>
+    <p data-lang="fr" style="margin-bottom:8px;font-size:14px;color:#b0b0b0">Inclut toutes les mises à jour futures sans
+      frais supplémentaires.</p>
     <ul>
-      <li data-lang="en"><strong>All 4 bot gamestyles</strong> — from ultra-tight to maniac — Choose your preferred setting, or mix them randomly.</li>
-      <li data-lang="fr"><strong>Les 4 styles de jeu</strong> — de l'ultra-tight au maniac — Choisissez votre configuration préférée, ou mélangez-les aléatoirement.</li>
+      <li data-lang="en"><strong>All 4 bot gamestyles</strong> — from ultra-tight to maniac — Choose your preferred
+        setting, or mix them randomly.</li>
+      <li data-lang="fr"><strong>Les 4 styles de jeu</strong> — de l'ultra-tight au maniac — Choisissez votre
+        configuration préférée, ou mélangez-les aléatoirement.</li>
 
       <li data-lang="en"><strong>2–9 players</strong> — heads-up, short-handed, full ring</li>
       <li data-lang="fr"><strong>2 à 9 joueurs</strong> — heads-up, short-handed, full ring</li>
 
       <li data-lang="en"><strong>Custom blind progression</strong> — set your own structure</li>
-      <li data-lang="fr"><strong>Choix du rythme de progression des blinds</strong> — Standard, lent, rapide, ou pas de progression</li>
+      <li data-lang="fr"><strong>Choix du rythme de progression des blinds</strong> — Standard, lent, rapide, ou pas de
+        progression</li>
 
       <li data-lang="en"><strong>Hand Replay</strong> — scrub through every completed hand street by street</li>
       <li data-lang="fr"><strong>Replay des mains</strong> — naviguez dans chaque main terminée street par street</li>
 
-      <li data-lang="en"><strong>Your stats dashboard</strong> — VPIP, PFR, aggression by street, C-bet, 3-bet/4-bet, showdown win rate, and more. Compare yourself to the bots.</li>
-      <li data-lang="fr"><strong>Tableau de bord de vos stats</strong> — VPIP, PFR, agressivité par street, C-bet, 3-bet/4-bet, taux de victoire au showdown, et plus. Comparez-vous aux bots.</li>
+      <li data-lang="en"><strong>Your stats dashboard</strong> — VPIP, PFR, aggression by street, C-bet, 3-bet/4-bet,
+        showdown win rate, and more. Compare yourself to the bots.</li>
+      <li data-lang="fr"><strong>Tableau de bord de vos stats</strong> — VPIP, PFR, agressivité par street, C-bet,
+        3-bet/4-bet, taux de victoire au showdown, et plus. Comparez-vous aux bots.</li>
 
-      <li data-lang="en"><strong>Hand Export</strong> — copy any hand to clipboard for analysis with ChatGPT, Claude, or any poker solver</li>
-      <li data-lang="fr"><strong>Export des mains</strong> — copiez n'importe quelle main dans le presse-papiers pour l'analyser avec ChatGPT, Claude ou tout solver poker</li>
+      <li data-lang="en"><strong>Hand Export</strong> — copy any hand to clipboard for analysis with ChatGPT, Claude, or
+        any poker solver</li>
+      <li data-lang="fr"><strong>Export des mains</strong> — copiez n'importe quelle main dans le presse-papiers pour
+        l'analyser avec ChatGPT, Claude ou tout solver poker</li>
     </ul>
   </div>
 
@@ -321,26 +501,35 @@
     <h2 style="margin-top:0" data-lang="fr">Comment acheter</h2>
 
     <div id="windows-download-section">
-    <p data-lang="en"><strong>Windows</strong> — Download the installer below. The licence is purchased directly inside the app — no website account needed.</p>
-    <p data-lang="fr"><strong>Ordinateur (Windows)</strong> — Téléchargez l'installateur ci-dessous. La licence s'achète directement dans l'application — aucun compte sur le site requis.</p>
+      <p data-lang="en"><strong>Windows</strong> — Download the installer below. The licence is purchased directly
+        inside the app — no website account needed.</p>
+      <p data-lang="fr"><strong>Ordinateur (Windows)</strong> — Téléchargez l'installateur ci-dessous. La licence
+        s'achète directement dans l'application — aucun compte sur le site requis.</p>
       <div class="download-grid" style="margin:10px 0 14px">
-        <a href="https://github.com/Marcennaji/SparringPoker-downloads/releases/download/v1.2.4/SparringPoker-1.2.4-windows-installer.exe" class="download-btn" data-lang="en">
+        <a href="https://github.com/Marcennaji/SparringPoker-downloads/releases/download/v1.2.4/SparringPoker-1.2.4-windows-installer.exe"
+          class="download-btn" data-lang="en">
           Download for Windows
           <span class="version">(.exe installer)</span>
         </a>
-        <a href="https://github.com/Marcennaji/SparringPoker-downloads/releases/download/v1.2.4/SparringPoker-1.2.4-windows-installer.exe" class="download-btn" data-lang="fr">
+        <a href="https://github.com/Marcennaji/SparringPoker-downloads/releases/download/v1.2.4/SparringPoker-1.2.4-windows-installer.exe"
+          class="download-btn" data-lang="fr">
           Télécharger pour Windows
           <span class="version">(installateur .exe)</span>
         </a>
       </div>
       <p id="dl-count-display" style="display:none;margin:4px 0 0;font-size:12px;color:#808080;text-align:center"></p>
 
-      <div style="margin-top:14px;padding:12px 14px;border:1px solid rgba(255,160,0,0.35);border-radius:8px;background:rgba(255,160,0,0.07);font-size:13px;line-height:1.6;color:#ffe0a0">
-        <p data-lang="en" style="margin:0 0 8px 0"><strong>When installing the Windows desktop version, you may see a message like "Windows protected your PC".</strong></p>
-        <p data-lang="fr" style="margin:0 0 8px 0"><strong>Lors de l'installation de la version desktop Windows, un message du type « Windows a protégé votre ordinateur » peut apparaître.</strong></p>
+      <div
+        style="margin-top:14px;padding:12px 14px;border:1px solid rgba(255,160,0,0.35);border-radius:8px;background:rgba(255,160,0,0.07);font-size:13px;line-height:1.6;color:#ffe0a0">
+        <p data-lang="en" style="margin:0 0 8px 0"><strong>When installing the Windows desktop version, you may see a
+            message like "Windows protected your PC".</strong></p>
+        <p data-lang="fr" style="margin:0 0 8px 0"><strong>Lors de l'installation de la version desktop Windows, un
+            message du type « Windows a protégé votre ordinateur » peut apparaître.</strong></p>
 
-        <p data-lang="en" style="margin:0 0 8px 0">This happens because SparringPoker is a new application and has not yet built up reputation with Windows.</p>
-        <p data-lang="fr" style="margin:0 0 8px 0">Cela est normal : SparringPoker est une application récente qui n'a pas encore acquis de réputation auprès de Windows.</p>
+        <p data-lang="en" style="margin:0 0 8px 0">This happens because SparringPoker is a new application and has not
+          yet built up reputation with Windows.</p>
+        <p data-lang="fr" style="margin:0 0 8px 0">Cela est normal : SparringPoker est une application récente qui n'a
+          pas encore acquis de réputation auprès de Windows.</p>
 
         <p data-lang="en" style="margin:0 0 8px 0">👉 Don't worry, the app is safe to use.</p>
         <p data-lang="fr" style="margin:0 0 8px 0">👉 Rassurez-vous, l'application est sûre.</p>
@@ -357,54 +546,84 @@
         <p data-lang="en" style="margin:0 0 8px 0">The application will then install normally.</p>
         <p data-lang="fr" style="margin:0 0 8px 0">L'installation se lancera ensuite normalement.</p>
 
-        <p data-lang="en" style="margin:0">If you have any questions or concerns, feel free to <a href="/support.html" style="color:#ffa726">contact me</a>, I'll be happy to help!</p>
-        <p data-lang="fr" style="margin:0">En cas de doute ou de question, n'hésitez pas à <a href="/support.html" style="color:#ffa726">me contacter</a>, je serai ravi de vous aider !</p>
+        <p data-lang="en" style="margin:0">If you have any questions or concerns, feel free to <a href="/support.html"
+            style="color:#ffa726">contact me</a>, I'll be happy to help!</p>
+        <p data-lang="fr" style="margin:0">En cas de doute ou de question, n'hésitez pas à <a href="/support.html"
+            style="color:#ffa726">me contacter</a>, je serai ravi de vous aider !</p>
       </div>
     </div>
 
-    <div id="mobile-windows-notice" style="display:none;margin:10px 0 14px;padding:12px 14px;border:1px solid rgba(255,160,0,0.4);border-radius:8px;background:rgba(255,160,0,0.08);font-size:13px;color:#ffe0a0">
+    <div id="mobile-windows-notice"
+      style="display:none;margin:10px 0 14px;padding:12px 14px;border:1px solid rgba(255,160,0,0.4);border-radius:8px;background:rgba(255,160,0,0.08);font-size:13px;color:#ffe0a0">
       <span data-lang="en">To download the Windows installer, please open this page from a Windows PC.</span>
-      <span data-lang="fr">Pour télécharger l'installateur Windows, veuillez ouvrir cette page depuis un PC Windows.</span>
+      <span data-lang="fr">Pour télécharger l'installateur Windows, veuillez ouvrir cette page depuis un PC
+        Windows.</span>
     </div>
 
-    <p data-lang="en" style="margin-top:10px"><strong>Android</strong> — Purchase directly in the app via the Google Play Store.</p>
-    <p data-lang="fr" style="margin-top:10px"><strong>Android</strong> — L'achat se fait directement dans l'application via le Google Play Store.</p>
+    <p data-lang="en" style="margin-top:10px"><strong>Android</strong> — Purchase directly in the app via the Google
+      Play Store.</p>
+    <p data-lang="fr" style="margin-top:10px"><strong>Android</strong> — L'achat se fait directement dans l'application
+      via le Google Play Store.</p>
     <div class="download-grid" style="margin:10px 0 4px">
-      <a href="https://play.google.com/store/apps/details?id=com.m87dev.sparringpoker" class="download-btn" data-lang="en" target="_blank" rel="noopener">
+      <a href="https://play.google.com/store/apps/details?id=com.m87dev.sparringpoker" class="download-btn"
+        data-lang="en" target="_blank" rel="noopener">
         Download on Google Play
         <span class="version">(Android)</span>
       </a>
-      <a href="https://play.google.com/store/apps/details?id=com.m87dev.sparringpoker" class="download-btn" data-lang="fr" target="_blank" rel="noopener">
+      <a href="https://play.google.com/store/apps/details?id=com.m87dev.sparringpoker" class="download-btn"
+        data-lang="fr" target="_blank" rel="noopener">
         Télécharger sur Google Play
         <span class="version">(Android)</span>
       </a>
     </div>
 
-    <p data-lang="en" style="margin-top:10px;font-size:13px;color:#b0b0b0">Licences are personal. Purchases are platform-specific — see the FAQ below.</p>
-    <p data-lang="fr" style="margin-top:10px;font-size:13px;color:#b0b0b0">Les licences sont personnelles. Les achats sont spécifiques à chaque plateforme — voir la FAQ ci-dessous.</p>
+    <p data-lang="en" style="margin-top:10px;font-size:13px;color:#b0b0b0">Licences are personal. Purchases are
+      platform-specific — see the FAQ below.</p>
+    <p data-lang="fr" style="margin-top:10px;font-size:13px;color:#b0b0b0">Les licences sont personnelles. Les achats
+      sont spécifiques à chaque plateforme — voir la FAQ ci-dessous.</p>
   </div>
 
   <div class="box">
     <h2 style="margin-top:0" data-lang="en">FAQ</h2>
     <h2 style="margin-top:0" data-lang="fr">FAQ</h2>
 
-    <p data-lang="en"><strong>I bought on Google Play — can I use it on Windows ?</strong><br>Not automatically, but <a href="/support.html">contact us</a></p>
-    <p data-lang="fr"><strong>J'ai acheté sur Google Play, puis-je l'utiliser sur Windows ?</strong><br>Pas automatiquement, mais <a href="/support.html">contactez-nous</a></p>
+    <p data-lang="en"><strong>I bought on Google Play — can I use it on Windows ?</strong><br>Not automatically, but <a
+        href="/support.html">contact us</a></p>
+    <p data-lang="fr"><strong>J'ai acheté sur Google Play, puis-je l'utiliser sur Windows ?</strong><br>Pas
+      automatiquement, mais <a href="/support.html">contactez-nous</a></p>
 
-    <p data-lang="en" style="margin-top:12px"><strong>I bought the Windows licence in the app — can I use it on Android?</strong><br>The Android purchase must go through Google Play, but we can offer a solution.</p>
-    <p data-lang="fr" style="margin-top:12px"><strong>J'ai acheté la licence Windows dans l'application, puis-je l'utiliser sur Android ?</strong><br>L'achat Android doit passer par Google Play, mais nous pouvons vous proposer une solution.</p>
+    <p data-lang="en" style="margin-top:12px"><strong>I bought the Windows licence in the app — can I use it on
+        Android?</strong><br>The Android purchase must go through Google Play, but we can offer a solution.</p>
+    <p data-lang="fr" style="margin-top:12px"><strong>J'ai acheté la licence Windows dans l'application, puis-je
+        l'utiliser sur Android ?</strong><br>L'achat Android doit passer par Google Play, mais nous pouvons vous
+      proposer une solution.</p>
 
-    <p data-lang="en" style="margin-top:12px"><strong>Will I lose my stats if I reinstall the app?</strong><br>Yes — statistics are stored locally on your device. Use the <strong>Export stats</strong> button in the player stats screen before uninstalling, then <strong>Import stats</strong> after reinstalling to restore everything.</p>
-    <p data-lang="fr" style="margin-top:12px"><strong>Vais-je perdre mes statistiques si je réinstalle l'application ?</strong><br>Oui — les statistiques sont stockées localement sur votre appareil. Utilisez le bouton <strong>Exporter les stats</strong> dans l'écran de statistiques avant de désinstaller, puis <strong>Importer les stats</strong> après la réinstallation pour tout récupérer.</p>
+    <p data-lang="en" style="margin-top:12px"><strong>Will I lose my stats if I reinstall the app?</strong><br>Yes —
+      statistics are stored locally on your device. Use the <strong>Export stats</strong> button in the player stats
+      screen before uninstalling, then <strong>Import stats</strong> after reinstalling to restore everything.</p>
+    <p data-lang="fr" style="margin-top:12px"><strong>Vais-je perdre mes statistiques si je réinstalle l'application
+        ?</strong><br>Oui — les statistiques sont stockées localement sur votre appareil. Utilisez le bouton
+      <strong>Exporter les stats</strong> dans l'écran de statistiques avant de désinstaller, puis <strong>Importer les
+        stats</strong> après la réinstallation pour tout récupérer.</p>
 
-    <p data-lang="en" style="margin-top:12px"><strong>Does the Windows licence work offline?</strong><br>Yes, the app works entirely offline.</p>
-    <p data-lang="fr" style="margin-top:12px"><strong>La licence Windows fonctionne-t-elle hors ligne ?</strong><br>Oui, l'application fonctionne entièrement hors ligne.</p>
+    <p data-lang="en" style="margin-top:12px"><strong>Does the Windows licence work offline?</strong><br>Yes, the app
+      works entirely offline.</p>
+    <p data-lang="fr" style="margin-top:12px"><strong>La licence Windows fonctionne-t-elle hors ligne ?</strong><br>Oui,
+      l'application fonctionne entièrement hors ligne.</p>
 
-    <p data-lang="en" style="margin-top:12px"><strong>Can I use my Windows licence on multiple computers?</strong><br>Yes, for personal use.</p>
-    <p data-lang="fr" style="margin-top:12px"><strong>Puis-je utiliser ma licence Windows sur plusieurs ordinateurs ?</strong><br>Oui, dans un cadre personnel.</p>
+    <p data-lang="en" style="margin-top:12px"><strong>Can I use my Windows licence on multiple
+        computers?</strong><br>Yes, for personal use.</p>
+    <p data-lang="fr" style="margin-top:12px"><strong>Puis-je utiliser ma licence Windows sur plusieurs ordinateurs
+        ?</strong><br>Oui, dans un cadre personnel.</p>
 
-    <p data-lang="en" style="margin-top:12px"><strong>How do I report an obvious gameplay bug?</strong><br>Open the <strong>Hand Replay</strong> screen, find the hand that shows the bug, then use the <strong>Export hand</strong> button to copy it as text. Paste it into an email and send it to us via <a href="/support.html">support</a> — we'll review it.</p>
-    <p data-lang="fr" style="margin-top:12px"><strong>Comment signaler un bug évident dans le gameplay ?</strong><br>Ouvrez l'écran <strong>Replay de main</strong>, trouvez la main concernée, puis utilisez le bouton <strong>Exporter la main</strong> pour la copier en texte. Collez-la dans un e-mail et envoyez-la nous via le <a href="/support.html">support</a> — nous l'examinerons.</p>
+    <p data-lang="en" style="margin-top:12px"><strong>How do I report an obvious gameplay bug?</strong><br>Open the
+      <strong>Hand Replay</strong> screen, find the hand that shows the bug, then use the <strong>Export hand</strong>
+      button to copy it as text. Paste it into an email and send it to us via <a href="/support.html">support</a> —
+      we'll review it.</p>
+    <p data-lang="fr" style="margin-top:12px"><strong>Comment signaler un bug évident dans le gameplay
+        ?</strong><br>Ouvrez l'écran <strong>Replay de main</strong>, trouvez la main concernée, puis utilisez le bouton
+      <strong>Exporter la main</strong> pour la copier en texte. Collez-la dans un e-mail et envoyez-la nous via le <a
+        href="/support.html">support</a> — nous l'examinerons.</p>
   </div>
 
   <div class="box">
@@ -423,18 +642,18 @@
   <footer class="muted" style="margin-top:12px;font-size:14px">
     © <span id="y"></span> M87 DEV
   </footer>
-  
+
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-    
+
     function setLang(lang) {
       localStorage.setItem('lang', lang);
       document.documentElement.lang = lang;
-      
+
       // Update flag states
       document.querySelectorAll('.lang-flag').forEach(flag => flag.classList.remove('active'));
       event.target.classList.add('active');
-      
+
       // Show/hide content
       document.querySelectorAll('[data-lang]').forEach(el => {
         el.classList.remove('active');
@@ -443,20 +662,20 @@
         }
       });
     }
-    
+
     // Initialize language on page load
     const savedLang = localStorage.getItem('lang') || 'en';
-    
+
     // First, remove all active classes from elements with data-lang
     document.querySelectorAll('[data-lang]').forEach(el => {
       el.classList.remove('active');
     });
-    
+
     // Then add active class only to elements matching the saved language
     document.querySelectorAll('[data-lang="' + savedLang + '"]').forEach(el => {
       el.classList.add('active');
     });
-    
+
     // Update flag states
     document.querySelectorAll('.lang-flag').forEach(flag => {
       if (flag.getAttribute('data-lang-flag') === savedLang) {
@@ -465,14 +684,14 @@
         flag.classList.remove('active');
       }
     });
-    
+
     document.documentElement.lang = savedLang;
 
     // Download counter (shown only above threshold)
     fetch('https://api.github.com/repos/Marcennaji/SparringPoker-downloads/releases/latest')
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        var asset = (data.assets || []).find(function(a){ return a.name && a.name.endsWith('.exe'); });
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var asset = (data.assets || []).find(function (a) { return a.name && a.name.endsWith('.exe'); });
         if (asset && asset.download_count >= 100) {
           var el = document.getElementById('dl-count-display');
           if (el) {
@@ -481,7 +700,7 @@
           }
         }
       })
-      .catch(function(){});
+      .catch(function () { });
 
     // Platform detection: hide Windows installer on mobile, show notice instead
     const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
@@ -493,4 +712,5 @@
     }
   </script>
 </body>
+
 </html>

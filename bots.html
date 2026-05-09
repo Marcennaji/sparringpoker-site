@@ -234,20 +234,26 @@
       play poker.</h2>
     <h2 data-lang="fr" style="font-size:20px;margin-bottom:10px">Entraînez-vous contre des adversaires qui jouent
       vraiment au poker.</h2>
-    <p data-lang="en" class="active">Each bot gamestyle is <strong>calibrated over hundreds of thousands of simulated
-        hands and measured against standard poker metrics</strong> to stay consistent with its strategic archetype.
-      Decisions are driven by hand strength, position, pot odds, opponent tendencies, and betting history — not by
-      random selection.</p>
-    <p data-lang="fr">Chaque style de jeu est <strong>calibré sur des centaines de milliers de mains simulées et mesuré
-        selon des métriques poker standard</strong> pour rester cohérent avec son archétype stratégique. Les décisions
-      sont déterminées par la force de la main, la position, les cotes du pot, les tendances de l'adversaire et
-      l'historique des mises — pas par une sélection aléatoire.</p>
-    <p data-lang="en" class="active" style="margin-top:10px"><strong>Why this matters:</strong> You can't improve by
-      playing against opponents who don't care about losing. SparringPoker bots play to win — so every hand you play is
-      meaningful practice.</p>
-    <p data-lang="fr" style="margin-top:10px"><strong>Pourquoi c'est important :</strong> Vous ne pouvez pas progresser
-      en jouant contre des adversaires qui ne se soucient pas de perdre. Les bots SparringPoker jouent pour gagner —
-      chaque main est donc une pratique significative.</p>
+    <p data-lang="en" class="active">Each bot gamestyle is <strong>calibrated over 500,000+ simulated hands
+        (across Full Ring, Short Handed and Heads-Up) and measured against standard poker metrics</strong> to stay
+      consistent with its strategic archetype. Decisions use range vs range equity, position-aware preflop ranges per
+      format, pot odds, and street-by-street opponent tendencies.</p>
+    <p data-lang="fr">Chaque style de jeu est <strong>calibré sur plus de 500 000 mains simulées (Full Ring, Short
+        Handed et Heads-Up cumulés) et mesuré selon des métriques poker standard</strong> pour rester cohérent avec son
+      archétype stratégique. Les décisions s'appuient sur l'équité range vs range, des ranges préflop par position
+      spécifiques au format, les cotes du pot et les tendances adverses street par street.</p>
+    <p data-lang="en" class="active" style="margin-top:10px"><strong>Archetypes, not GTO:</strong> the four gamestyles
+      are deliberately distinct <em>characters</em>. Tight and Loose are designed to be roughly break-even against each
+      other; Ultra-Tight aims to be a small structural winner; Maniac is allowed to be a structural <em>loser</em>
+      (this is the whole point of the Maniac archetype — it's how a real maniac actually performs at the table).
+      Practising against the full set teaches you to beat what you'll actually face.</p>
+    <p data-lang="fr" style="margin-top:10px"><strong>Des archétypes, pas du GTO :</strong> les quatre styles sont des
+      <em>personnages</em> volontairement distincts. Tight et Loose sont conçus pour être approximativement à
+      l'équilibre l'un contre l'autre ; Ultra-Tight vise à être un petit gagnant structurel ; Maniac est autorisé à
+      être un <em>perdant</em> structurel (c'est tout l'intérêt de l'archétype Maniac — c'est ainsi qu'un vrai maniac
+      performe réellement à la table). S'entraîner contre l'ensemble vous apprend à battre ce que vous rencontrerez
+      réellement.
+    </p>
   </div>
 
   <!-- 2. Gamestyles -->
@@ -315,6 +321,54 @@
     <p data-lang="fr" style="margin-top:8px;font-size:13px" class="muted">Chaque style de jeu a un profil de sélectivité
       distinct et validé sur les trois formats de table (Full Ring, Short Handed, Heads-Up). Les 4 styles sont
       disponibles en Premium ; Tight est inclus dans la version gratuite.</p>
+
+    <h3 data-lang="en" class="active" style="margin-top:18px">Measured VPIP per gamestyle and format</h3>
+    <h3 data-lang="fr" style="margin-top:18px">VPIP mesuré par style de jeu et par format</h3>
+    <p data-lang="en" class="active" style="font-size:13px">VPIP (Voluntarily Put $ In Pot) is the share of hands a
+      player chooses to play preflop. Measured from the latest full-power seeding (May 2026):</p>
+    <p data-lang="fr" style="font-size:13px">VPIP (Voluntarily Put $ In Pot) est la part de mains qu'un joueur décide
+      de jouer préflop. Mesuré sur le dernier seeding pleine puissance (mai 2026) :</p>
+    <table>
+      <thead>
+        <tr>
+          <th><span data-lang="en" class="active">Format</span><span data-lang="fr">Format</span></th>
+          <th>Ultra-Tight</th>
+          <th>Tight</th>
+          <th>Loose</th>
+          <th>Maniac</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Full Ring</strong> (9-max)</td>
+          <td>8.4 %</td>
+          <td>15.9 %</td>
+          <td>24.0 %</td>
+          <td>29.2 %</td>
+        </tr>
+        <tr>
+          <td><strong>Short Handed</strong> (6-max)</td>
+          <td>17.2 %</td>
+          <td>23.3 %</td>
+          <td>28.5 %</td>
+          <td>35.5 %</td>
+        </tr>
+        <tr>
+          <td><strong>Heads-Up</strong></td>
+          <td>49.6 %</td>
+          <td>52.6 %</td>
+          <td>59.0 %</td>
+          <td>74.6 %</td>
+        </tr>
+      </tbody>
+    </table>
+    <p data-lang="en" class="active" style="font-size:13px" class="muted">Strict tightness ordering (Ultra-Tight &lt;
+      Tight &lt; Loose &lt; Maniac) holds in every format. Absolute VPIP rises sharply in Heads-Up because both players
+      must defend their blind every hand — even the tightest gamestyle is forced into a wide range there.</p>
+    <p data-lang="fr" style="font-size:13px" class="muted">L'ordre strict de sélectivité (Ultra-Tight &lt; Tight &lt;
+      Loose &lt; Maniac) est respecté sur chaque format. Le VPIP absolu monte fortement en Heads-Up parce que les deux
+      joueurs doivent défendre leur blinde à chaque main — même le style le plus serré y est contraint à une range
+      large.</p>
   </div>
 
   <!-- 3. How bots are tuned and validated -->
@@ -472,13 +526,17 @@
     <h3 data-lang="en" class="active" style="margin-top:14px">How bots adapt to your playing style</h3>
     <h3 data-lang="fr" style="margin-top:14px">Comment les bots s'adaptent à votre style</h3>
     <ul>
-      <li data-lang="en" class="active"><strong>Bots read your tendencies:</strong> As you accumulate hands, bots track
-        your action frequencies (VPIP, aggression, fold-to-3-bet, overbet tendency, etc.) and feed those directly into
-        their decision thresholds. The more hands you play, the more accurately those thresholds reflect your actual
-        patterns.</li>
-      <li data-lang="fr"><strong>Les bots lisent vos tendances :</strong> Au fil des mains, les bots suivent vos
-        fréquences d'action (VPIP, agressivité, fold-to-3-bet, tendance aux overbets, etc.) et les intègrent directement
-        dans leurs seuils de décision. Plus vous jouez, plus ces seuils reflètent fidèlement vos patterns réels.</li>
+      <li data-lang="en" class="active"><strong>Bots read your tendencies:</strong> as you accumulate hands, bots
+        track your VPIP, PFR, aggression by street, fold-to-3-bet, blind defence and bet-sizing patterns. Once enough
+        data has accumulated for a given format (typically a few hundred hands), these stats start influencing how
+        bots size their bluffs, defend their blinds, and pick their 3-bet calling ranges against you specifically.
+        Below that sample size bots fall back to their base archetype — the adaptation is honest, not magical.</li>
+      <li data-lang="fr"><strong>Les bots lisent vos tendances :</strong> au fil des mains, les bots suivent vos VPIP,
+        PFR, agressivité par street, fold-to-3-bet, défense des blindes et patterns de mise. Une fois assez de données
+        accumulées pour un format donné (typiquement quelques centaines de mains), ces stats commencent à influencer
+        la façon dont les bots dimensionnent leurs bluffs, défendent leurs blindes et choisissent leurs ranges de call
+        de 3-bet contre vous spécifiquement. En dessous de ce seuil, les bots reviennent à leur archétype de base —
+        l'adaptation est honnête, pas magique.</li>
 
       <li data-lang="en" class="active"><strong>Your stats persist locally:</strong> All data is stored on your device.
         Reinstalling the app will reset your statistical history.</li>
