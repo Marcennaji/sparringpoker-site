@@ -659,6 +659,24 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    var _versionData = null;
+
+    function renderVersionBadge(lang) {
+      var badge = document.getElementById('version-badge');
+      if (!badge || !_versionData || !_versionData.latest_version) return;
+      var dateStr = '';
+      if (_versionData.release_date) {
+        var d = new Date(_versionData.release_date + 'T12:00:00');
+        dateStr = d.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      }
+      var whatsNew = lang === 'fr' ? 'Nouveautés →' : "What’s new? →";
+      badge.innerHTML =
+        '<span style="font-weight:600;display:block">v' + _versionData.latest_version + '</span>' +
+        (dateStr ? '<span style="font-size:11px;color:#b0d8f0;display:block">' + dateStr + '</span>' : '') +
+        '<span style="font-size:11px;opacity:0.85;display:block">' + whatsNew + '</span>';
+      badge.style.display = 'inline-block';
+    }
+
     function setLang(lang) {
       localStorage.setItem('lang', lang);
       document.documentElement.lang = lang;
@@ -674,6 +692,8 @@
           el.classList.add('active');
         }
       });
+
+      renderVersionBadge(lang);
     }
 
     // Initialize language on page load
@@ -704,21 +724,8 @@
     fetch('assets/version.json')
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        var badge = document.getElementById('version-badge');
-        if (badge && data.latest_version) {
-          var lang = localStorage.getItem('lang') || 'en';
-          var dateStr = '';
-          if (data.release_date) {
-            var d = new Date(data.release_date + 'T12:00:00');
-            dateStr = d.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-          }
-          var whatsNew = lang === 'fr' ? 'Nouveautés →' : "What\u2019s new? \u2192";
-          badge.innerHTML =
-            '<span style="font-weight:600">v' + data.latest_version + '</span>' +
-            (dateStr ? ' <span style="font-size:11px;opacity:0.65">' + dateStr + '</span>' : '') +
-            '<br><span style="font-size:11px;opacity:0.75">' + whatsNew + '</span>';
-          badge.style.display = 'inline-block';
-        }
+        _versionData = data;
+        renderVersionBadge(localStorage.getItem('lang') || 'en');
       })
       .catch(function () { });
 
