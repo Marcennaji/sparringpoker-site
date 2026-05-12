@@ -7,6 +7,12 @@
   <title>SparringPoker — Changelog</title>
   <meta name="description" content="SparringPoker release history and changelog." />
   <style>
+    [data-lang] { display: none !important }
+    [data-lang].active { display: block !important }
+    span[data-lang].active { display: inline !important }
+    li[data-lang].active { display: list-item !important }
+  </style>
+  <style>
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       max-width: 900px;
@@ -126,9 +132,11 @@
         SparringPoker
         <span class="card-symbol">♥</span>
       </h1>
-      <div class="muted">Changelog</div>
+      <div class="muted" data-lang="en">Changelog</div>
+      <div class="muted" data-lang="fr">Historique des versions</div>
     </div>
-    <a href="/" class="btn">← Back to home</a>
+    <a href="/" class="btn" data-lang="en">← Back to home</a>
+    <a href="/" class="btn" data-lang="fr">← Retour à l'accueil</a>
   </header>
 
   <div class="release">
@@ -137,11 +145,16 @@
       <span class="release-date">2026-05-09</span>
     </div>
     <ul>
-      <li>Bot calibration cycle complete. All four gamestyles (Ultra-Tight, Tight, Loose, Maniac) are now clean against the in-game leak detector on every table format.</li>
-      <li>Fixed bots over-folding to 3-bets and Maniac over-c-betting the flop.</li>
-      <li>Heads-Up big-blind defence improved.</li>
-      <li>Validated across three full-power seedings (~500,000 hands per gamestyle).</li>
-      <li>Stability fix in the range estimator.</li>
+      <li data-lang="en">Bot calibration cycle complete. All four gamestyles (Ultra-Tight, Tight, Loose, Maniac) are now clean against the in-game leak detector on every table format.</li>
+      <li data-lang="fr">Cycle de calibration des bots terminé. Les quatre styles de jeu (Ultra-Tight, Tight, Loose, Maniac) sont désormais sans fuite détectée sur tous les formats de table.</li>
+      <li data-lang="en">Fixed bots over-folding to 3-bets and Maniac over-c-betting the flop.</li>
+      <li data-lang="fr">Correction du fold excessif face aux 3-bets et du c-bet excessif du Maniac au flop.</li>
+      <li data-lang="en">Heads-Up big-blind defence improved.</li>
+      <li data-lang="fr">Amélioration de la défense de la grosse blind en Heads-Up.</li>
+      <li data-lang="en">Validated across three full-power seedings (~500,000 hands per gamestyle).</li>
+      <li data-lang="fr">Validé sur trois simulations complètes (~500 000 mains par style de jeu).</li>
+      <li data-lang="en">Stability fix in the range estimator.</li>
+      <li data-lang="fr">Correction de stabilité dans l'estimateur de ranges.</li>
     </ul>
   </div>
 
@@ -151,9 +164,12 @@
       <span class="release-date">2026-04-29</span>
     </div>
     <ul>
-      <li>Major bot rebalancing across all table formats. Bot vs bot statistics regenerated from millions of simulated hands.</li>
-      <li>Fixed two long-standing exploitable leaks: the Loose bot was bleeding chips on Short Handed tables, and the Maniac bot was bleeding on both Full Ring and Short Handed.</li>
-      <li>All four gamestyles now play their archetype competitively without a structural exploit on any table format.</li>
+      <li data-lang="en">Major bot rebalancing across all table formats. Bot vs bot statistics regenerated from millions of simulated hands.</li>
+      <li data-lang="fr">Rééquilibrage majeur des bots sur tous les formats de table. Statistiques bot vs bot régénérées à partir de millions de mains simulées.</li>
+      <li data-lang="en">Fixed two long-standing exploitable leaks: the Loose bot was bleeding chips on Short Handed tables, and the Maniac bot was bleeding on both Full Ring and Short Handed.</li>
+      <li data-lang="fr">Correction de deux fuites exploitables : le bot Loose perdait des jetons en Short Handed, et le Maniac en Full Ring et Short Handed.</li>
+      <li data-lang="en">All four gamestyles now play their archetype competitively without a structural exploit on any table format.</li>
+      <li data-lang="fr">Les quatre styles jouent désormais leur archétype de façon compétitive, sans exploit structurel sur aucun format de table.</li>
     </ul>
   </div>
 
@@ -163,8 +179,10 @@
       <span class="release-date">2026-04-27</span>
     </div>
     <ul>
-      <li>Smarter bot decisions when stacks get short (going all-in if the raise amount would pot-commit the player).</li>
-      <li>Improved defense ranges versus oversized opening raises.</li>
+      <li data-lang="en">Smarter bot decisions when stacks get short (going all-in if the raise amount would pot-commit the player).</li>
+      <li data-lang="fr">Décisions de bot améliorées en situation de stack court (tapis automatique si la relance engagerait le joueur).</li>
+      <li data-lang="en">Improved defense ranges versus oversized opening raises.</li>
+      <li data-lang="fr">Amélioration des ranges de défense face aux ouvertures surdimensionnées.</li>
     </ul>
   </div>
 
@@ -174,8 +192,10 @@
       <span class="release-date">2026-04-25</span>
     </div>
     <ul>
-      <li>Added rolling window (25 hands) for replay.</li>
-      <li>Gameplay fixes.</li>
+      <li data-lang="en">Added rolling window (25 hands) for replay.</li>
+      <li data-lang="fr">Ajout d'une fenêtre glissante (25 mains) pour le replay.</li>
+      <li data-lang="en">Gameplay fixes.</li>
+      <li data-lang="fr">Corrections de gameplay.</li>
     </ul>
   </div>
 
@@ -185,9 +205,20 @@
       <span class="release-date">2026-04-10</span>
     </div>
     <ul>
-      <li>First published release.</li>
+      <li data-lang="en">First published release.</li>
+      <li data-lang="fr">Première version publiée.</li>
     </ul>
   </div>
+
+  <script>
+    const lang = localStorage.getItem('lang') || 'en';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang]').forEach(function (el) {
+      if (el.getAttribute('data-lang') === lang) {
+        el.classList.add('active');
+      }
+    });
+  </script>
 
 </body>
 
