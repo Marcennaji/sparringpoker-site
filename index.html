@@ -375,6 +375,7 @@
       <div class="muted" data-lang="fr">Outil d'entraînement au poker hors-ligne (Texas Hold'em) — Desktop & Android
       </div>
     </div>
+    <a id="version-badge" href="/changelog" style="display:none;padding:4px 10px;border:1px solid rgba(129,212,250,0.4);border-radius:6px;background:rgba(129,212,250,0.08);color:#81d4fa;font-size:13px;text-decoration:none;white-space:nowrap" onmouseover="this.style.background='rgba(129,212,250,0.18)'" onmouseout="this.style.background='rgba(129,212,250,0.08)'"></a>
   </header>
 
 
@@ -698,6 +699,18 @@
     });
 
     document.documentElement.lang = savedLang;
+
+    // Version badge
+    fetch('assets/version.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var badge = document.getElementById('version-badge');
+        if (badge && data.latest_version) {
+          badge.textContent = 'v' + data.latest_version;
+          badge.style.display = 'inline-block';
+        }
+      })
+      .catch(function () { });
 
     // Download counter (shown only above threshold)
     fetch('https://api.github.com/repos/Marcennaji/SparringPoker-downloads/releases/latest')
