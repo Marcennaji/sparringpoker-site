@@ -7,10 +7,21 @@
   <title>SparringPoker — Changelog</title>
   <meta name="description" content="SparringPoker release history and changelog." />
   <style>
-    [data-lang] { display: none !important }
-    [data-lang].active { display: block !important }
-    span[data-lang].active { display: inline !important }
-    li[data-lang].active { display: list-item !important }
+    [data-lang] {
+      display: none !important
+    }
+
+    [data-lang].active {
+      display: block !important
+    }
+
+    span[data-lang].active {
+      display: inline !important
+    }
+
+    li[data-lang].active {
+      display: list-item !important
+    }
   </style>
   <style>
     body {
@@ -35,7 +46,7 @@
 
     h1 {
       color: #fff;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       margin: 0;
     }
 
@@ -63,24 +74,24 @@
       border-radius: 10px;
       text-decoration: none;
       color: #f5f5f5;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
 
     .btn:hover {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
     }
 
     .release {
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 10px;
       padding: 14px 18px;
       margin: 14px 0;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
     .release-header {
@@ -141,12 +152,36 @@
 
   <div class="release">
     <div class="release-header">
+      <span class="release-version">v1.3.1</span>
+      <span class="release-date">2026-05-14</span>
+    </div>
+    <ul>
+      <li data-lang="en">Further bot calibration refinements, validated across a full-power seeding (~500,000 hands per
+        gamestyle). All gamestyles remain clean against the in-game leak detector on every table format.</li>
+      <li data-lang="fr">Affinements supplémentaires de la calibration des bots, validés sur une simulation complète
+        (~500 000 mains par style de jeu). </li>
+      <li data-lang="en">Fixed a turn check-raise exploit on Full Ring: the Loose bot was building large pots with
+        medium-strength hands on draw-heavy boards and losing them at showdown.</li>
+      <li data-lang="fr">Correction d'un mauvais gameplay sur le check-raise au turn en Full Ring : le bot Loose
+        construisait de
+        gros pots avec des mains moyennes sur des boards tendus, pour les perdre ensuite au showdown.</li>
+      <li data-lang="en">Fixed a preflop scenario: UTG now correctly folds A8s to a 3-bet when a cold-caller is present
+        on Short Handed tables.</li>
+      <li data-lang="fr">Correction d'un scénario préflop : UTG fold désormais correctement A8s face à un 3-bet avec un
+        cold-caller en Short Handed.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <div class="release-header">
       <span class="release-version">v1.3.0</span>
       <span class="release-date">2026-05-09</span>
     </div>
     <ul>
-      <li data-lang="en">Bot calibration cycle complete. All four gamestyles (Ultra-Tight, Tight, Loose, Maniac) are now clean against the in-game leak detector on every table format.</li>
-      <li data-lang="fr">Cycle de calibration des bots terminé. Les quatre styles de jeu (Ultra-Tight, Tight, Loose, Maniac) ont désormais des statistiques cohérentes et attendues, sur tous les formats de table.</li>
+      <li data-lang="en">Bot calibration cycle complete. All four gamestyles (Ultra-Tight, Tight, Loose, Maniac) are now
+        clean against the in-game leak detector on every table format.</li>
+      <li data-lang="fr">Cycle de calibration des bots terminé. Les quatre styles de jeu (Ultra-Tight, Tight, Loose,
+        Maniac) ont désormais des statistiques cohérentes et attendues, sur tous les formats de table.</li>
       <li data-lang="en">Fixed bots over-folding to 3-bets and Maniac over-c-betting the flop.</li>
       <li data-lang="fr">Correction du fold excessif face aux 3-bets et du c-bet excessif du Maniac au flop.</li>
       <li data-lang="en">Heads-Up big-blind defence improved.</li>
@@ -164,12 +199,18 @@
       <span class="release-date">2026-04-29</span>
     </div>
     <ul>
-      <li data-lang="en">Major bot rebalancing across all table formats. Bot vs bot statistics regenerated from millions of simulated hands.</li>
-      <li data-lang="fr">Rééquilibrage majeur des bots sur tous les formats de table. Statistiques bot vs bot régénérées à partir de millions de mains simulées.</li>
-      <li data-lang="en">Fixed two long-standing exploitable leaks: the Loose bot was bleeding chips on Short Handed tables, and the Maniac bot was bleeding on both Full Ring and Short Handed.</li>
-      <li data-lang="fr">Correction de deux fuites exploitables : le bot Loose perdait des jetons en Short Handed, et le Maniac en Full Ring et Short Handed.</li>
-      <li data-lang="en">All four gamestyles now play their archetype competitively without a structural exploit on any table format.</li>
-      <li data-lang="fr">Les quatre styles jouent désormais leur archétype de façon réaliste, sans faille structurelle, sur aucun format de table.</li>
+      <li data-lang="en">Major bot rebalancing across all table formats. Bot vs bot statistics regenerated from millions
+        of simulated hands.</li>
+      <li data-lang="fr">Rééquilibrage majeur des bots sur tous les formats de table. Statistiques bot vs bot régénérées
+        à partir de millions de mains simulées.</li>
+      <li data-lang="en">Fixed two long-standing exploitable leaks: the Loose bot was bleeding chips on Short Handed
+        tables, and the Maniac bot was bleeding on both Full Ring and Short Handed.</li>
+      <li data-lang="fr">Correction de deux fuites exploitables : le bot Loose perdait des jetons en Short Handed, et le
+        Maniac en Full Ring et Short Handed.</li>
+      <li data-lang="en">All four gamestyles now play their archetype competitively without a structural exploit on any
+        table format.</li>
+      <li data-lang="fr">Les quatre styles jouent désormais leur archétype de façon réaliste, sans faille structurelle,
+        sur aucun format de table.</li>
     </ul>
   </div>
 
@@ -179,8 +220,10 @@
       <span class="release-date">2026-04-27</span>
     </div>
     <ul>
-      <li data-lang="en">Smarter bot decisions when stacks get short (going all-in if the raise amount would pot-commit the player).</li>
-      <li data-lang="fr">Décisions de bot améliorées en situation de stack court (tapis automatique si la relance engage le stack du joueur).</li>
+      <li data-lang="en">Smarter bot decisions when stacks get short (going all-in if the raise amount would pot-commit
+        the player).</li>
+      <li data-lang="fr">Décisions de bot améliorées en situation de stack court (tapis automatique si la relance engage
+        le stack du joueur).</li>
       <li data-lang="en">Improved defense ranges versus oversized opening raises.</li>
       <li data-lang="fr">Amélioration des ranges de défense face aux ouvertures surdimensionnées.</li>
     </ul>
