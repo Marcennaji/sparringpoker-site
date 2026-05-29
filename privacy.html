@@ -1,47 +1,91 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy — SparringPoker</title>
   <style>
-    body{
-      font-family:system-ui;
-      max-width:900px;
-      margin:40px auto;
-      padding:0 16px;
-      line-height:1.6;
-      background:linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      color:#f5f5f5;
-      min-height:100vh;
+    body {
+      font-family: system-ui;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      color: #f5f5f5;
+      min-height: 100vh;
     }
-    .lang-switch{display:flex;gap:12px;margin-bottom:20px;justify-content:flex-end;align-items:center}
-    .lang-flag{
-      width:32px;
-      height:32px;
-      cursor:pointer;
-      border-radius:4px;
-      transition:all 0.3s ease;
-      opacity:0.6;
-      border:2px solid transparent;
+
+    .lang-switch {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: flex-end;
+      align-items: center
     }
-    .lang-flag:hover{opacity:0.9;transform:scale(1.1)}
-    .lang-flag.active{opacity:1;border-color:rgba(129,212,250,0.6);box-shadow:0 0 8px rgba(129,212,250,0.4)}
-    h1{color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,0.3)}
-    h2{color:#fff}
-    a{color:#81d4fa;text-decoration:none}
-    a:hover{color:#4fc3f7;text-decoration:underline}
-    ul{
-      background:rgba(255,255,255,0.05);
-      padding:20px 20px 20px 40px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.15);
+
+    .lang-flag {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      opacity: 0.6;
+      border: 2px solid transparent;
     }
-    li{margin:8px 0}
-    [data-lang]{display:none}
-    [data-lang].active{display:block}
+
+    .lang-flag:hover {
+      opacity: 0.9;
+      transform: scale(1.1)
+    }
+
+    .lang-flag.active {
+      opacity: 1;
+      border-color: rgba(129, 212, 250, 0.6);
+      box-shadow: 0 0 8px rgba(129, 212, 250, 0.4)
+    }
+
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3)
+    }
+
+    h2 {
+      color: #fff
+    }
+
+    a {
+      color: #81d4fa;
+      text-decoration: none
+    }
+
+    a:hover {
+      color: #4fc3f7;
+      text-decoration: underline
+    }
+
+    ul {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px 20px 20px 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    li {
+      margin: 8px 0
+    }
+
+    [data-lang] {
+      display: none
+    }
+
+    [data-lang].active {
+      display: block
+    }
   </style>
 </head>
+
 <body>
   <div class="lang-switch">
     <img src="flag_en.png" alt="English" class="lang-flag active" onclick="setLang('en')" data-lang-flag="en">
@@ -51,27 +95,38 @@
   <h1 data-lang="en" class="active">Privacy Policy</h1>
   <h1 data-lang="fr">Politique de confidentialité</h1>
 
-  <p data-lang="en" class="active"><strong>SparringPoker</strong> is an offline application designed for poker training.</p>
-  <p data-lang="fr"><strong>SparringPoker</strong> est une application hors-ligne conçue pour l'entraînement au poker.</p>
+  <p data-lang="en" class="active"><strong>SparringPoker</strong> is an offline application designed for poker training.
+  </p>
+  <p data-lang="fr"><strong>SparringPoker</strong> est une application hors-ligne conçue pour l'entraînement au poker.
+  </p>
 
   <h2 data-lang="en" class="active">Data Collection</h2>
   <h2 data-lang="fr">Collecte de données</h2>
-  <p data-lang="en" class="active">SparringPoker does not collect, transmit, or store personal data from users. The application works entirely offline and does not send any information to external servers.</p>
-  <p data-lang="fr">SparringPoker ne collecte, ne transmet et ne stocke aucune donnée personnelle des utilisateurs. L'application fonctionne entièrement hors-ligne et n'envoie aucune information à des serveurs externes.</p>
+  <p data-lang="en" class="active">SparringPoker does not collect, transmit, or store personal data from users. The
+    application works entirely offline and does not send any information to external servers.</p>
+  <p data-lang="fr">SparringPoker ne collecte, ne transmet et ne stocke aucune donnée personnelle des utilisateurs.
+    L'application fonctionne entièrement hors-ligne et n'envoie aucune information à des serveurs externes.</p>
 
   <h2 data-lang="en" class="active">Local Data Storage</h2>
   <h2 data-lang="fr">Stockage local des données</h2>
-  <p data-lang="en" class="active">Game history, statistics, and settings are stored locally on the user's device only. This data never leaves the device and is not accessible to the developer.</p>
-  <p data-lang="fr">L'historique des parties, les statistiques et les paramètres sont stockés uniquement en local sur l'appareil de l'utilisateur. Ces données ne quittent jamais l'appareil et ne sont pas accessibles au développeur.</p>
+  <p data-lang="en" class="active">Game history, statistics, and settings are stored locally on the user's device only.
+    This data never leaves the device and is not accessible to the developer.</p>
+  <p data-lang="fr">L'historique des parties, les statistiques et les paramètres sont stockés uniquement en local sur
+    l'appareil de l'utilisateur. Ces données ne quittent jamais l'appareil et ne sont pas accessibles au développeur.
+  </p>
 
   <h2 data-lang="en" class="active">Third-Party Services</h2>
   <h2 data-lang="fr">Services tiers</h2>
-  <p data-lang="en" class="active">SparringPoker uses Google Play Billing to process optional in-app purchases (Premium Unlock). Google may collect payment-related information according to its own privacy policy.</p>
-  <p data-lang="fr">SparringPoker utilise Google Play Billing pour traiter les achats intégrés optionnels (Déverrouillage Premium). Google peut collecter des informations liées au paiement conformément à sa propre politique de confidentialité.</p>
+  <p data-lang="en" class="active">SparringPoker uses Google Play Billing to process optional in-app purchases (Premium
+    Unlock). Google may collect payment-related information according to its own privacy policy.</p>
+  <p data-lang="fr">SparringPoker utilise Google Play Billing pour traiter les achats intégrés optionnels
+    (Déverrouillage Premium). Google peut collecter des informations liées au paiement conformément à sa propre
+    politique de confidentialité.</p>
 
   <h2 data-lang="en" class="active">No Advertising</h2>
   <h2 data-lang="fr">Pas de publicité</h2>
-  <p data-lang="en" class="active">SparringPoker does not display advertisements and does not use advertising identifiers.</p>
+  <p data-lang="en" class="active">SparringPoker does not display advertisements and does not use advertising
+    identifiers.</p>
   <p data-lang="fr">SparringPoker n'affiche pas de publicités et n'utilise pas d'identifiants publicitaires.</p>
 
   <h2 data-lang="en" class="active">Data Sharing</h2>
@@ -79,10 +134,22 @@
   <p data-lang="en" class="active">No user data is sold, shared, or transmitted to third parties.</p>
   <p data-lang="fr">Aucune donnée utilisateur n'est vendue, partagée ou transmise à des tiers.</p>
 
+  <h2 data-lang="en" class="active">Desktop License Purchase</h2>
+  <h2 data-lang="fr">Achat de licence desktop</h2>
+  <p data-lang="en" class="active">When purchasing the desktop version, your email address is collected solely to
+    deliver your license key. It may also be used to notify you of significant updates to the product. It is never
+    shared with third parties, and you can request its deletion at any time by contacting us.</p>
+  <p data-lang="fr">Lors de l'achat de la version desktop, votre adresse e-mail est collectée uniquement pour vous
+    envoyer votre clé de licence. Elle peut également être utilisée pour vous informer des mises à jour importantes du
+    produit. Elle n'est jamais partagée avec des tiers, et vous pouvez demander sa suppression à tout moment en nous
+    contactant.</p>
+
   <h2 data-lang="en" class="active">Contact</h2>
   <h2 data-lang="fr">Contact</h2>
-  <p data-lang="en" class="active">If you have any questions regarding this privacy policy, please contact: <a href="#" data-user="m87-dev" data-domain="pm.me"></a></p>
-  <p data-lang="fr">Pour toute question concernant cette politique de confidentialité, veuillez contacter : <a href="#" data-user="m87-dev" data-domain="pm.me"></a></p>
+  <p data-lang="en" class="active">If you have any questions regarding this privacy policy, please contact: <a href="#"
+      data-user="m87-dev" data-domain="pm.me"></a></p>
+  <p data-lang="fr">Pour toute question concernant cette politique de confidentialité, veuillez contacter : <a href="#"
+      data-user="m87-dev" data-domain="pm.me"></a></p>
 
   <p data-lang="en" class="active"><a href="/">← Back</a></p>
   <p data-lang="fr"><a href="/">← Retour</a></p>
@@ -98,14 +165,14 @@
         link.textContent = email;
       });
     }
-    
+
     function setLang(lang) {
       localStorage.setItem('lang', lang);
       document.documentElement.lang = lang;
-      
+
       document.querySelectorAll('.lang-flag').forEach(flag => flag.classList.remove('active'));
       event.target.classList.add('active');
-      
+
       document.querySelectorAll('[data-lang]').forEach(el => {
         el.classList.remove('active');
         if (el.getAttribute('data-lang') === lang) {
@@ -113,23 +180,23 @@
         }
       });
     }
-    
+
     // Initialize email links
     setEmailLinks();
-    
+
     // Initialize language
     const savedLang = localStorage.getItem('lang') || 'en';
-    
+
     // First, remove all active classes from elements with data-lang
     document.querySelectorAll('[data-lang]').forEach(el => {
       el.classList.remove('active');
     });
-    
+
     // Then add active class only to elements matching the saved language
     document.querySelectorAll('[data-lang="' + savedLang + '"]').forEach(el => {
       el.classList.add('active');
     });
-    
+
     // Update flag states
     document.querySelectorAll('.lang-flag').forEach(flag => {
       if (flag.getAttribute('data-lang-flag') === savedLang) {
@@ -138,8 +205,9 @@
         flag.classList.remove('active');
       }
     });
-    
+
     document.documentElement.lang = savedLang;
   </script>
 </body>
+
 </html>
