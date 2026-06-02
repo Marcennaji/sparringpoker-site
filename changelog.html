@@ -152,6 +152,23 @@
 
   <div class="release">
     <div class="release-header">
+      <span class="release-version">v1.4.1</span>
+      <span class="release-date">2026-06-02</span>
+    </div>
+    <ul>
+      <li data-lang="en">Bug fix: the Loose bot no longer incorrectly folds premium hands (AKo, AQo) against a 3-bet. An
+        extra range-tightening pass on top of the correct MDF calculation was causing those hands to fall outside both
+        the call and 4-bet ranges and fold by default.</li>
+      <li data-lang="fr">Correction d'un bug préflop : le bot Loose ne se couchait plus à tort avec des mains premium
+        (AKo, AQo) face à une 3-bet. Un resserrement de range supplémentaire, appliqué après le calcul correct de la
+        MDF, faisait sortir ces mains des deux ranges (call et 4-bet) et les forçait à se coucher par défaut.</li>
+      <li data-lang="en">Misc UI improvements.</li>
+      <li data-lang="fr">Diverses améliorations de l'interface.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <div class="release-header">
       <span class="release-version">v1.4.0</span>
       <span class="release-date">2026-05-27</span>
     </div>
