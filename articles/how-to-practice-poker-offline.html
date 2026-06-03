@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Practice Poker Offline — SparringPoker</title>
+  <meta name="description"
+    content="Offline poker training lets you focus on improving your decision-making without risking real money. Learn what to practice and how to get better at Texas Hold'em." />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 760px;
+      margin: 20px auto;
+      padding: 0 16px;
+      line-height: 1.7;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      color: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 28px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin: 0 0 6px;
+      line-height: 1.25;
+    }
+
+    h2 {
+      color: #81d4fa;
+      font-size: 20px;
+      margin: 32px 0 8px;
+      border-bottom: 1px solid rgba(129, 212, 250, 0.2);
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      color: #e0e0e0;
+      font-size: 16px;
+      margin: 20px 0 4px;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 15px;
+      color: #e8e8e8;
+    }
+
+    strong {
+      color: #fff;
+    }
+
+    ul {
+      margin: 8px 0 0 20px;
+    }
+
+    li {
+      margin: 5px 0;
+      font-size: 15px;
+      color: #e8e8e8;
+    }
+
+    .muted {
+      color: #b0b0b0;
+    }
+
+    .box {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid #81d4fa;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #81d4fa;
+      background: rgba(129, 212, 250, 0.08);
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: rgba(129, 212, 250, 0.18);
+      transform: translateY(-1px);
+    }
+
+    a {
+      color: #81d4fa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #4fc3f7;
+      text-decoration: underline;
+    }
+
+    .card-symbol {
+      display: inline-block;
+      font-size: 1.0em;
+      margin: 0 2px;
+      opacity: 0.4;
+    }
+
+    .article-meta {
+      font-size: 13px;
+      color: #90a4ae;
+      margin-bottom: 24px;
+    }
+
+    .article-body {
+      margin-top: 20px;
+    }
+
+    .highlight-box {
+      border-left: 3px solid #81d4fa;
+      background: rgba(129, 212, 250, 0.06);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 16px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-size: 16px;
+      color: #e1f5fe;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    @media (max-width: 500px) {
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+
+    .stat-item strong {
+      display: block;
+      color: #81d4fa;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1a3350 100%);
+      border: 1px solid rgba(129, 212, 250, 0.3);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 32px 0 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-box h2 {
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      margin: 0 0 8px;
+      padding: 0;
+    }
+
+    .cta-box p {
+      font-size: 14px;
+      color: #b0cfe0;
+      margin: 0 0 14px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 2px solid #81d4fa;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(30, 136, 229, 0.6);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 13px;
+      color: #78909c;
+      text-align: center;
+      padding-bottom: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p style="margin-bottom:20px"><a href="/" class="btn">&larr; Back to SparringPoker</a></p>
+
+  <header>
+    <p class="muted" style="margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:0.5px">Poker Training</p>
+    <h1>
+      <span class="card-symbol">♠</span>
+      How to Practice Poker Offline
+      <span class="card-symbol">♥</span>
+    </h1>
+    <p class="article-meta">Without Risking Real Money</p>
+  </header>
+
+  <div class="article-body">
+
+    <p>If you want to improve at Texas Hold'em, the obvious solution seems simple: play more poker.</p>
+    <p>But there is a problem.</p>
+    <p>Playing online often means risking real money, facing distractions, dealing with advertisements, creating accounts on multiple platforms, or playing in environments designed primarily for entertainment rather than learning.</p>
+    <p>For many players, there is a better option: <strong>offline poker training.</strong></p>
+
+    <!-- Why practice offline -->
+    <h2>Why Practice Poker Offline?</h2>
+
+    <div class="highlight-box">
+      <p>Offline practice allows you to focus on one thing only: <strong>improving your decision-making.</strong></p>
+    </div>
+
+    <p>Without real money involved, you can:</p>
+    <ul>
+      <li>experiment with different strategies,</li>
+      <li>test new ideas,</li>
+      <li>learn from mistakes,</li>
+      <li>practice bankroll-independent decision-making,</li>
+      <li>and play without emotional pressure.</li>
+    </ul>
+    <p>This is particularly useful for beginners and intermediate players who want to build solid fundamentals before risking money at real tables.</p>
+
+    <!-- What to practice -->
+    <h2>What Should You Practice?</h2>
+
+    <p>Good poker players are not simply playing more hands. They are deliberately developing specific skills.</p>
+
+    <h3>Hand Selection</h3>
+    <p>Learning which starting hands are profitable in different positions — and folding the rest without hesitation.</p>
+
+    <h3>Positional Awareness</h3>
+    <p>Understanding why a hand may be profitable on the button but unprofitable under the gun. Position is one of the most underestimated edges in poker.</p>
+
+    <h3>Aggression Management</h3>
+    <p>Knowing when to bet, raise, call or fold. Passive play tends to lose over the long run.</p>
+
+    <h3>Opponent Profiling</h3>
+    <p>Recognizing the difference between tight players, loose players, aggressive players, and maniacs — and adjusting your strategy accordingly.</p>
+
+    <h3>Statistical Self-Analysis</h3>
+    <p>Tracking your own metrics reveals far more about your game than short-term wins and losses.</p>
+
+    <!-- Why statistics matter -->
+    <h2>Why Statistics Matter</h2>
+
+    <p>Many players rely on intuition. Strong players rely on data.</p>
+    <p>Tracking your own statistics helps answer questions such as:</p>
+
+    <div class="stat-grid">
+      <div class="stat-item">
+        <strong>VPIP</strong>
+        Am I playing too many hands?
+      </div>
+      <div class="stat-item">
+        <strong>PFR</strong>
+        Am I too passive preflop?
+      </div>
+      <div class="stat-item">
+        <strong>Aggression Factor</strong>
+        Do I fold too often to pressure?
+      </div>
+      <div class="stat-item">
+        <strong>Showdown Win Rate</strong>
+        Am I winning enough at showdown?
+      </div>
+    </div>
+
+    <p>Without statistics, these questions are difficult to answer objectively.</p>
+
+    <!-- Opponent types -->
+    <h2>Practicing Against Different Opponent Types</h2>
+
+    <p>One of the most important aspects of poker training is <strong>exposure to different playing styles.</strong></p>
+    <p>In real games, you will encounter extremely tight players, standard tight-aggressive players, loose-aggressive opponents, and occasional maniacs. Each type requires a different adjustment.</p>
+    <p>Practicing against a variety of opponent archetypes helps develop adaptation skills that transfer directly to real tables.</p>
+
+    <!-- The problem with training tools -->
+    <h2>The Problem with Most Training Solutions</h2>
+
+    <p>Many training tools require monthly subscriptions, permanent internet access, account creation, cloud synchronization, or complex solver-based workflows.</p>
+    <p>These tools can be useful for advanced study, but they are not always the best choice for players who simply want to practice and improve.</p>
+    <p>Sometimes, sitting down and playing hundreds of realistic hands against well-designed opponents is the most effective way to learn.</p>
+
+    <!-- SparringPoker -->
+    <h2>An Offline Alternative</h2>
+
+    <p>SparringPoker was built around a simple idea: <strong>provide a realistic Texas Hold'em training environment that works entirely offline.</strong></p>
+
+    <div class="box">
+      <p style="margin:0 0 8px;font-size:14px;color:#90a4ae;text-transform:uppercase;letter-spacing:0.5px;font-size:12px">What's included</p>
+      <ul>
+        <li>Calibrated AI opponents across 4 distinct playing styles</li>
+        <li>Detailed player statistics (VPIP, PFR, aggression by street, and more)</li>
+        <li>Hand replay — review every completed hand</li>
+        <li>No advertisements, no account creation, no internet required</li>
+        <li>Available on Windows and Android</li>
+      </ul>
+      <p style="margin-top:10px;font-size:14px">The goal is not gambling. The goal is <strong>practice.</strong></p>
+    </div>
+
+    <!-- Final thoughts -->
+    <h2>Final Thoughts</h2>
+
+    <p>Improving at poker does not require risking real money.</p>
+    <p>It requires repetition, analysis and deliberate practice. Whether you are a beginner learning the fundamentals or an experienced player refining your strategy, offline poker training can provide a safe environment to experiment, learn and improve.</p>
+    <p>The more focused your practice becomes, the faster your decisions improve when the chips are real.</p>
+
+    <div class="cta-box">
+      <h2>Ready to practice?</h2>
+      <p>Download SparringPoker — free, offline, no account needed.</p>
+      <a href="/" class="cta-button">Get SparringPoker →</a>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; <span id="y"></span> M87 DEV &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/support.html">Support</a>
+  </footer>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
