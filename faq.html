@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — SparringPoker</title>
+  <meta name="description"
+    content="Frequently asked questions about SparringPoker: licences, cross-platform use, statistics, offline play, and bug reports." />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 16px;
+      line-height: 1.5;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      color: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      color: #81d4fa;
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+
+    p {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    .muted {
+      color: #b0b0b0;
+    }
+
+    .box {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid #81d4fa;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #81d4fa;
+      background: rgba(129, 212, 250, 0.08);
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: rgba(129, 212, 250, 0.18);
+      transform: translateY(-1px);
+    }
+
+    a {
+      color: #81d4fa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #4fc3f7;
+      text-decoration: underline;
+    }
+
+    .card-symbol {
+      display: inline-block;
+      font-size: 1.1em;
+      margin: 0 2px;
+      opacity: 0.4;
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .lang-flag {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      opacity: 0.6;
+      border: 2px solid transparent;
+    }
+
+    .lang-flag:hover {
+      opacity: 0.9;
+      transform: scale(1.1);
+    }
+
+    .lang-flag.active {
+      opacity: 1;
+      border-color: rgba(129, 212, 250, 0.6);
+      box-shadow: 0 0 8px rgba(129, 212, 250, 0.4);
+    }
+
+    [data-lang] {
+      display: none;
+    }
+
+    [data-lang].active {
+      display: block;
+    }
+
+    p[data-lang].active {
+      display: block;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 14px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-item:first-child {
+      padding-top: 0;
+    }
+
+    .faq-question {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e1f5fe;
+      margin: 0 0 6px;
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      color: #cfd8dc;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #78909c;
+      margin: 24px 0 6px;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 13px;
+      color: #78909c;
+      text-align: center;
+      padding-bottom: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="lang-switch">
+    <img src="flag_en.png" alt="English" class="lang-flag active" onclick="setLang('en')" data-lang-flag="en">
+    <img src="flag_fr.png" alt="Français" class="lang-flag" onclick="setLang('fr')" data-lang-flag="fr">
+  </div>
+
+  <header>
+    <p style="margin-bottom:16px"><a href="/" class="btn">&larr; <span data-lang="en">Back to SparringPoker</span><span data-lang="fr">Retour à SparringPoker</span></a></p>
+    <h1>
+      <span class="card-symbol">♠</span>
+      FAQ
+      <span class="card-symbol">♥</span>
+    </h1>
+    <p class="muted" data-lang="en">Frequently asked questions about SparringPoker</p>
+    <p class="muted" data-lang="fr">Questions fréquentes sur SparringPoker</p>
+  </header>
+
+  <!-- TOC -->
+  <div class="box" style="margin-top:20px">
+    <ul style="margin:0 0 0 18px;padding:0" data-lang="en">
+      <li style="margin:6px 0"><a href="#faq-gp-windows">I bought on Google Play — can I use it on Windows?</a></li>
+      <li style="margin:6px 0"><a href="#faq-win-android">I bought the Windows licence — can I use it on Android?</a></li>
+      <li style="margin:6px 0"><a href="#faq-multi-pc">Can I use my Windows licence on multiple computers?</a></li>
+      <li style="margin:6px 0"><a href="#faq-offline">Does the Windows licence work offline?</a></li>
+      <li style="margin:6px 0"><a href="#faq-stats-reinstall">Will I lose my stats if I reinstall the app?</a></li>
+      <li style="margin:6px 0"><a href="#faq-bug-report">The tight bot called my 3-bet with 7-5 offsuit and flopped a straight. This game has no value.</a></li>
+    </ul>
+    <ul style="margin:0 0 0 18px;padding:0" data-lang="fr">
+      <li style="margin:6px 0"><a href="#faq-gp-windows">J'ai acheté sur Google Play — puis-je l'utiliser sur Windows ?</a></li>
+      <li style="margin:6px 0"><a href="#faq-win-android">J'ai acheté la licence Windows — puis-je l'utiliser sur Android ?</a></li>
+      <li style="margin:6px 0"><a href="#faq-multi-pc">Puis-je utiliser ma licence Windows sur plusieurs ordinateurs ?</a></li>
+      <li style="margin:6px 0"><a href="#faq-offline">La licence Windows fonctionne-t-elle hors ligne ?</a></li>
+      <li style="margin:6px 0"><a href="#faq-stats-reinstall">Vais-je perdre mes statistiques si je réinstalle l'application ?</a></li>
+      <li style="margin:6px 0"><a href="#faq-bug-report">Le bot tight a suivi mon 3-bet avec 7-5 dépareillé et a floppé une quinte. Ce jeu ne vaut rien.</a></li>
+    </ul>
+  </div>
+
+  <!-- Licences & Purchases -->
+  <p class="section-label" data-lang="en">Licences &amp; Purchases</p>
+  <p class="section-label" data-lang="fr">Licences &amp; Achats</p>
+
+  <div class="box">
+    <div class="faq-item" id="faq-gp-windows">
+      <p class="faq-question" data-lang="en">I bought on Google Play — can I use it on Windows?</p>
+      <p class="faq-question" data-lang="fr">J'ai acheté sur Google Play, puis-je l'utiliser sur Windows ?</p>
+      <p class="faq-answer" data-lang="en">Not automatically, but <a href="/support.html">contact us</a> and we'll find a solution.</p>
+      <p class="faq-answer" data-lang="fr">Pas automatiquement, mais <a href="/support.html">contactez-nous</a> et nous trouverons une solution.</p>
+    </div>
+
+    <div class="faq-item" id="faq-win-android">
+      <p class="faq-question" data-lang="en">I bought the Windows licence in the app — can I use it on Android?</p>
+      <p class="faq-question" data-lang="fr">J'ai acheté la licence Windows dans l'application, puis-je l'utiliser sur Android ?</p>
+      <p class="faq-answer" data-lang="en">The Android purchase must go through Google Play, but we can offer a solution. <a href="/support.html">Contact us</a>.</p>
+      <p class="faq-answer" data-lang="fr">L'achat Android doit passer par Google Play, mais nous pouvons vous proposer une solution. <a href="/support.html">Contactez-nous</a>.</p>
+    </div>
+
+    <div class="faq-item" id="faq-multi-pc">
+      <p class="faq-question" data-lang="en">Can I use my Windows licence on multiple computers?</p>
+      <p class="faq-question" data-lang="fr">Puis-je utiliser ma licence Windows sur plusieurs ordinateurs ?</p>
+      <p class="faq-answer" data-lang="en">Yes, for personal use.</p>
+      <p class="faq-answer" data-lang="fr">Oui, dans un cadre personnel.</p>
+    </div>
+
+    <div class="faq-item" id="faq-offline">
+      <p class="faq-question" data-lang="en">Does the Windows licence work offline?</p>
+      <p class="faq-question" data-lang="fr">La licence Windows fonctionne-t-elle hors ligne ?</p>
+      <p class="faq-answer" data-lang="en">Yes, the app works entirely offline. No internet required after installation.</p>
+      <p class="faq-answer" data-lang="fr">Oui, l'application fonctionne entièrement hors ligne. Aucune connexion internet requise après l'installation.</p>
+    </div>
+  </div>
+
+  <!-- Statistics & Data -->
+  <p class="section-label" data-lang="en">Statistics &amp; Data</p>
+  <p class="section-label" data-lang="fr">Statistiques &amp; Données</p>
+
+  <div class="box">
+    <div class="faq-item" id="faq-stats-reinstall">
+      <p class="faq-question" data-lang="en">Will I lose my stats if I reinstall the app?</p>
+      <p class="faq-question" data-lang="fr">Vais-je perdre mes statistiques si je réinstalle l'application ?</p>
+      <p class="faq-answer" data-lang="en">Yes — statistics are stored locally on your device. Use the <strong>Export stats</strong> button in the player stats screen before uninstalling, then <strong>Import stats</strong> after reinstalling to restore everything.</p>
+      <p class="faq-answer" data-lang="fr">Oui — les statistiques sont stockées localement sur votre appareil. Utilisez le bouton <strong>Exporter les stats</strong> dans l'écran de statistiques avant de désinstaller, puis <strong>Importer les stats</strong> après la réinstallation pour tout récupérer.</p>
+    </div>
+  </div>
+
+  <!-- Bugs & Support -->
+  <p class="section-label" data-lang="en">Bugs &amp; Support</p>
+  <p class="section-label" data-lang="fr">Bugs &amp; Support</p>
+
+  <div class="box">
+    <div class="faq-item" id="faq-bug-report">
+      <p class="faq-question" data-lang="en">The tight bot called my 3-bet with 7&#x2665;5&#x2666; and flopped a straight. This game has no value.</p>
+      <p class="faq-question" data-lang="fr">Le bot tight a suivi mon 3-bet avec 7&#x2665;5&#x2666; et a floppé une quinte. Ce jeu ne vaut rien.</p>
+      <p class="faq-answer" data-lang="en">
+        Fair enough — that hand hurts. Here's an honest answer.<br><br>
+        Bot gameplays are <strong>not perfect, and are not meant to be</strong>. Their purpose is to mimic what actually happens at real poker tables. And at real tables, even tight players occasionally call with garbage — it's just part of the game.<br><br>
+        There are several legitimate reasons a tight bot might make that call:
+      </p>
+      <ul data-lang="en" style="margin:8px 0 8px 20px;font-size:14px;color:#cfd8dc;line-height:1.7">
+        <li>You've been 3-betting very frequently — the bot adjusts and defends wider</li>
+        <li>Blind pressure was high, making the pot odds more attractive</li>
+        <li>Table dynamics (stack sizes, position, game flow) can all shift the threshold</li>
+        <li>And sometimes, a 1-in-20 call just happens — that's poker</li>
+      </ul>
+      <p class="faq-answer" data-lang="en">
+        That said, if you genuinely believe something is wrong with the gameplay logic, we want to know. The most useful thing you can do is export the hand: open the <strong>Hand Replay</strong> screen, find the hand in question, and tap the <strong>Copy</strong> button to export the full hand log. Then <a href="/support.html">send it to us</a> — we'll review it properly.<br><br>
+        This is far more constructive than a one-star review on the Play Store. One tells us exactly what happened. The other just makes us sad.
+      </p>
+      <p class="faq-answer" data-lang="fr">
+        C'est compréhensible — cette main fait mal. Voici une réponse honnête.<br><br>
+        Les bots ne sont <strong>pas parfaits, et ce n'est pas l'objectif</strong>. Leur rôle est de reproduire ce qui se passe réellement à une vraie table. Et à une vraie table, même un joueur tight peut parfois suivre avec des cartes médiocres — ça fait partie du jeu.<br><br>
+        Plusieurs raisons peuvent expliquer ce call :
+      </p>
+      <ul data-lang="fr" style="margin:8px 0 8px 20px;font-size:14px;color:#cfd8dc;line-height:1.7">
+        <li>Vous 3-bettez très souvent — le bot s'adapte et défend plus large</li>
+        <li>La pression des blinds était élevée, rendant les cotes de pot plus intéressantes</li>
+        <li>La dynamique de table (tailles de stack, position, flow de jeu) peut faire varier le seuil</li>
+        <li>Et parfois, un call improbable arrive quand même — c'est le poker</li>
+      </ul>
+      <p class="faq-answer" data-lang="fr">
+        Cela dit, si vous pensez sincèrement qu'il y a un problème dans la logique de gameplay, nous voulons le savoir. La chose la plus utile à faire est d'exporter la main : ouvrez l'écran <strong>Replay de main</strong>, trouvez la main concernée, et appuyez sur le bouton <strong>Copier</strong> pour exporter le log complet. Puis <a href="/support.html">envoyez-le nous</a> — nous l'examinerons sérieusement.<br><br>
+        C'est bien plus constructif qu'un avis une étoile sur le Play Store. L'un nous dit exactement ce qui s'est passé. L'autre nous rend juste tristes.
+      </p>
+    </div>
+  </div>
+
+  <p style="margin-top:20px;font-size:14px" data-lang="en">Don't see your question? <a href="/support.html">Contact us</a> — we're happy to help.</p>
+  <p style="margin-top:20px;font-size:14px" data-lang="fr">Vous ne trouvez pas votre réponse ? <a href="/support.html">Contactez-nous</a> — nous serons ravis de vous aider.</p>
+
+  <footer>
+    &copy; <span id="y"></span> M87 DEV &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/support.html">Support</a>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('data-lang') === lang) el.classList.add('active');
+      });
+    }
+
+    const savedLang = localStorage.getItem('lang') || 'en';
+    document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('[data-lang="' + savedLang + '"]').forEach(el => el.classList.add('active'));
+    document.querySelectorAll('.lang-flag').forEach(f => {
+      f.classList.toggle('active', f.getAttribute('data-lang-flag') === savedLang);
+    });
+    document.documentElement.lang = savedLang;
+  </script>
+
+</body>
+</html>
