@@ -152,6 +152,48 @@
 
   <div class="release">
     <div class="release-header">
+      <span class="release-version">v1.4.3</span>
+      <span class="release-date">2026-06-13</span>
+    </div>
+    <ul>
+      <li data-lang="en">Gameplay fix: bots (Loose, Maniac) no longer make thin value bets on the river when the turn
+        was checked through. Bets with borderline range equity (50–65 %) are now correctly suppressed in those spots.
+      </li>
+      <li data-lang="fr">Correction gameplay : les bots (Loose, Maniac) ne misent plus la river pour une valeur faible
+        lorsque le turn a été checké des deux côtés. Les mises avec une équité de range borderline (50–65 %) sont
+        désormais correctement supprimées dans ces spots.</li>
+      <li data-lang="en">Gameplay fix: bots in position with strong range equity (≥ 70 %) now bet the turn
+        deterministically, eliminating inconsistent aggression in clearly profitable spots.</li>
+      <li data-lang="fr">Correction gameplay : les bots en position avec une forte équité de range (≥ 70 %) misent
+        désormais systématiquement au turn, éliminant une agressivité incohérente dans des spots clairement rentables.
+      </li>
+      <li data-lang="en">Gameplay fix: two pair on a paired board no longer triggers pot-control on the turn — two pair
+        is a strong made hand that bets for value and protection.</li>
+      <li data-lang="fr">Correction gameplay : deux paires sur un board pairé ne déclenchent plus le pot-control au
+        turn — deux paires est une main forte qui doit miser pour la valeur et la protection.</li>
+      <li data-lang="en">Gameplay fix: added a pot-odds floor to postflop calling thresholds, preventing stacked exploit
+        discounts from collapsing call thresholds to near-zero.</li>
+      <li data-lang="fr">Correction gameplay : ajout d'un plancher basé sur les pot-odds pour les seuils d'appel
+        post-flop, empêchant des réductions cumulées de faire tomber les seuils d'appel à zéro.</li>
+      <li data-lang="en">UI fix: fixed a bug where player widgets could appear duplicated when restarting a game
+        session from the table screen.</li>
+      <li data-lang="fr">Correction interface : correction d'un bug où les widgets des joueurs pouvaient apparaître en
+        double lors du redémarrage d'une partie depuis l'écran de table.</li>
+      <li data-lang="en">UI: statistics reliability gauge label clarified to "Reliable for preflop stats".</li>
+      <li data-lang="fr">Interface : le libellé de la jauge de fiabilité des statistiques a été clarifié en
+        « Fiable pour les stats préflop ».</li>
+      <li data-lang="en">Mobile: the back-swipe gesture on the poker table now only triggers when the swipe starts
+        within the left edge of the screen (15 % strip), matching the standard Android back-gesture. Random horizontal
+        drags elsewhere on the table no longer accidentally exit the current game.</li>
+      <li data-lang="fr">Mobile : le geste de balayage retour sur la table de poker ne se déclenche désormais que
+        lorsque le glissement commence dans la zone gauche de l'écran (bande de 15 %), conformément au geste retour
+        Android standard. Les glissements horizontaux ailleurs sur la table ne quittent plus la partie par accident.
+      </li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <div class="release-header">
       <span class="release-version">v1.4.2</span>
       <span class="release-date">2026-06-07</span>
     </div>
