@@ -152,6 +152,27 @@
 
   <div class="release">
     <div class="release-header">
+      <span class="release-version">v1.4.4</span>
+      <span class="release-date">2026-06-15</span>
+    </div>
+    <ul>
+      <li data-lang="en">Gameplay fix: early-position bots (UTG, Middle) now correctly fold weak off-suit broadways (KTo, QTo, JTo) when facing a 3-bet from late position. The 3-bet defense multiplier was reduced from ×0.85 to ×0.35, bringing the calling range down to ~10% (88+, ATs+, KJs+, AJo+) to avoid dominated spots.</li>
+      <li data-lang="fr">Correction gameplay : les bots en position early (UTG, Middle) foldent désormais correctement les broadways dépareillés faibles (KTo, QTo, JTo) face à un 3-bet depuis une position tardive. Le multiplicateur de défense au 3-bet a été réduit de ×0.85 à ×0.35, ramenant la range d'appel à ~10% (88+, ATs+, KJs+, AJo+) pour éviter les spots dominés.</li>
+      <li data-lang="en">Gameplay fix: early-position bots now correctly handle multiway 3-bet pots (3-bet plus cold-caller). The cold-caller guard applies an additional ×0.85 tightening on top of the early-position penalty, preventing incorrect calls with hands like A8s in squeeze situations while still allowing the call when the 3-bettor is a known wide aggressor.</li>
+      <li data-lang="fr">Correction gameplay : les bots en position early gèrent désormais correctement les pots 3-bet multiway (3-bet avec cold-caller). Le guard cold-caller applique un resserrement supplémentaire de ×0.85 par-dessus la pénalité de position, empêchant les calls incorrects avec des mains comme A8s dans les situations de squeeze, tout en autorisant le call face à un 3-betteur connu pour jouer large.</li>
+      <li data-lang="en">Gameplay fix: Cutoff now correctly folds weak suited connectors (57s, 86s) when facing a 3-bet from the Button while out of position. The same ×0.35 positional tightening now applies to CO vs BTN 3-bet defense.</li>
+      <li data-lang="fr">Correction gameplay : le Cutoff folde désormais correctement les connecteurs assortis faibles (57s, 86s) face à un 3-bet du Button en étant hors de position. Le même resserrement positionnel ×0.35 s'applique désormais à la défense CO vs BTN au 3-bet.</li>
+      <li data-lang="en">Gameplay fix: bots now use texture-aware raise sizing on the turn. Wet boards (flush/straight draws present) trigger pot-sized raises to deny draws correct odds; dry boards use 2.5× the bet. This replaces the old flat 60% pot sizing that was giving opponents profitable draw calls.</li>
+      <li data-lang="fr">Correction gameplay : les bots utilisent désormais une taille de relance adaptée à la texture au turn. Les boards wet (tirage couleur ou quinte présent) déclenchent une relance à la taille du pot pour refuser les tirages aux cotes ; les boards dry utilisent 2,5× la mise. Ceci remplace l'ancienne taille fixe à 60% du pot qui offrait aux adversaires des appels rentables sur tirage.</li>
+      <li data-lang="en">Gameplay fix: bots no longer make thin value-raises on the river when a flush completes and they don't hold it. The range evaluator was underweighting flush-completing hands, inflating win equity to ~90% and causing incorrect raises with hands like two pair or trips on 3-flush boards.</li>
+      <li data-lang="fr">Correction gameplay : les bots ne font plus de petites value-raise à la river quand une couleur complète, et qu'ils ne la détiennent pas. L'évaluateur de range sous-pondérait les mains complétant la couleur, gonflant l'équité à ~90% et provoquant des relances incorrectes avec des mains comme deux paires ou brelan sur les boards trois-flush.</li>
+      <li data-lang="en">Gameplay fix: bots with strong semi-bluff equity (e.g. AcKc on dry boards in 3-bet pots) now c-bet deterministically in position instead of checking randomly. A new semi-bluff guard ensures hands with real equity always c-bet, while pure air retains standard frequency-based bluffing.</li>
+      <li data-lang="fr">Correction gameplay : les bots avec une forte équité de semi-bluff (ex. AcKc sur board sec en pot 3-bet) c-bettent désormais systématiquement en position au lieu de checker aléatoirement. Un nouveau guard semi-bluff garantit que les mains avec une équité réelle c-bettent toujours, tandis qu'une main nulle conserve un bluff basé sur les fréquences standards.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <div class="release-header">
       <span class="release-version">v1.4.3</span>
       <span class="release-date">2026-06-13</span>
     </div>
