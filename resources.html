@@ -125,6 +125,14 @@
       display: block;
     }
 
+    a[data-lang].active {
+      display: inline-block;
+    }
+
+    button[data-lang].active {
+      display: inline-block;
+    }
+
     .resource-card {
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 10px;
@@ -310,7 +318,7 @@
       
       if (desc.classList.contains('description-collapsed')) {
         desc.classList.remove('description-collapsed');
-        button.textContent = lang === 'fr' ? 'Show less' : 'Afficher moins';
+        button.textContent = lang === 'fr' ? 'Afficher moins' : 'Show less';
       } else {
         desc.classList.add('description-collapsed');
         button.textContent = lang === 'fr' ? 'En savoir plus' : 'Show more';
