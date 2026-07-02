@@ -179,17 +179,11 @@
       box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .resource-logo {
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      text-align: center;
-    }
-
-    .resource-logo img {
-      max-width: 100%;
-      max-height: 100px;
-      display: inline-block;
+    .resource-logo-inline {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
 
     .resource-content {
@@ -342,11 +336,9 @@
 
   <!-- ThePokerAgent Card -->
   <div class="resource-card">
-    <div class="resource-logo">
-      <img src="assets/images/partners_logos/thepokeragent.png" alt="The Poker Agent Logo" loading="lazy">
-    </div>
     <div class="resource-content">
       <div class="resource-meta">
+        <img src="assets/images/partners_logos/thepokeragent.png" alt="The Poker Agent Logo" loading="lazy" class="resource-logo-inline">
         <h2 class="resource-title">The Poker Agent</h2>
         <span class="badge" data-lang="en">Poker website</span>
         <span class="badge" data-lang="fr">Site poker</span>
