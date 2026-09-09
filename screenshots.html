@@ -1,275 +1,37 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Screenshots — SparringPoker</title>
-  <meta name="description" content="See SparringPoker in action — poker table, bot statistics, hand replay, setup options and more." />
-  <style>
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      max-width:1200px;
-      margin:20px auto;
-      padding:0 16px;
-      line-height:1.4;
-      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      color:#f5f5f5;
-      min-height:100vh;
-    }
-    header{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
-    .btn{
-      display:inline-block;
-      padding:10px 14px;
-      border:1px solid #f5f5f5;
-      border-radius:10px;
-      text-decoration:none;
-      color:#f5f5f5;
-      background:rgba(255,255,255,0.1);
-      backdrop-filter:blur(10px);
-      transition:all 0.3s ease;
-    }
-    .btn:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px)}
-    .muted{color:#b0b0b0}
-    .lang-switch{display:flex;gap:12px;margin-bottom:12px;justify-content:flex-end;align-items:center}
-    .lang-flag{
-      width:32px;
-      height:32px;
-      cursor:pointer;
-      border-radius:4px;
-      transition:all 0.3s ease;
-      opacity:0.6;
-      border:2px solid transparent;
-    }
-    .lang-flag:hover{opacity:0.9;transform:scale(1.1)}
-    .lang-flag.active{opacity:1;border-color:rgba(129,212,250,0.6);box-shadow:0 0 8px rgba(129,212,250,0.4)}
-    .card-symbol{
-      display:inline-block;
-      font-size:1.2em;
-      margin:0 4px;
-      opacity:0.3;
-    }
-    h1{
-      color:#fff;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
-    }
-    h2{color:#fff;font-size:18px;margin:0 0 8px 0}
-    a{color:#81d4fa;text-decoration:none}
-    a:hover{color:#4fc3f7;text-decoration:underline}
-    [data-lang]{display:none !important}
-    [data-lang].active{display:block !important}
-    span[data-lang].active{display:inline !important}
-    a[data-lang].active{display:inline-block !important}
-    strong[data-lang].active{display:block !important}
-    div[data-lang].active{display:block !important}
-    p[data-lang].active{display:block !important}
-    h1[data-lang].active{display:block !important}
-    h2[data-lang].active{display:block !important}
-    .page-title{
-      font-size:32px;
-      color:#fff;
-      margin:20px 0 12px;
-      text-align:center;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
-    }
-    .page-subtitle{
-      text-align:center;
-      color:#b0b0b0;
-      margin-bottom:30px;
-      font-size:16px;
-    }
-    .screenshot-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:24px;
-      margin:30px 0;
-    }
-    @media (min-width:700px){
-      .screenshot-grid{grid-template-columns:1fr 1fr}
-    }
-    .screenshot-card{
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:10px;
-      overflow:hidden;
-      background:rgba(255,255,255,0.05);
-      backdrop-filter:blur(10px);
-      box-shadow:0 4px 6px rgba(0,0,0,0.2);
-      transition:transform 0.3s ease,box-shadow 0.3s ease;
-    }
-    .screenshot-card:hover{transform:translateY(-4px);box-shadow:0 8px 12px rgba(0,0,0,0.3)}
-    .screenshot-card img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-bottom:1px solid rgba(255,255,255,0.1);
-    }
-    .screenshot-caption{
-      padding:14px 16px;
-      font-size:15px;
-      color:#e1f5fe;
-      line-height:1.5;
-    }
-    .screenshot-caption strong{
-      display:block;
-      margin-bottom:4px;
-      color:#fff;
-      font-size:16px;
-    }
-    .back-link{
-      display:inline-block;
-      margin:30px 0 20px;
-      padding:12px 24px;
-      border:1px solid rgba(129,212,250,0.3);
-      border-radius:8px;
-      background:rgba(129,212,250,0.05);
-      color:#81d4fa;
-      text-decoration:none;
-      font-weight:600;
-      transition:all 0.3s ease;
-    }
-    .back-link:hover{
-      background:rgba(129,212,250,0.1);
-      border-color:#81d4fa;
-      transform:translateY(-2px);
-      box-shadow:0 4px 8px rgba(129,212,250,0.2);
-      color:#4fc3f7;
-      text-decoration:none;
-    }
-    footer{margin-top:40px;text-align:center}
-  </style>
-</head>
-<body>
-  <div class="lang-switch">
-    <img src="flag_en.png" alt="English" class="lang-flag active" onclick="setLang('en')" data-lang-flag="en">
-    <img src="flag_fr.png" alt="Français" class="lang-flag" onclick="setLang('fr')" data-lang-flag="fr">
-  </div>
-
-  <header>
-    <div>
-      <h1 style="margin:0">
-        <span class="card-symbol">♠</span>
-        SparringPoker
-        <span class="card-symbol">♥</span>
-      </h1>
-    </div>
-    <div>
-      <a href="index.html" class="btn" data-lang="en">← Back to Home</a>
-      <a href="index.html" class="btn" data-lang="fr">← Retour à l'accueil</a>
-    </div>
-  </header>
-
-  <h1 class="page-title" data-lang="en">Screenshots</h1>
-  <h1 class="page-title" data-lang="fr">Captures d'écran</h1>
-  
-  <p class="page-subtitle" data-lang="en">Explore SparringPoker's interface and features</p>
-  <p class="page-subtitle" data-lang="fr">Explorez l'interface et les fonctionnalités de SparringPoker</p>
-
-  <div class="screenshot-grid">
-    <!-- Poker Table Showdown -->
-    <div class="screenshot-card">
-      <img src="assets/images/showdown phone.png" 
-           alt="Poker table showdown" 
-           loading="lazy">
-      <div class="screenshot-caption">
-        <strong data-lang="en">Showdown Moment</strong>
-        <strong data-lang="fr">Moment du Showdown</strong>
-        <span data-lang="en">See all cards revealed and determine the winner. Clear pot calculation and hand rankings displayed.</span>
-        <span data-lang="fr">Voyez toutes les cartes révélées et déterminez le gagnant. Calcul du pot et classement des mains affichés clairement.</span>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Screenshots — SparringPoker</title><meta name="description" content="See SparringPoker gameplay, personalized coaching, hand replay, setup and opponent statistics."><meta name="theme-color" content="#071710">
+<link rel="stylesheet" href="assets/site.css"></head>
+<body data-base="" class=""><div class="shell"><header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">♠</span> SparringPoker <span class="brand-mark">♥</span></a>
+      <div class="top-actions">
+        <a class="version-badge" href="changelog.html" aria-label="Latest version"></a>
+        <div class="lang-switch" aria-label="Language">
+          <button class="lang-btn" type="button" data-lang-flag="en" aria-label="English"><img src="flag_en.png" alt=""></button>
+          <button class="lang-btn" type="button" data-lang-flag="fr" aria-label="Français"><img src="flag_fr.png" alt=""></button>
+        </div>
       </div>
-    </div>
-
-    <!-- Setup Screen -->
-    <div class="screenshot-card">
-      <img src="assets/images/setup screen.png" 
-           alt="Game setup screen" 
-           loading="lazy">
-      <div class="screenshot-caption">
-        <strong data-lang="en">Game Configuration</strong>
-        <strong data-lang="fr">Configuration du Jeu</strong>
-        <span data-lang="en">Choose number of players, AI personalities, blind structure, and starting stacks before you begin.</span>
-        <span data-lang="fr">Choisissez le nombre de joueurs, les personnalités IA, la structure des blinds et les stacks de départ avant de commencer.</span>
+    </header><main class="page-main">
+<section class="page-hero"><div class="page-kicker" data-lang="en">Inside SparringPoker</div><div class="page-kicker" data-lang="fr">Dans SparringPoker</div>
+<h1 data-lang="en">From practice to actionable feedback</h1><h1 data-lang="fr">De l'entraînement aux conseils concrets</h1>
+<p class="lead" data-lang="en">The interface is built around a simple loop: play realistic hands, review what happened, understand your tendencies and decide what to work on next.</p><p class="lead" data-lang="fr">L'interface s'organise autour d'une boucle simple : jouer des mains réalistes, revoir ce qui s'est passé, comprendre vos tendances et décider quoi travailler ensuite.</p>
+<div class="actions"><a class="btn secondary small" href="index.html"><span data-lang="en">← Back to overview</span><span data-lang="fr">← Retour à la présentation</span></a><a class="btn small" href="index.html#download"><span data-lang="en">Try it free</span><span data-lang="fr">Essayer gratuitement</span></a></div></section>
+<div class="screenshot-grid">
+<article class="shot-card featured"><div class="shot-media"><img src="assets/images/how to improve.png" alt="SparringPoker personalized coaching screen"></div><div class="shot-copy"><div class="step">01 · IMPROVE</div><h2 data-lang="en">Know what to work on next</h2><h2 data-lang="fr">Sachez quoi travailler ensuite</h2><p data-lang="en">Your accumulated statistics are translated into prioritized coaching: healthy areas, points to review and areas that still need more data.</p><p data-lang="fr">Vos statistiques accumulées sont transformées en conseils priorisés : domaines solides, points à revoir et éléments qui demandent encore davantage de données.</p></div></article>
+<article class="shot-card"><div class="shot-media"><img src="assets/images/main 2.png" alt="SparringPoker poker table"></div><div class="shot-copy"><div class="step">02 · TRAIN</div><h2 data-lang="en">Play without pressure</h2><h2 data-lang="fr">Jouez sans pression</h2><p data-lang="en">Practice Texas Hold'em against calibrated bot opponents, fully offline and without risking real money.</p><p data-lang="fr">Entraînez-vous au Texas Hold'em face à des bots calibrés, entièrement hors ligne et sans risquer d'argent réel.</p></div></article>
+<article class="shot-card"><div class="shot-media"><img src="assets/images/replay 10p.png" alt="SparringPoker hand replay"></div><div class="shot-copy"><div class="step">03 · REVIEW</div><h2 data-lang="en">Return to the decisions that matter</h2><h2 data-lang="fr">Revenez aux décisions qui comptent</h2><p data-lang="en">Hand Replay lets you inspect a completed hand street by street and connect statistical tendencies with concrete decisions.</p><p data-lang="fr">Le Replay permet de revoir une main street par street et de relier vos tendances statistiques à des décisions concrètes.</p></div></article>
+<article class="shot-card"><div class="shot-media"><img src="assets/images/setup screen.png" alt="SparringPoker game setup"></div><div class="shot-copy"><div class="step">04 · CUSTOMIZE</div><h2 data-lang="en">Practice the format you want</h2><h2 data-lang="fr">Travaillez le format que vous voulez</h2><p data-lang="en">Choose table size, opponent mix and blind progression to create the kind of session you want to train.</p><p data-lang="fr">Choisissez la taille de table, le mélange d'adversaires et la progression des blinds pour créer la séance que vous souhaitez travailler.</p></div></article>
+<article class="shot-card"><div class="shot-media"><img src="assets/images/bot stats.png" alt="SparringPoker bot statistics"></div><div class="shot-copy"><div class="step">05 · ADAPT</div><h2 data-lang="en">Understand who you are facing</h2><h2 data-lang="fr">Comprenez qui vous affrontez</h2><p data-lang="en">Opponent statistics make the different archetypes visible and give you another way to practice adapting to playing styles.</p><p data-lang="fr">Les statistiques des adversaires rendent les différents archétypes visibles et vous donnent un autre moyen de travailler votre adaptation aux styles de jeu.</p></div></article>
+</div>
+<section class="section compact"><div class="download-panel"><div class="section-head"><div class="section-kicker" data-lang="en">Try the real product</div><div class="section-kicker" data-lang="fr">Essayez le produit complet</div><h2 data-lang="en">Every feature is unlocked for the first 300 hands</h2><h2 data-lang="fr">Toutes les fonctionnalités sont débloquées pendant les 300 premières mains</h2><p data-lang="en">No account and no payment information required.</p><p data-lang="fr">Aucun compte et aucun moyen de paiement requis.</p></div><a class="cta" href="index.html#download"><span data-lang="en">Download SparringPoker</span><span data-lang="fr">Télécharger SparringPoker</span></a></div></section>
+</main><footer class="footer">
+      <div>© <span data-current-year></span> M87 DEV</div>
+      <div class="footer-links">
+        <a href="screenshots.html"><span data-lang="en">Screenshots</span><span data-lang="fr">Captures</span></a>
+        <a href="bots.html"><span data-lang="en">How the bots work</span><span data-lang="fr">Fonctionnement des bots</span></a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html"><span data-lang="en">Privacy</span><span data-lang="fr">Confidentialité</span></a>
+        <a href="support.html">Support</a>
+        <a href="changelog.html">Changelog</a>
       </div>
-    </div>
-
-    <!-- Replay Screen -->
-    <div class="screenshot-card">
-      <img src="assets/images/replay 10p.png" 
-           alt="Hand replay interface" 
-           loading="lazy">
-      <div class="screenshot-caption">
-        <strong data-lang="en">Hand Replay</strong>
-        <strong data-lang="fr">Replay des Mains</strong>
-        <span data-lang="en">Review every completed hand street by street. Navigate through preflop, flop, turn, and river to analyze your decisions.</span>
-        <span data-lang="fr">Révisez chaque main terminée street par street. Naviguez à travers le preflop, flop, turn et river pour analyser vos décisions.</span>
-      </div>
-    </div>
-
-    <!-- Bot Stats Overlay -->
-    <div class="screenshot-card">
-      <img src="assets/images/bot stats.png" 
-           alt="Bot statistics overlay" 
-           loading="lazy">
-      <div class="screenshot-caption">
-        <strong data-lang="en">Bot Statistics Dashboard</strong>
-        <strong data-lang="fr">Tableau de Bord des Stats des Bots</strong>
-        <span data-lang="en">Detailed metrics for each AI opponent: VPIP, PFR, aggression factor, 3-bet frequency, and more. Understand their playing style.</span>
-        <span data-lang="fr">Métriques détaillées pour chaque adversaire IA : VPIP, PFR, facteur d'agression, fréquence de 3-bet, et plus. Comprenez leur style de jeu.</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div style="text-align:center">
-    <a href="index.html" class="back-link" data-lang="en">← Back to Home</a>
-    <a href="index.html" class="back-link" data-lang="fr">← Retour à l'accueil</a>
-  </div>
-
-  <footer class="muted" style="margin-top:12px;font-size:14px">
-    © <span id="y"></span> M87 DEV
-  </footer>
-  
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-    
-    function setLang(lang) {
-      localStorage.setItem('lang', lang);
-      document.documentElement.lang = lang;
-      
-      // Update flag states
-      document.querySelectorAll('.lang-flag').forEach(flag => flag.classList.remove('active'));
-      event.target.classList.add('active');
-      
-      // Show/hide content
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.classList.remove('active');
-        if (el.getAttribute('data-lang') === lang) {
-          el.classList.add('active');
-        }
-      });
-    }
-    
-    // Initialize language on page load
-    const savedLang = localStorage.getItem('lang') || 'en';
-    
-    // First, remove all active classes from elements with data-lang
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      el.classList.remove('active');
-    });
-    
-    // Then add active class only to elements matching the saved language
-    document.querySelectorAll('[data-lang="' + savedLang + '"]').forEach(el => {
-      el.classList.add('active');
-    });
-    
-    // Update flag states
-    document.querySelectorAll('.lang-flag').forEach(flag => {
-      if (flag.getAttribute('data-lang-flag') === savedLang) {
-        flag.classList.add('active');
-      } else {
-        flag.classList.remove('active');
-      }
-    });
-    
-    document.documentElement.lang = savedLang;
-  </script>
-</body>
-</html>
+    </footer></div><script src="assets/site.js"></script></body></html>

@@ -1,517 +1,361 @@
 <!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SparringPoker — Changelog</title>
-  <meta name="description" content="SparringPoker release history and changelog." />
-  <style>
-    [data-lang] {
-      display: none !important
-    }
-
-    [data-lang].active {
-      display: block !important
-    }
-
-    span[data-lang].active {
-      display: inline !important
-    }
-
-    li[data-lang].active {
-      display: list-item !important
-    }
-  </style>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 0 16px;
-      line-height: 1.4;
-      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      color: #f5f5f5;
-      min-height: 100vh;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      margin: 0;
-    }
-
-    h2 {
-      color: #81d4fa;
-      font-size: 17px;
-      margin: 0 0 8px 0;
-    }
-
-    .card-symbol {
-      display: inline-block;
-      font-size: 1.2em;
-      margin: 0 4px;
-      opacity: 0.3;
-    }
-
-    .muted {
-      color: #b0b0b0;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border: 1px solid #f5f5f5;
-      border-radius: 10px;
-      text-decoration: none;
-      color: #f5f5f5;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .release {
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin: 14px 0;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .release-header {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .release-version {
-      font-size: 16px;
-      font-weight: 700;
-      color: #81d4fa;
-    }
-
-    .release-date {
-      font-size: 13px;
-      color: #b0b0b0;
-    }
-
-    .release ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    .release li {
-      font-size: 14px;
-      margin: 5px 0;
-      line-height: 1.5;
-    }
-
-    a {
-      color: #81d4fa;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: #4fc3f7;
-      text-decoration: underline;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div>
-      <h1>
-        <span class="card-symbol">♠</span>
-        SparringPoker
-        <span class="card-symbol">♥</span>
-      </h1>
-      <div class="muted" data-lang="en">Changelog</div>
-      <div class="muted" data-lang="fr">Historique des versions</div>
-    </div>
-    <a href="/" class="btn" data-lang="en">← Back to home</a>
-    <a href="/" class="btn" data-lang="fr">← Retour à l'accueil</a>
-  </header>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.6.2</span>
-      <span class="release-date">2026-08-21</span>
-    </div>
-    <ul>
-      <li data-lang="en">New "How to improve" coach: your statistics are turned into clear, prioritized advice on
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Changelog — SparringPoker</title><meta name="description" content="SparringPoker release notes and product changes."><meta name="theme-color" content="#071710">
+<link rel="stylesheet" href="assets/site.css"></head>
+<body data-base="" class=""><div class="shell"><header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">♠</span> SparringPoker <span class="brand-mark">♥</span></a>
+      <div class="top-actions">
+        <a class="version-badge" href="changelog.html" aria-label="Latest version"></a>
+        <div class="lang-switch" aria-label="Language">
+          <button class="lang-btn" type="button" data-lang-flag="en" aria-label="English"><img src="flag_en.png" alt=""></button>
+          <button class="lang-btn" type="button" data-lang-flag="fr" aria-label="Français"><img src="flag_fr.png" alt=""></button>
+        </div>
+      </div>
+    </header><main class="page-main"><section class="page-hero"><div class="page-kicker" data-lang="en">Product history</div><div class="page-kicker" data-lang="fr">Historique du produit</div><h1 data-lang="en">Changelog</h1><h1 data-lang="fr">Historique des versions</h1><p class="lead" data-lang="en">Published changes to SparringPoker, from coaching improvements to bot calibration and gameplay fixes.</p><p class="lead" data-lang="fr">Modifications publiées de SparringPoker, des améliorations du coaching au calibrage des bots et aux corrections de gameplay.</p><div class="actions"><a class="btn secondary small" href="index.html"><span data-lang="en">← Back to overview</span><span data-lang="fr">← Retour à la présentation</span></a></div></section><div><div class="release">
+<div class="release-header">
+<span class="release-version">v1.6.2</span>
+<span class="release-date">2026-08-21</span>
+</div>
+<ul>
+<li data-lang="en">New "How to improve" coach: your statistics are turned into clear, prioritized advice on
         what to fix next. Each coaching area is shown as an actionable leak, positive reinforcement when you play it
         well, or a preview of what will be assessed once you've played enough hands.</li>
-      <li data-lang="fr">Nouveau coach « Comment progresser » : vos statistiques sont transformées en conseils clairs
+<li data-lang="fr">Nouveau coach « Comment progresser » : vos statistiques sont transformées en conseils clairs
         et priorisés sur ce qu'il faut corriger en premier. Chaque domaine de coaching s'affiche comme une fuite à
         corriger, un renforcement positif quand vous jouez bien, ou un aperçu de ce qui sera évalué une fois
         suffisamment de mains jouées.</li>
-      <li data-lang="en">Redesigned statistics: tap any stat for a plain-language explanation, with per-stat sample
+<li data-lang="en">Redesigned statistics: tap any stat for a plain-language explanation, with per-stat sample
         sizes and reliability indicators so you know when a stat is backed by enough hands to trust.</li>
-      <li data-lang="fr">Statistiques repensées : touchez une stat pour une explication simple, avec la taille
+<li data-lang="fr">Statistiques repensées : touchez une stat pour une explication simple, avec la taille
         d'échantillon par stat et des indicateurs de fiabilité pour savoir quand une stat repose sur assez de mains pour
         être fiable.</li>
-      <li data-lang="en">Engine: reworked blind progression to give each game mode a more distinct pacing and
+<li data-lang="en">Engine: reworked blind progression to give each game mode a more distinct pacing and
         behavior.</li>
-      <li data-lang="fr">Moteur : progression des blindes retravaillée pour donner à chaque mode de jeu un rythme et
+<li data-lang="fr">Moteur : progression des blindes retravaillée pour donner à chaque mode de jeu un rythme et
         un comportement plus distincts.</li>
-      <li data-lang="en">Gameplay fixes: the Tight bot now folds a flop check-raise with top pair / weak kicker,
+<li data-lang="en">Gameplay fixes: the Tight bot now folds a flop check-raise with top pair / weak kicker,
         checks the turn after the flush completes and the board pairs, and folds a turn all-in with weak two pair on a
         flush/paired board instead of stacking off.</li>
-      <li data-lang="fr">Corrections gameplay : le bot Tight folde désormais un check-raise flop avec top paire /
+<li data-lang="fr">Corrections gameplay : le bot Tight folde désormais un check-raise flop avec top paire /
         kicker faible, checke le turn après que la couleur se complète et que le board se paire, et folde un all-in turn
         avec deux paires faibles sur un board couleur/pairé au lieu de payer tapis.</li>
-      <li data-lang="en">UI: folded players are now more clearly dimmed (including their name and stack badge), making
+<li data-lang="en">UI: folded players are now more clearly dimmed (including their name and stack badge), making
         the active players easier to follow.</li>
-      <li data-lang="fr">Interface : les joueurs couchés sont désormais atténués plus nettement (nom et badge de tapis
+<li data-lang="fr">Interface : les joueurs couchés sont désormais atténués plus nettement (nom et badge de tapis
         compris), rendant les joueurs actifs plus faciles à suivre.</li>
-      <li data-lang="en">Fix: exported hand history now includes the full hand number instead of only the current
+<li data-lang="en">Fix: exported hand history now includes the full hand number instead of only the current
         session's count.</li>
-      <li data-lang="fr">Correction : l'export d'historique de mains inclut désormais le numéro de main complet au lieu
+<li data-lang="fr">Correction : l'export d'historique de mains inclut désormais le numéro de main complet au lieu
         du seul compteur de la session en cours.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.5.0</span>
-      <span class="release-date">2026-07-04</span>
-    </div>
-    <ul>
-      <li data-lang="en">Major AI improvement: Enhanced player profiling and range estimation system. Bots now
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.5.0</span>
+<span class="release-date">2026-07-04</span>
+</div>
+<ul>
+<li data-lang="en">Major AI improvement: Enhanced player profiling and range estimation system. Bots now
         more accurately narrow opponent ranges based on player tendencies (tight/loose/aggressive/passive), multi-street
         betting patterns, and confidence scoring. This significantly improves decision-making accuracy, especially
         against tight players showing passive resistance.</li>
-      <li data-lang="fr">Amélioration majeure de l'IA : Système amélioré de profilage des joueurs et d'estimation des
+<li data-lang="fr">Amélioration majeure de l'IA : Système amélioré de profilage des joueurs et d'estimation des
         ranges. Les bots réduisent désormais avec plus de précision les ranges des adversaires en fonction des tendances
         des
         joueurs (serré/large/agressif/passif), des schémas de mise multi-streets et du score de confiance. Cela améliore
         notablement la précision de la prise de décision, en particulier contre les joueurs serrés montrant une
         résistance passive.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.4.5</span>
-      <span class="release-date">2026-06-25</span>
-    </div>
-    <ul>
-      <li data-lang="en">Android: fixed statistics export file corruption when overwriting existing files.</li>
-      <li data-lang="fr">Android : correction de la corruption du fichier d'export de statistiques lors de l'écrasement
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.4.5</span>
+<span class="release-date">2026-06-25</span>
+</div>
+<ul>
+<li data-lang="en">Android: fixed statistics export file corruption when overwriting existing files.</li>
+<li data-lang="fr">Android : correction de la corruption du fichier d'export de statistiques lors de l'écrasement
         de fichiers existants.</li>
-      <li data-lang="en">Multiple bot decision-making improvements: better handling of micro all-ins, full houses on
+<li data-lang="en">Multiple bot decision-making improvements: better handling of micro all-ins, full houses on
         paired boards, position-aware 3-bet defense, and multi-street aggression patterns.</li>
-      <li data-lang="fr">Améliorations multiples des décisions des bots : meilleure gestion des micro all-ins, des fulls
+<li data-lang="fr">Améliorations multiples des décisions des bots : meilleure gestion des micro all-ins, des fulls
         sur boards pairés, de la défense positionnelle aux 3-bets, et des patterns d'agression multi-streets.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.4.4</span>
-      <span class="release-date">2026-06-15</span>
-    </div>
-    <ul>
-      <li data-lang="en">Gameplay fix: early-position bots (UTG, Middle) now correctly fold weak off-suit broadways
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.4.4</span>
+<span class="release-date">2026-06-15</span>
+</div>
+<ul>
+<li data-lang="en">Gameplay fix: early-position bots (UTG, Middle) now correctly fold weak off-suit broadways
         (KTo, QTo, JTo) when facing a 3-bet from late position. The 3-bet defense multiplier was reduced from ×0.85 to
         ×0.35, bringing the calling range down to ~10% (88+, ATs+, KJs+, AJo+) to avoid dominated spots.</li>
-      <li data-lang="fr">Correction gameplay : les bots en position early (UTG, Middle) foldent désormais correctement
+<li data-lang="fr">Correction gameplay : les bots en position early (UTG, Middle) foldent désormais correctement
         les broadways dépareillés faibles (KTo, QTo, JTo) face à un 3-bet depuis une position tardive. Le multiplicateur
         de défense au 3-bet a été réduit de ×0.85 à ×0.35, ramenant la range d'appel à ~10% (88+, ATs+, KJs+, AJo+) pour
         éviter les spots dominés.</li>
-      <li data-lang="en">Gameplay fix: early-position bots now correctly handle multiway 3-bet pots (3-bet plus
+<li data-lang="en">Gameplay fix: early-position bots now correctly handle multiway 3-bet pots (3-bet plus
         cold-caller). The cold-caller guard applies an additional ×0.85 tightening on top of the early-position penalty,
         preventing incorrect calls with hands like A8s in squeeze situations while still allowing the call when the
         3-bettor is a known wide aggressor.</li>
-      <li data-lang="fr">Correction gameplay : les bots en position early gèrent désormais correctement les pots 3-bet
+<li data-lang="fr">Correction gameplay : les bots en position early gèrent désormais correctement les pots 3-bet
         multiway (3-bet avec cold-caller). Le guard cold-caller applique un resserrement supplémentaire de ×0.85
         par-dessus la pénalité de position, empêchant les calls incorrects avec des mains comme A8s dans les situations
         de squeeze, tout en autorisant le call face à un 3-betteur connu pour jouer large.</li>
-      <li data-lang="en">Gameplay fix: Cutoff now correctly folds weak suited connectors (57s, 86s) when facing a 3-bet
+<li data-lang="en">Gameplay fix: Cutoff now correctly folds weak suited connectors (57s, 86s) when facing a 3-bet
         from the Button while out of position. The same ×0.35 positional tightening now applies to CO vs BTN 3-bet
         defense.</li>
-      <li data-lang="fr">Correction gameplay : le Cutoff folde désormais correctement les connecteurs assortis faibles
+<li data-lang="fr">Correction gameplay : le Cutoff folde désormais correctement les connecteurs assortis faibles
         (57s, 86s) face à un 3-bet du Button en étant hors de position. Le même resserrement positionnel ×0.35
         s'applique désormais à la défense CO vs BTN au 3-bet.</li>
-      <li data-lang="en">Gameplay fix: bots now use texture-aware raise sizing on the turn. Wet boards (flush/straight
+<li data-lang="en">Gameplay fix: bots now use texture-aware raise sizing on the turn. Wet boards (flush/straight
         draws present) trigger pot-sized raises to deny draws correct odds; dry boards use 2.5× the bet. This replaces
         the old flat 60% pot sizing that was giving opponents profitable draw calls.</li>
-      <li data-lang="fr">Correction gameplay : les bots utilisent désormais une taille de relance adaptée à la texture
+<li data-lang="fr">Correction gameplay : les bots utilisent désormais une taille de relance adaptée à la texture
         au turn. Les boards wet (tirage couleur ou quinte présent) déclenchent une relance à la taille du pot pour
         refuser les tirages aux cotes ; les boards dry utilisent 2,5× la mise. Ceci remplace l'ancienne taille fixe à
         60% du pot qui offrait aux adversaires des appels rentables sur tirage.</li>
-      <li data-lang="en">Gameplay fix: bots no longer make thin value-raises on the river when a flush completes and
+<li data-lang="en">Gameplay fix: bots no longer make thin value-raises on the river when a flush completes and
         they don't hold it. The range evaluator was underweighting flush-completing hands, inflating win equity to ~90%
         and causing incorrect raises with hands like two pair or trips on 3-flush boards.</li>
-      <li data-lang="fr">Correction gameplay : les bots ne font plus de petites value-raise à la river quand une couleur
+<li data-lang="fr">Correction gameplay : les bots ne font plus de petites value-raise à la river quand une couleur
         complète, et qu'ils ne la détiennent pas. L'évaluateur de range sous-pondérait les mains complétant la couleur,
         gonflant l'équité à ~90% et provoquant des relances incorrectes avec des mains comme deux paires ou brelan sur
         les boards trois-flush.</li>
-      <li data-lang="en">Gameplay fix: bots with strong semi-bluff equity (e.g. AcKc on dry boards in 3-bet pots) now
+<li data-lang="en">Gameplay fix: bots with strong semi-bluff equity (e.g. AcKc on dry boards in 3-bet pots) now
         c-bet deterministically in position instead of checking randomly. A new semi-bluff guard ensures hands with real
         equity always c-bet, while pure air retains standard frequency-based bluffing.</li>
-      <li data-lang="fr">Correction gameplay : les bots avec une forte équité de semi-bluff (ex. AcKc sur board sec en
+<li data-lang="fr">Correction gameplay : les bots avec une forte équité de semi-bluff (ex. AcKc sur board sec en
         pot 3-bet) c-bettent désormais systématiquement en position au lieu de checker aléatoirement. Un nouveau guard
         semi-bluff garantit que les mains avec une équité réelle c-bettent toujours, tandis qu'une main nulle conserve
         un bluff basé sur les fréquences standards.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.4.3</span>
-      <span class="release-date">2026-06-13</span>
-    </div>
-    <ul>
-      <li data-lang="en">Gameplay fix: bots (Loose, Maniac) no longer make thin value bets on the river when the turn
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.4.3</span>
+<span class="release-date">2026-06-13</span>
+</div>
+<ul>
+<li data-lang="en">Gameplay fix: bots (Loose, Maniac) no longer make thin value bets on the river when the turn
         was checked through. Bets with borderline range equity (50–65 %) are now correctly suppressed in those spots.
       </li>
-      <li data-lang="fr">Correction gameplay : les bots (Loose, Maniac) ne misent plus la river pour une valeur faible
+<li data-lang="fr">Correction gameplay : les bots (Loose, Maniac) ne misent plus la river pour une valeur faible
         lorsque le turn a été checké des deux côtés. Les mises avec une équité de range borderline (50–65 %) sont
         désormais correctement supprimées dans ces spots.</li>
-      <li data-lang="en">Gameplay fix: bots in position with strong range equity (≥ 70 %) now bet the turn
+<li data-lang="en">Gameplay fix: bots in position with strong range equity (≥ 70 %) now bet the turn
         deterministically, eliminating inconsistent aggression in clearly profitable spots.</li>
-      <li data-lang="fr">Correction gameplay : les bots en position avec une forte équité de range (≥ 70 %) misent
+<li data-lang="fr">Correction gameplay : les bots en position avec une forte équité de range (≥ 70 %) misent
         désormais systématiquement au turn, éliminant une agressivité incohérente dans des spots clairement rentables.
       </li>
-      <li data-lang="en">Gameplay fix: two pair on a paired board no longer triggers pot-control on the turn — two pair
+<li data-lang="en">Gameplay fix: two pair on a paired board no longer triggers pot-control on the turn — two pair
         is a strong made hand that bets for value and protection.</li>
-      <li data-lang="fr">Correction gameplay : deux paires sur un board pairé ne déclenchent plus le pot-control au
+<li data-lang="fr">Correction gameplay : deux paires sur un board pairé ne déclenchent plus le pot-control au
         turn — deux paires est une main forte qui doit miser pour la valeur et la protection.</li>
-      <li data-lang="en">Gameplay fix: added a pot-odds floor to postflop calling thresholds, preventing stacked exploit
+<li data-lang="en">Gameplay fix: added a pot-odds floor to postflop calling thresholds, preventing stacked exploit
         discounts from collapsing call thresholds to near-zero.</li>
-      <li data-lang="fr">Correction gameplay : ajout d'un plancher basé sur les pot-odds pour les seuils d'appel
+<li data-lang="fr">Correction gameplay : ajout d'un plancher basé sur les pot-odds pour les seuils d'appel
         post-flop, empêchant des réductions cumulées de faire tomber les seuils d'appel à zéro.</li>
-      <li data-lang="en">UI fix: fixed a bug where player widgets could appear duplicated when restarting a game
+<li data-lang="en">UI fix: fixed a bug where player widgets could appear duplicated when restarting a game
         session from the table screen.</li>
-      <li data-lang="fr">Correction interface : correction d'un bug où les widgets des joueurs pouvaient apparaître en
+<li data-lang="fr">Correction interface : correction d'un bug où les widgets des joueurs pouvaient apparaître en
         double lors du redémarrage d'une partie depuis l'écran de table.</li>
-      <li data-lang="en">UI: statistics reliability gauge label clarified to "Reliable for preflop stats".</li>
-      <li data-lang="fr">Interface : le libellé de la jauge de fiabilité des statistiques a été clarifié en
+<li data-lang="en">UI: statistics reliability gauge label clarified to "Reliable for preflop stats".</li>
+<li data-lang="fr">Interface : le libellé de la jauge de fiabilité des statistiques a été clarifié en
         « Fiable pour les stats préflop ».</li>
-      <li data-lang="en">Mobile: the back-swipe gesture on the poker table now only triggers when the swipe starts
+<li data-lang="en">Mobile: the back-swipe gesture on the poker table now only triggers when the swipe starts
         within the left edge of the screen (15 % strip), matching the standard Android back-gesture. Random horizontal
         drags elsewhere on the table no longer accidentally exit the current game.</li>
-      <li data-lang="fr">Mobile : le geste de balayage retour sur la table de poker ne se déclenche désormais que
+<li data-lang="fr">Mobile : le geste de balayage retour sur la table de poker ne se déclenche désormais que
         lorsque le glissement commence dans la zone gauche de l'écran (bande de 15 %), conformément au geste retour
         Android standard. Les glissements horizontaux ailleurs sur la table ne quittent plus la partie par accident.
       </li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.4.2</span>
-      <span class="release-date">2026-06-07</span>
-    </div>
-    <ul>
-      <li data-lang="en">Gameplay fix: bots with short stacks (≤ 5 BB) now correctly shove all-in preflop instead of
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.4.2</span>
+<span class="release-date">2026-06-07</span>
+</div>
+<ul>
+<li data-lang="en">Gameplay fix: bots with short stacks (≤ 5 BB) now correctly shove all-in preflop instead of
         making an undersized raise that leaves an incoherent stack behind.</li>
-      <li data-lang="fr">Correction gameplay : les bots avec un petit tapis (≤ 5 BB) vont désormais à tapis correctement
+<li data-lang="fr">Correction gameplay : les bots avec un petit tapis (≤ 5 BB) vont désormais à tapis correctement
         avant le flop, au lieu de faire une relance sous-dimensionnée qui laisse un stack incohérent.</li>
-      <li data-lang="en">Gameplay fix: UltraTight bot no longer calls the turn with a single pair on a three-flush board
+<li data-lang="en">Gameplay fix: UltraTight bot no longer calls the turn with a single pair on a three-flush board
         when the opponent’s estimated range is flush-heavy; it folds correctly when range equity falls below threshold.
       </li>
-      <li data-lang="fr">Correction gameplay : le bot Ultra-Serré ne suit plus au turn avec une paire simple sur un
+<li data-lang="fr">Correction gameplay : le bot Ultra-Serré ne suit plus au turn avec une paire simple sur un
         board trois-flush; il se couche correctement
         lorsque l’équité de range est insuffisante.</li>
-      <li data-lang="en">Gameplay fix: UltraTight bot no longer bets the river for thin value when its range equity is
+<li data-lang="en">Gameplay fix: UltraTight bot no longer bets the river for thin value when its range equity is
         below 60%; it checks behind in those spots.</li>
-      <li data-lang="fr">Correction gameplay : le bot Ultra-Serré ne mise plus la river pour une valeur étroite quand
+<li data-lang="fr">Correction gameplay : le bot Ultra-Serré ne mise plus la river pour une valeur étroite quand
         son équité de range est inférieure à 60% ; il passe dans ces situations.</li>
-      <li data-lang="en">Mobile: swipe left or right anywhere on the poker table or replay screen to go back to the
+<li data-lang="en">Mobile: swipe left or right anywhere on the poker table or replay screen to go back to the
         previous screen.</li>
-      <li data-lang="fr">Mobile : balayez à gauche ou à droite n’importe où sur la table ou l’écran de relecture pour
+<li data-lang="fr">Mobile : balayez à gauche ou à droite n’importe où sur la table ou l’écran de relecture pour
         revenir à l’écran précédent.</li>
-      <li data-lang="en">Mobile: the replay screen now shows a prominent “Share to AI” button to send any hand directly
+<li data-lang="en">Mobile: the replay screen now shows a prominent “Share to AI” button to send any hand directly
         to your AI assistant for analysis.</li>
-      <li data-lang="fr">Mobile : l’écran de relecture affiche désormais un bouton « Analyser avec l’IA » pour envoyer
+<li data-lang="fr">Mobile : l’écran de relecture affiche désormais un bouton « Analyser avec l’IA » pour envoyer
         directement une main à votre assistant IA.</li>
-      <li data-lang="en">Mobile: the app now checks for new versions and shows a banner with a direct link to the Play
+<li data-lang="en">Mobile: the app now checks for new versions and shows a banner with a direct link to the Play
         Store when an update is available.</li>
-      <li data-lang="fr">Mobile : l’application vérifie désormais la disponibilité de nouvelles versions et affiche une
+<li data-lang="fr">Mobile : l’application vérifie désormais la disponibilité de nouvelles versions et affiche une
         bannière avec un lien direct vers le Play Store si une mise à jour est disponible.</li>
-      <li data-lang="en">UI on the Replay hand: opponent names and chip counts are now correctly visible at the top of
+<li data-lang="en">UI on the Replay hand: opponent names and chip counts are now correctly visible at the top of
         the replay screen on
         all phone screen sizes.</li>
-      <li data-lang="fr">Interface Replay : les noms et jetons des adversaires sont désormais correctement visibles en
+<li data-lang="fr">Interface Replay : les noms et jetons des adversaires sont désormais correctement visibles en
         haut de
         l’écran de relecture sur toutes les tailles d’écran.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.4.1</span>
-      <span class="release-date">2026-06-02</span>
-    </div>
-    <ul>
-      <li data-lang="en">Bug fix: the Loose bot no longer incorrectly folds premium hands (AKo, AQo) against a 3-bet. An
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.4.1</span>
+<span class="release-date">2026-06-02</span>
+</div>
+<ul>
+<li data-lang="en">Bug fix: the Loose bot no longer incorrectly folds premium hands (AKo, AQo) against a 3-bet. An
         extra range-tightening pass on top of the correct MDF calculation was causing those hands to fall outside both
         the call and 4-bet ranges and fold by default.</li>
-      <li data-lang="fr">Correction d'un bug préflop : le bot Loose ne se couchait plus à tort avec des mains premium
+<li data-lang="fr">Correction d'un bug préflop : le bot Loose ne se couchait plus à tort avec des mains premium
         (AKo, AQo) face à une 3-bet. Un resserrement de range supplémentaire, appliqué après le calcul correct de la
         MDF, faisait sortir ces mains des deux ranges (call et 4-bet) et les forçait à se coucher par défaut.</li>
-      <li data-lang="en">Misc UI improvements.</li>
-      <li data-lang="fr">Diverses améliorations de l'interface.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.4.0</span>
-      <span class="release-date">2026-05-27</span>
-    </div>
-    <ul>
-      <li data-lang="en">Bot statistics screen: Import / Export buttons are now always visible at the top of the
+<li data-lang="en">Misc UI improvements.</li>
+<li data-lang="fr">Diverses améliorations de l'interface.</li>
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.4.0</span>
+<span class="release-date">2026-05-27</span>
+</div>
+<ul>
+<li data-lang="en">Bot statistics screen: Import / Export buttons are now always visible at the top of the
         overlay, directly accessible on phone without scrolling.</li>
-      <li data-lang="fr">Écran de statistiques : les boutons Importer / Exporter sont désormais toujours visibles en
+<li data-lang="fr">Écran de statistiques : les boutons Importer / Exporter sont désormais toujours visibles en
         haut de la fenêtre, accessibles sans défilement sur téléphone.</li>
-      <li data-lang="en">Bot statistics screen: the player profile label and all leak detector insight comments are now
+<li data-lang="en">Bot statistics screen: the player profile label and all leak detector insight comments are now
         fully translated in French and Spanish.</li>
-      <li data-lang="fr">Écran de statistiques : le profil du joueur et tous les commentaires du détecteur de fuites
+<li data-lang="fr">Écran de statistiques : le profil du joueur et tous les commentaires du détecteur de fuites
         sont désormais traduits en français et en espagnol.</li>
-      <li data-lang="en">Bot calibration: fixed an over-calling tendency for the Loose bot in Heads-Up — tightened turn
+<li data-lang="en">Bot calibration: fixed an over-calling tendency for the Loose bot in Heads-Up — tightened turn
         and river calling thresholds to eliminate the chip-bleed at showdown.</li>
-      <li data-lang="fr">Calibration des bots : correction d'un appel excessif du bot Loose en Heads-Up — les seuils
+<li data-lang="fr">Calibration des bots : correction d'un appel excessif du bot Loose en Heads-Up — les seuils
         d'appel au turn et à la rivière ont été resserrés pour éliminer la fuite au showdown.</li>
-      <li data-lang="en">Bot statistics regenerated from scratch across all twelve gamestyle × format slots.</li>
-      <li data-lang="fr">Statistiques des bots régénérées de zéro pour les douze combinaisons style de jeu × format.
+<li data-lang="en">Bot statistics regenerated from scratch across all twelve gamestyle × format slots.</li>
+<li data-lang="fr">Statistiques des bots régénérées de zéro pour les douze combinaisons style de jeu × format.
       </li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.3.1</span>
-      <span class="release-date">2026-05-14</span>
-    </div>
-    <ul>
-      <li data-lang="en">Further bot calibration refinements, validated across a full-power seeding (~500,000 hands per
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.3.1</span>
+<span class="release-date">2026-05-14</span>
+</div>
+<ul>
+<li data-lang="en">Further bot calibration refinements, validated across a full-power seeding (~500,000 hands per
         gamestyle). All gamestyles remain clean against the in-game leak detector on every table format.</li>
-      <li data-lang="fr">Affinements supplémentaires de la calibration des bots, validés sur une simulation complète
+<li data-lang="fr">Affinements supplémentaires de la calibration des bots, validés sur une simulation complète
         (~500 000 mains par style de jeu). </li>
-      <li data-lang="en">Fixed a turn check-raise exploit on Full Ring: the Loose bot was building large pots with
+<li data-lang="en">Fixed a turn check-raise exploit on Full Ring: the Loose bot was building large pots with
         medium-strength hands on draw-heavy boards and losing them at showdown.</li>
-      <li data-lang="fr">Correction d'un mauvais gameplay sur le check-raise au turn en Full Ring : le bot Loose
+<li data-lang="fr">Correction d'un mauvais gameplay sur le check-raise au turn en Full Ring : le bot Loose
         construisait de
         gros pots avec des mains moyennes sur des boards tendus, pour les perdre ensuite au showdown.</li>
-      <li data-lang="en">Fixed a preflop scenario: UTG now correctly folds A8s to a 3-bet when a cold-caller is present
+<li data-lang="en">Fixed a preflop scenario: UTG now correctly folds A8s to a 3-bet when a cold-caller is present
         on Short Handed tables.</li>
-      <li data-lang="fr">Correction d'un scénario préflop : UTG fold désormais correctement A8s face à un 3-bet avec un
+<li data-lang="fr">Correction d'un scénario préflop : UTG fold désormais correctement A8s face à un 3-bet avec un
         cold-caller en Short Handed.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.3.0</span>
-      <span class="release-date">2026-05-09</span>
-    </div>
-    <ul>
-      <li data-lang="en">Bot calibration cycle complete. All four gamestyles (Ultra-Tight, Tight, Loose, Maniac) are now
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.3.0</span>
+<span class="release-date">2026-05-09</span>
+</div>
+<ul>
+<li data-lang="en">Bot calibration cycle complete. All four gamestyles (Ultra-Tight, Tight, Loose, Maniac) are now
         clean against the in-game leak detector on every table format.</li>
-      <li data-lang="fr">Cycle de calibration des bots terminé. Les quatre styles de jeu (Ultra-Tight, Tight, Loose,
+<li data-lang="fr">Cycle de calibration des bots terminé. Les quatre styles de jeu (Ultra-Tight, Tight, Loose,
         Maniac) ont désormais des statistiques cohérentes et attendues, sur tous les formats de table.</li>
-      <li data-lang="en">Fixed bots over-folding to 3-bets and Maniac over-c-betting the flop.</li>
-      <li data-lang="fr">Correction du fold excessif face aux 3-bets et du c-bet excessif du Maniac au flop.</li>
-      <li data-lang="en">Heads-Up big-blind defence improved.</li>
-      <li data-lang="fr">Amélioration de la défense de la grosse blind en Heads-Up.</li>
-      <li data-lang="en">Validated across three full-power seedings (~500,000 hands per gamestyle).</li>
-      <li data-lang="fr">Validé sur trois simulations complètes (~500 000 mains par style de jeu).</li>
-      <li data-lang="en">Stability fix in the range estimator.</li>
-      <li data-lang="fr">Correction de stabilité dans l'estimateur de ranges.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.2.6</span>
-      <span class="release-date">2026-04-29</span>
-    </div>
-    <ul>
-      <li data-lang="en">Major bot rebalancing across all table formats. Bot vs bot statistics regenerated from millions
+<li data-lang="en">Fixed bots over-folding to 3-bets and Maniac over-c-betting the flop.</li>
+<li data-lang="fr">Correction du fold excessif face aux 3-bets et du c-bet excessif du Maniac au flop.</li>
+<li data-lang="en">Heads-Up big-blind defence improved.</li>
+<li data-lang="fr">Amélioration de la défense de la grosse blind en Heads-Up.</li>
+<li data-lang="en">Validated across three full-power seedings (~500,000 hands per gamestyle).</li>
+<li data-lang="fr">Validé sur trois simulations complètes (~500 000 mains par style de jeu).</li>
+<li data-lang="en">Stability fix in the range estimator.</li>
+<li data-lang="fr">Correction de stabilité dans l'estimateur de ranges.</li>
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.2.6</span>
+<span class="release-date">2026-04-29</span>
+</div>
+<ul>
+<li data-lang="en">Major bot rebalancing across all table formats. Bot vs bot statistics regenerated from millions
         of simulated hands.</li>
-      <li data-lang="fr">Rééquilibrage majeur des bots sur tous les formats de table. Statistiques bot vs bot régénérées
+<li data-lang="fr">Rééquilibrage majeur des bots sur tous les formats de table. Statistiques bot vs bot régénérées
         à partir de millions de mains simulées.</li>
-      <li data-lang="en">Fixed two long-standing exploitable leaks: the Loose bot was bleeding chips on Short Handed
+<li data-lang="en">Fixed two long-standing exploitable leaks: the Loose bot was bleeding chips on Short Handed
         tables, and the Maniac bot was bleeding on both Full Ring and Short Handed.</li>
-      <li data-lang="fr">Correction de deux fuites exploitables : le bot Loose perdait des jetons en Short Handed, et le
+<li data-lang="fr">Correction de deux fuites exploitables : le bot Loose perdait des jetons en Short Handed, et le
         Maniac en Full Ring et Short Handed.</li>
-      <li data-lang="en">All four gamestyles now play their archetype competitively without a structural exploit on any
+<li data-lang="en">All four gamestyles now play their archetype competitively without a structural exploit on any
         table format.</li>
-      <li data-lang="fr">Les quatre styles jouent désormais leur archétype de façon réaliste, sans faille structurelle,
+<li data-lang="fr">Les quatre styles jouent désormais leur archétype de façon réaliste, sans faille structurelle,
         sur aucun format de table.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.2.5</span>
-      <span class="release-date">2026-04-27</span>
-    </div>
-    <ul>
-      <li data-lang="en">Smarter bot decisions when stacks get short (going all-in if the raise amount would pot-commit
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.2.5</span>
+<span class="release-date">2026-04-27</span>
+</div>
+<ul>
+<li data-lang="en">Smarter bot decisions when stacks get short (going all-in if the raise amount would pot-commit
         the player).</li>
-      <li data-lang="fr">Décisions de bot améliorées en situation de stack court (tapis automatique si la relance engage
+<li data-lang="fr">Décisions de bot améliorées en situation de stack court (tapis automatique si la relance engage
         le stack du joueur).</li>
-      <li data-lang="en">Improved defense ranges versus oversized opening raises.</li>
-      <li data-lang="fr">Amélioration des ranges de défense face aux ouvertures surdimensionnées.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.2.4</span>
-      <span class="release-date">2026-04-25</span>
-    </div>
-    <ul>
-      <li data-lang="en">Added rolling window (25 hands) for replay.</li>
-      <li data-lang="fr">Ajout d'une fenêtre glissante (25 mains) pour le replay.</li>
-      <li data-lang="en">Gameplay fixes.</li>
-      <li data-lang="fr">Corrections de gameplay.</li>
-    </ul>
-  </div>
-
-  <div class="release">
-    <div class="release-header">
-      <span class="release-version">v1.2.3</span>
-      <span class="release-date">2026-04-10</span>
-    </div>
-    <ul>
-      <li data-lang="en">First published release.</li>
-      <li data-lang="fr">Première version publiée.</li>
-    </ul>
-  </div>
-
-  <script>
-    const lang = localStorage.getItem('lang') || 'en';
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-lang]').forEach(function (el) {
-      if (el.getAttribute('data-lang') === lang) {
-        el.classList.add('active');
-      }
-    });
-  </script>
-
-</body>
-
-</html>
+<li data-lang="en">Improved defense ranges versus oversized opening raises.</li>
+<li data-lang="fr">Amélioration des ranges de défense face aux ouvertures surdimensionnées.</li>
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.2.4</span>
+<span class="release-date">2026-04-25</span>
+</div>
+<ul>
+<li data-lang="en">Added rolling window (25 hands) for replay.</li>
+<li data-lang="fr">Ajout d'une fenêtre glissante (25 mains) pour le replay.</li>
+<li data-lang="en">Gameplay fixes.</li>
+<li data-lang="fr">Corrections de gameplay.</li>
+</ul>
+</div>
+<div class="release">
+<div class="release-header">
+<span class="release-version">v1.2.3</span>
+<span class="release-date">2026-04-10</span>
+</div>
+<ul>
+<li data-lang="en">First published release.</li>
+<li data-lang="fr">Première version publiée.</li>
+</ul>
+</div></div></main><footer class="footer">
+      <div>© <span data-current-year></span> M87 DEV</div>
+      <div class="footer-links">
+        <a href="screenshots.html"><span data-lang="en">Screenshots</span><span data-lang="fr">Captures</span></a>
+        <a href="bots.html"><span data-lang="en">How the bots work</span><span data-lang="fr">Fonctionnement des bots</span></a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html"><span data-lang="en">Privacy</span><span data-lang="fr">Confidentialité</span></a>
+        <a href="support.html">Support</a>
+        <a href="changelog.html">Changelog</a>
+      </div>
+    </footer></div><script src="assets/site.js"></script></body></html>
