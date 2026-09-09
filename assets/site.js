@@ -16,6 +16,8 @@
     localStorage.setItem('lang',lang);document.documentElement.lang=lang;
     document.querySelectorAll('.lang-btn').forEach(function(btn){var active=btn.getAttribute('data-lang-flag')===lang;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',active?'true':'false');});
     document.querySelectorAll('[data-lang]').forEach(function(el){el.classList.toggle('active',el.getAttribute('data-lang')===lang);});
+    document.querySelectorAll('[data-src-en][data-src-fr]').forEach(function(el){el.src=el.getAttribute('data-src-'+lang);});
+    document.querySelectorAll('[data-href-en][data-href-fr]').forEach(function(el){el.href=el.getAttribute('data-href-'+lang);});
     var skip=document.querySelector('.skip-link');if(skip)skip.textContent=lang==='fr'?'Aller au contenu':'Skip to content';
     renderVersionBadge(lang);
   };
