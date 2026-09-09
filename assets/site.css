@@ -31,5 +31,5 @@ a{color:var(--gold-2);text-decoration:none} a:hover{text-decoration:underline} i
 a:focus-visible,button:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px;border-radius:8px}
 .lang-btn:focus-visible{outline-offset:2px}
 @media(max-width:620px){.download-btn{min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center}.download-panel{padding:21px}.mobile-store-emphasis{border-color:rgba(231,196,74,.52)}}
-.is-mobile .windows-only{display:none!important}
-.is-mobile #mobile-windows-notice{display:block!important}
+.is-android-phone .windows-only{display:none!important}
+.is-android-phone #android-windows-notice{display:block!important}

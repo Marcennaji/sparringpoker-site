@@ -28,8 +28,8 @@
     document.querySelectorAll('[data-user][data-domain]').forEach(function(link){var email=link.getAttribute('data-user')+'@'+link.getAttribute('data-domain');link.href='mailto:'+email;link.textContent=email;});
     document.querySelectorAll('[data-current-year]').forEach(function(el){el.textContent=new Date().getFullYear();});
     fetch(base+'assets/version.json').then(function(r){return r.json();}).then(function(data){versionData=data;renderVersionBadge(saved);}).catch(function(){});
-    var isMobile=/android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
-    if(isMobile){document.body.classList.add('is-mobile');}
+    var isAndroidPhone=/android/i.test(navigator.userAgent)&&/mobile/i.test(navigator.userAgent);
+    if(isAndroidPhone){document.body.classList.add('is-android-phone');}
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
