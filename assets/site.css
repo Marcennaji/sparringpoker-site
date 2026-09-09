@@ -23,3 +23,12 @@ a{color:var(--gold-2);text-decoration:none} a:hover{text-decoration:underline} i
 @media(max-width:860px){.hero,.feature-split,.feature-split.reverse,.proof-strip,.privacy-banner{grid-template-columns:1fr}.coaching-benefits{grid-template-columns:repeat(2,1fr)}.hero{padding-top:34px;gap:28px}.hero-visual{order:2}.cards-3,.plans{grid-template-columns:1fr}.plan .sub{min-height:0}.roadmap{grid-template-columns:1fr}.privacy-banner .cta{justify-self:start}.shot-card.featured{grid-template-columns:1fr}.screenshot-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.shell,.narrow{width:min(100% - 20px,1120px)}.coaching-benefits{grid-template-columns:1fr}.coaching-intro{text-align:left}.topbar{align-items:flex-start}.brand{font-size:1.06rem}.hero{padding-top:26px}.hero h1{font-size:clamp(2.35rem,12vw,3.35rem)}.section{padding:39px 0}.download-grid{grid-template-columns:1fr}.proof-stats{grid-template-columns:1fr}.hero-tag{position:static;margin-top:10px;max-width:none}.page-main{padding-top:18px}.page-hero{padding-top:22px}.resource-card{grid-template-columns:1fr}.article .stat-grid{grid-template-columns:1fr}.box{overflow-x:auto}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+/* Step 3 accessibility and interaction polish */
+.skip-link{position:fixed;left:12px;top:10px;z-index:9999;transform:translateY(-150%);padding:10px 14px;border-radius:10px;background:#f2d66c;color:#161509;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.skip-link:focus{transform:translateY(0);text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px;border-radius:8px}
+.lang-btn:focus-visible{outline-offset:2px}
+@media(max-width:620px){.download-btn{min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center}.download-panel{padding:21px}.mobile-store-emphasis{border-color:rgba(231,196,74,.52)}}
+.is-mobile .windows-only{display:none!important}
+.is-mobile #mobile-windows-notice{display:block!important}
