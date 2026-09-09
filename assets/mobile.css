@@ -1,0 +1,58 @@
+/* Phone-specific presentation. Desktop styles remain in site.css. */
+@media (max-width: 620px) {
+  .topbar {
+    min-height: 64px;
+    padding: 8px 0;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand {
+    min-width: 0;
+    align-items: center;
+    gap: 7px;
+    font-size: 1.06rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .brand-mark {
+    line-height: 1;
+  }
+
+  .top-actions {
+    flex: 0 0 auto;
+    gap: 0;
+    flex-wrap: nowrap;
+  }
+
+  /* Release details remain available through the Changelog footer link. */
+  .version-badge {
+    display: none !important;
+  }
+
+  .lang-switch {
+    gap: 2px;
+  }
+
+  .lang-btn {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    padding: 7px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  .lang-btn img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand .brand-mark:last-child {
+    display: none;
+  }
+}
