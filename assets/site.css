@@ -33,3 +33,16 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold-2);outline-off
 @media(max-width:620px){.download-btn{min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center}.download-panel{padding:21px}.mobile-store-emphasis{border-color:rgba(231,196,74,.52)}}
 .is-android-phone a.download-btn.windows-only,.is-android-phone .win-warning.windows-only{display:none!important}
 .is-android-phone #android-windows-notice{display:block!important}
+
+/* v1.7 marketing hierarchy */
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.cards-4 .card{height:100%}
+.new-feature-shot{border-color:rgba(231,196,74,.3);background:linear-gradient(145deg,rgba(231,196,74,.07),rgba(9,33,22,.38))}
+.new-feature-shot img{aspect-ratio:16/9;object-fit:cover}
+.feature-split.progress-text-only{display:block}
+.feature-split.progress-text-only .feature-copy{max-width:800px}
+.shot-card.featured.progress-text-only{display:block}
+.shot-card.featured.progress-text-only .shot-copy{max-width:800px;margin:auto;padding:30px 22px}
+#progress,#opponent-reading{scroll-margin-top:18px}
+@media(max-width:1000px){.cards-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.cards-4{grid-template-columns:1fr}.new-feature-shot{padding:6px}.shot-card.featured .shot-copy{padding-top:18px}}
