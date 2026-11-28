@@ -1,7 +1,14 @@
 
 (function(){
-  var base=(document.body && document.body.getAttribute('data-base'))||'';
   var versionData=null;
+  function savedLanguage(){
+    try{
+      if(window.localStorage.getItem('lang')==='fr')return 'fr';
+    }catch(error){
+      // Storage can be unavailable even when scripts are enabled.
+    }
+    return 'en';
+  }
   function renderVersionBadge(lang){
     document.querySelectorAll('.version-badge').forEach(function(badge){
       if(!versionData||!versionData.latest_version)return;
@@ -12,22 +19,30 @@
       badge.style.display='inline-block';
     });
   }
-  window.setLang=function(lang,button){
-    localStorage.setItem('lang',lang);document.documentElement.lang=lang;
+  function setLang(lang){
+    document.documentElement.lang=lang;
     document.querySelectorAll('.lang-btn').forEach(function(btn){var active=btn.getAttribute('data-lang-flag')===lang;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',active?'true':'false');});
-    document.querySelectorAll('[data-lang]').forEach(function(el){el.classList.toggle('active',el.getAttribute('data-lang')===lang);});
     document.querySelectorAll('[data-src-en][data-src-fr]').forEach(function(el){el.src=el.getAttribute('data-src-'+lang);});
     document.querySelectorAll('[data-href-en][data-href-fr]').forEach(function(el){el.href=el.getAttribute('data-href-'+lang);});
     var skip=document.querySelector('.skip-link');if(skip)skip.textContent=lang==='fr'?'Aller au contenu':'Skip to content';
     renderVersionBadge(lang);
-  };
+  }
   function init(){
-    var saved=localStorage.getItem('lang')||'en';
-    window.setLang(saved);
-    document.querySelectorAll('.lang-btn').forEach(function(btn){btn.addEventListener('click',function(){window.setLang(btn.getAttribute('data-lang-flag'),btn);});});
-    document.querySelectorAll('[data-user][data-domain]').forEach(function(link){var email=link.getAttribute('data-user')+'@'+link.getAttribute('data-domain');link.href='mailto:'+email;link.textContent=email;});
+    setLang(savedLanguage());
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var lang=btn.getAttribute('data-lang-flag');
+        setLang(lang);
+        try{
+          window.localStorage.setItem('lang',lang);
+        }catch(error){
+          // The selection still works for this page without storage.
+        }
+      });
+    });
     document.querySelectorAll('[data-current-year]').forEach(function(el){el.textContent=new Date().getFullYear();});
-    fetch(base+'assets/version.json').then(function(r){return r.json();}).then(function(data){versionData=data;renderVersionBadge(saved);}).catch(function(){});
+    var base=document.body.getAttribute('data-base')||'';
+    fetch(base+'assets/version.json').then(function(r){return r.json();}).then(function(data){versionData=data;renderVersionBadge(document.documentElement.lang);}).catch(function(){});
     var userAgentPlatform=navigator.userAgentData&&navigator.userAgentData.platform;
     var isAndroidPhone=/android/i.test(userAgentPlatform||'')||/android/i.test(navigator.userAgent);
     if(isAndroidPhone){document.body.classList.add('is-android-phone');}
